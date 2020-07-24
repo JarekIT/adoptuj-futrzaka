@@ -1,8 +1,12 @@
 import React from "react";
 import "./App.css";
+import Map from "./components/map/Map";
 
 function App() {
-  return <div>Pet Adoption</div>;
-}
+  return (
+    <div>
+      <Map /> 
+    </div>
+  )}
 
 export default App;
