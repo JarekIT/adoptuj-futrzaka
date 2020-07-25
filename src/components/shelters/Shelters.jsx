@@ -9,7 +9,7 @@ function Shelters({ shelters }) {
       {shelters.map((shelter) => {
         return (
           <div key={shelter.name}>
-            {shelter.name} (kontakt: <u>{shelter.tel}</u>)
+            {shelter.city} : {shelter.name} (kontakt: <u>{shelter.tel}</u>)
           </div>
         );
       })}
