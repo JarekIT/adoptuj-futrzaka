@@ -12,7 +12,7 @@ export class InputComponent extends React.Component {
 
     return (
       <label htmlFor={this.state.id}>
-        {label} 
+        {label}
         <input
           id={this.state.id}
           type={type}

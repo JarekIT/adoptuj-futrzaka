@@ -18,6 +18,7 @@ const AddShelter = ({ shelters, setShelters }) => {
       name: name,
       lat: lat,
       lng: lng,
+      city: city,
       tel: tel,
     };
 
@@ -51,10 +52,6 @@ const AddShelter = ({ shelters, setShelters }) => {
         <InputComponent label="Telefon" state={tel} setState={setTel} />
       </form>
       <button onClick={(event) => addShelter(event)}>Dodaj schronisko</button>
-      <h4>
-        Podsumowanie:
-        {name} + {lat} + {lng} + {tel}
-      </h4>
     </div>
   );
 };
