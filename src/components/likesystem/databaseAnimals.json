@@ -1,0 +1,90 @@
+[
+    {
+      "id": 0,
+      "name": "Kotosław",
+      "desc": "Opis kota",
+      "age": 0,
+      "image": "0.jpeg",
+      "likedBy": []
+    },
+    {
+      "id": 1,
+      "name": "Kotkinson",
+      "desc": "Opis kota",
+      "age": 1,
+      "image": "1.jpeg",
+      "likedBy": []
+    },
+    {
+      "id": 2,
+      "name": "Kicia",
+      "desc": "Opis kota",
+      "age": 2,
+      "image": "2.jpeg",
+      "likedBy": []
+    },
+    {
+      "id": 3,
+      "name": "Kocia",
+      "desc": "Opis kota",
+      "age": 3,
+      "image": "3.jpeg",
+      "likedBy": []
+    },
+    {
+      "id": 4,
+      "name": "Kotek",
+      "desc": "Opis kota",
+      "age": 4,
+      "image": "4.jpeg",
+      "likedBy": []
+    },
+    {
+      "id": 5,
+      "name": "KiciaKocia",
+      "desc": "Opis kota",
+      "age": 5,
+      "image": "5.jpeg",
+      "likedBy": []
+    },
+    {
+      "id": 6,
+      "name": "Koteczek",
+      "desc": "Opis kota",
+      "age": 6,
+      "image": "6.jpeg",
+      "likedBy": []
+    },
+    {
+      "id": 0,
+      "name": "Kotosław",
+      "desc": "Opis kota",
+      "age": 0,
+      "image": "0.jpeg",
+      "likedBy": []
+    },
+    {
+      "id": 2,
+      "name": "Kicia",
+      "desc": "Opis kota",
+      "age": 2,
+      "image": "2.jpeg",
+      "likedBy": []
+    },
+    {
+      "id": 4,
+      "name": "Kotek",
+      "desc": "Opis kota",
+      "age": 4,
+      "image": "4.jpeg",
+      "likedBy": []
+    },
+    {
+      "id": 6,
+      "name": "Koteczek",
+      "desc": "Opis kota",
+      "age": 6,
+      "image": "6.jpeg",
+      "likedBy": []
+    }
+  ]
