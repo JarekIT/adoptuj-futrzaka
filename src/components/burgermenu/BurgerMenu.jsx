@@ -1,6 +1,7 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import { Link } from "@reach/router";
+import "./burger-menu.css"
 
 const BurgerMenu = () => {
   return (
