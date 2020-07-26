@@ -18,11 +18,10 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import "./map.css";
-import jsonData from "./database";
 
-require('dotenv').config()
+require("dotenv").config();
 
-function Map() {
+function Map({ shelters }) {
   const libraries = ["places"];
   const mapContainerStyle = {
     width: "100vw",
@@ -42,7 +41,6 @@ function Map() {
     libraries,
   });
 
-  const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
 
   const mapRef = React.useRef();
@@ -54,6 +52,12 @@ function Map() {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(14);
   });
+
+  const onMapClickShowLatLng = React.useCallback((event) => {
+    let lat = event.latLng.lat();
+    let lng = event.latLng.lng();
+    console.log(`lat: ${lat}, lng: ${lng}`);
+  }, []);
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
@@ -71,12 +75,12 @@ function Map() {
         center={center}
         options={options}
         onLoad={onMapLoad}
+        onClick={onMapClickShowLatLng}
       >
-
-        {jsonData.map((marker) => (
+        {shelters.map((marker) => (
           <Marker
             key={marker.name}
-            position={{ lat: marker.lat, lng: marker.lng }}
+            position={{ lat: Number(marker.lat), lng: Number(marker.lng) }}
             onClick={() => {
               setSelected(marker);
               console.log(marker);
@@ -86,7 +90,7 @@ function Map() {
 
         {selected ? (
           <InfoWindow
-            position={{ lat: selected.lat, lng: selected.lng }}
+            position={{ lat: Number(selected.lat), lng: Number(selected.lng) }}
             onCloseClick={() => setSelected(null)}
           >
             <div>
