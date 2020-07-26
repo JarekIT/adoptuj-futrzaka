@@ -25,7 +25,9 @@ function Map({ shelters }) {
   const libraries = ["places"];
   const mapContainerStyle = {
     width: "100vw",
+    maxWidth: "1000px",
     height: "50vh",
+    margin: "auto"
   };
   const center = {
     lat: 54.51889,
@@ -64,8 +66,6 @@ function Map({ shelters }) {
 
   return (
     <div>
-      <h1>Schroniska</h1>
-
       <Search panTo={panTo} />
       <Locate panTo={panTo} />
 
