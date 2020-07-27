@@ -18,6 +18,7 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import "./map.css";
+import Shelters from "../shelters/Shelters";
 
 require("dotenv").config();
 
@@ -39,7 +40,8 @@ function Map({ shelters }) {
   };
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: 'AIzaSyCzUL-NWj_xB5iav1i-ujZ_ureAtAlt450',
+    // googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
@@ -66,9 +68,11 @@ function Map({ shelters }) {
 
   return (
     <div>
-      <Search panTo={panTo} />
-      <Locate panTo={panTo} />
-
+      <div className="searchbar">
+        <Search panTo={panTo} />
+        <Locate panTo={panTo} />
+      </div>
+      
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={10}
@@ -101,6 +105,8 @@ function Map({ shelters }) {
           </InfoWindow>
         ) : null}
       </GoogleMap>
+      <hr /> 
+      <Shelters shelters={shelters} />
     </div>
   );
 }
@@ -109,6 +115,7 @@ export default Map;
 
 function Locate({ panTo }) {
   return (
+    <div className="bar">
     <button
       className="locate"
       onClick={() => {
@@ -125,6 +132,7 @@ function Locate({ panTo }) {
     >
       <img src="/compas.svg" alt="compass - locate me" />
     </button>
+    </div>
   );
 }
 
@@ -142,6 +150,7 @@ function Search({ panTo }) {
     },
   });
   return (
+    <div className="bar">
     <div className="search">
       <Combobox
         onSelect={async (address) => {
@@ -166,7 +175,7 @@ function Search({ panTo }) {
             setValue(e.target.value);
           }}
           disabled={!ready}
-          placeholder="Enter an address"
+          placeholder="Znajdź schronisko"
         />
         <ComboboxPopover>
           <ComboboxList>
@@ -177,6 +186,7 @@ function Search({ panTo }) {
           </ComboboxList>
         </ComboboxPopover>
       </Combobox>
+    </div>
     </div>
   );
 }

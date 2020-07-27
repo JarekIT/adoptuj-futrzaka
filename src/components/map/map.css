@@ -24,13 +24,15 @@ body {
   }
   
   .search {
-    position: absolute;
+    /* position: absolute; */
     top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
     width: 100%;
     max-width: 400px;
     z-index: 10;
+    margin: auto;
+    padding: 10px;
   }
   
   .search input {
@@ -40,14 +42,28 @@ body {
   }
   
   .locate {
-    position: absolute;
     top: 1rem;
     right: 1rem;
     background: none;
     border: none;
+    padding-top: 15px;
     z-index: 10;
   }
   .locate img {
     width: 30px;
     cursor: pointer;
+  }
+
+  .searchbar .bar {
+    float: left;
+    width: 85%;
+  }
+  
+  .searchbar .bar:first-child {
+    text-align: center;
+  }
+  
+  .searchbar .bar:last-child {
+    text-align: right;
+    width: 15%;
   }
