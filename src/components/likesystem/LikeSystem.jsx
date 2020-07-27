@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import ShowLikedAnimals from "./ShowLikedAnimals.jsx";
 import Animal from "./Animal";
-import { haveIGotAnimalToWatch } from "./filters/filter"
+import { haveIGotAnimalToWatch } from "./filters/filter";
 
 function LikeSystem({ animals, setAnimals, user, setUser }) {
-  
   useEffect(() => {
     shuffleArray(animals);
-    }, []);
+  }, []);
 
   const removedAnimalFromDataSrc = (animalSource, animalId) =>
     animalSource.filter((animal) => animal.id !== animalId);
@@ -58,17 +57,16 @@ function LikeSystem({ animals, setAnimals, user, setUser }) {
     console.log(user);
   };
 
-
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
     }
-}
+  };
 
   return (
     <div className="app">
-      { haveIGotAnimalToWatch(animals, user) ? (
+      {haveIGotAnimalToWatch(animals, user) ? (
         <Animal
           key={animals[0].id}
           animal={animals[0]}
