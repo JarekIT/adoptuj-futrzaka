@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./LikeSystem.css";
-import Header from "./Header";
 import ShowLikedAnimals from "./ShowLikedAnimals.jsx";
 import Animal from "./Animal";
 import databaseAnimals from "./databaseAnimals.json";
@@ -77,8 +75,6 @@ function LikeSystem({ animals, setAnimals, user }) {
 
   return (
     <div className="app">
-      <Header />
-
       {animals[0] ? (
         // {haveIHaveAnimalToWatch({ animals }) ? (
         <Animal
