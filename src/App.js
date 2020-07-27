@@ -18,7 +18,7 @@ function App() {
   const [shelters, setShelters] = useState([]);
   const [users, setUsers] = useState(databaseUsers);
   const [animals, setAnimals] = useState(databaseAnimals);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(users[0]);
 
   useEffect(() => {
     setShelters(mockData);

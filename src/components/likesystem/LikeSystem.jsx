@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import ShowLikedAnimals from "./ShowLikedAnimals.jsx";
 import Animal from "./Animal";
+import { haveIGotAnimalToWatch } from "./filters/filter"
 
 function LikeSystem({ animals, setAnimals, user, setUser }) {
+  
+  useEffect(() => {
+    shuffleArray(animals);
+    }, []);
+
   const removedAnimalFromDataSrc = (animalSource, animalId) =>
     animalSource.filter((animal) => animal.id !== animalId);
 
@@ -14,18 +20,21 @@ function LikeSystem({ animals, setAnimals, user, setUser }) {
       case "ADD_TO_LIKED_USER":
         if (!user.likedAnimals.includes(animal)) {
           newUser.likedAnimals.push(animal);
+          newUser.viewedAnimals.push(animalId);
           setAnimals(removedAnimalFromDataSrc(animals, animalId));
         }
         break;
       case "ADD_TO_NEXT_USER":
         if (!user.nextAnimals.includes(animal)) {
           newUser.nextAnimals.push(animal);
+          newUser.viewedAnimals.push(animalId);
           setAnimals(removedAnimalFromDataSrc(animals, animalId));
         }
         break;
       case "ADD_TO_LOVED_USER":
         if (!user.lovedAnimals.includes(animal)) {
           newUser.lovedAnimals.push(animal);
+          newUser.viewedAnimals.push(animalId);
           setAnimals(removedAnimalFromDataSrc(animals, animalId));
         }
         break;
@@ -34,6 +43,7 @@ function LikeSystem({ animals, setAnimals, user, setUser }) {
           const newAnimals = [...animals];
           const lastAnimal = user.nextAnimals[user.nextAnimals.length - 1];
           newUser.nextAnimals.pop();
+          newUser.viewedAnimals.pop();
           newAnimals.unshift(lastAnimal);
           setAnimals(newAnimals);
         }
@@ -41,28 +51,24 @@ function LikeSystem({ animals, setAnimals, user, setUser }) {
       default:
         return animals;
     }
+
     console.log(`Animals left: ${animals.length}`);
     console.log(animals);
-    console.log("User number 0");
+    console.log("User  details:");
     console.log(user);
   };
 
-  // const haveIHaveAnimalToWatch = ({ animals }) => {
-  //   const haveISeenThatAnimal = (animal) => {
-  //     return !user.likedAnimals.includes(animal) &&
-  //       !user.lovedAnimals.includes(animal) &&
-  //       !user.nextAnimals.includes(animal)
-  //       ? true
-  //       : false;
-  //   };
 
-  //   return animals[0] && haveISeenThatAnimal(animals[0]);
-  // };
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 
   return (
     <div className="app">
-      {animals[0] ? (
-        // {haveIHaveAnimalToWatch({ animals }) ? (
+      { haveIGotAnimalToWatch(animals, user) ? (
         <Animal
           key={animals[0].id}
           animal={animals[0]}
