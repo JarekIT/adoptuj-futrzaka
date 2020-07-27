@@ -31,8 +31,8 @@ function App() {
 
   return (
     <React.StrictMode>
-      <div id="created-by-react">
-        <BurgerMenu />
+      <BurgerMenu />
+      <div className="app">
         <Header />
 
         <Router>

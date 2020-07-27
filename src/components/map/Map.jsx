@@ -27,7 +27,7 @@ function Map({ shelters }) {
     width: "100vw",
     maxWidth: "1000px",
     height: "50vh",
-    margin: "auto"
+    margin: "auto",
   };
   const center = {
     lat: 54.51889,
