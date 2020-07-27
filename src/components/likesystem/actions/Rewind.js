@@ -1,10 +1,10 @@
 import React from "react";
 
-const Rewind = ({ animalId, modifySuperficialChoices }) => {
+const Rewind = ({ animal, modifySuperficialChoices }) => {
   return (
     <button
       type="button"
-      onClick={() => modifySuperficialChoices(animalId, "REWIND")}
+      onClick={() => modifySuperficialChoices(animal, "REWIND")}
     >
       <img src="images/misc/rewind.png" alt="Rewind Animal" />
     </button>
