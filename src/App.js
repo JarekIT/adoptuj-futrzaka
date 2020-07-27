@@ -38,12 +38,12 @@ function App() {
         <Router>
           <Main path="/" />
           <LikeSystem
-            path="/start"
+            path="/find"
             user={user}
             animals={animals}
             setAnimals={setAnimals}
           />
-          <ShowLikedAnimals path="/end" user={user} animals={animals} />
+          <ShowLikedAnimals path="/found" user={user} animals={animals} />
           <Map path="/map" shelters={shelters} />
           <AddShelter
             path="/add"

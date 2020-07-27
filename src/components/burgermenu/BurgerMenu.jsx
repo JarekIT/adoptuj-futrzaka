@@ -1,7 +1,7 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import { Link } from "@reach/router";
-import "./burger-menu.css"
+import "./burger-menu.css";
 
 const BurgerMenu = () => {
   return (
@@ -9,10 +9,10 @@ const BurgerMenu = () => {
       <Link to="/">
         <h4>Strona glowna</h4>
       </Link>
-      <Link to="/start">
+      <Link to="/find">
         <h4>Pokaz zwierzaki</h4>
       </Link>
-      <Link to="/end">
+      <Link to="/found">
         <h4>Zerknij do pudełka</h4>
       </Link>
       <Link to="/map">
