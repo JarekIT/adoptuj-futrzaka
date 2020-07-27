@@ -43,8 +43,14 @@ function App() {
             setUser={setUser}
             animals={animals}
             setAnimals={setAnimals}
+            shelters={shelters}
           />
-          <ShowLikedAnimals path="/found" user={user} animals={animals} />
+          <ShowLikedAnimals
+            path="/found"
+            user={user}
+            animals={animals}
+            shelters={shelters}
+          />
           <Map path="/map" shelters={shelters} />
           <AddShelter
             path="/add"

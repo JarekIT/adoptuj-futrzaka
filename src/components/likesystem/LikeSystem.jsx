@@ -3,7 +3,7 @@ import ShowLikedAnimals from "./ShowLikedAnimals.jsx";
 import Animal from "./Animal";
 import { haveIGotAnimalToWatch } from "./filters/filter";
 
-function LikeSystem({ animals, setAnimals, user, setUser }) {
+function LikeSystem({ animals, setAnimals, user, setUser, shelters }) {
   useEffect(() => {
     shuffleArray(animals);
   }, []);
@@ -73,7 +73,7 @@ function LikeSystem({ animals, setAnimals, user, setUser }) {
           modifySuperficialChoices={modifySuperficialChoices}
         />
       ) : (
-        <ShowLikedAnimals user={user} animals={animals} />
+        <ShowLikedAnimals user={user} animals={animals} shelters={shelters} />
       )}
     </div>
   );

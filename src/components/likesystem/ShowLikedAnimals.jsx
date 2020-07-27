@@ -1,7 +1,8 @@
 import React from "react";
 import LikedAnimal from "./LikedAnimal";
+import LikedAnimalsShelterMap from "./LikedAnimalsSheltersMap";
 
-const ShowLikedAnimals = ({ animals, user }) => {
+const ShowLikedAnimals = ({ animals, user, shelters }) => {
   return (
     <div className="app">
       <div className="animal">
@@ -35,6 +36,9 @@ const ShowLikedAnimals = ({ animals, user }) => {
           </div>
         </div>
       </div>
+      {user.likedAnimals.length > 0 || user.lovedAnimals.length > 0 ? (
+        <LikedAnimalsShelterMap user={user} shelters={shelters} />
+      ) : null}
     </div>
   );
 };
