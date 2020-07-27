@@ -69,7 +69,7 @@
       "age": 7,
       "image": "7.jpeg",
       "likedBy": [],
-      "shelterId": 1
+      "shelterId": 4
     },
     {
       "id": 8,
@@ -78,7 +78,7 @@
       "age": 8,
       "image": "8.jpeg",
       "likedBy": [],
-      "shelterId": 1
+      "shelterId": 4
     },
     {
       "id": 9,
@@ -87,7 +87,7 @@
       "age": 9,
       "image": "9.jpeg",
       "likedBy": [],
-      "shelterId": 1
+      "shelterId": 4
     },
     {
       "id": 10,
@@ -96,7 +96,7 @@
       "age": 10,
       "image": "10.jpeg",
       "likedBy": [],
-      "shelterId": 1
+      "shelterId": 4
     },
     {
       "id": 11,
