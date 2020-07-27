@@ -5,7 +5,8 @@
       "desc": "Opis kota",
       "age": 0,
       "image": "0.jpeg",
-      "likedBy": []
+      "likedBy": [],
+      "shelterId": 1
     },
     {
       "id": 1,
@@ -13,7 +14,8 @@
       "desc": "Opis kota",
       "age": 1,
       "image": "1.jpeg",
-      "likedBy": []
+      "likedBy": [],
+      "shelterId": 1
     },
     {
       "id": 2,
@@ -21,7 +23,8 @@
       "desc": "Opis kota",
       "age": 2,
       "image": "2.jpeg",
-      "likedBy": []
+      "likedBy": [],
+      "shelterId": 1
     },
     {
       "id": 3,
@@ -29,7 +32,8 @@
       "desc": "Opis kota",
       "age": 3,
       "image": "3.jpeg",
-      "likedBy": []
+      "likedBy": [],
+      "shelterId": 1
     },
     {
       "id": 4,
@@ -37,7 +41,8 @@
       "desc": "Opis kota",
       "age": 4,
       "image": "4.jpeg",
-      "likedBy": []
+      "likedBy": [],
+      "shelterId": 1
     },
     {
       "id": 5,
@@ -45,7 +50,8 @@
       "desc": "Opis kota",
       "age": 5,
       "image": "5.jpeg",
-      "likedBy": []
+      "likedBy": [],
+      "shelterId": 1
     },
     {
       "id": 6,
@@ -53,38 +59,115 @@
       "desc": "Opis kota",
       "age": 6,
       "image": "6.jpeg",
-      "likedBy": []
+      "likedBy": [],
+      "shelterId": 1
     },
     {
-      "id": 0,
-      "name": "Kotosław",
+      "id": 7,
+      "name": "Imie kota",
       "desc": "Opis kota",
-      "age": 0,
-      "image": "0.jpeg",
-      "likedBy": []
+      "age": 7,
+      "image": "7.jpeg",
+      "likedBy": [],
+      "shelterId": 1
     },
     {
-      "id": 2,
-      "name": "Kicia",
+      "id": 8,
+      "name": "Imie kota",
       "desc": "Opis kota",
-      "age": 2,
-      "image": "2.jpeg",
-      "likedBy": []
+      "age": 8,
+      "image": "8.jpeg",
+      "likedBy": [],
+      "shelterId": 1
     },
     {
-      "id": 4,
-      "name": "Kotek",
+      "id": 9,
+      "name": "Imie kota",
       "desc": "Opis kota",
-      "age": 4,
-      "image": "4.jpeg",
-      "likedBy": []
+      "age": 9,
+      "image": "9.jpeg",
+      "likedBy": [],
+      "shelterId": 1
     },
     {
-      "id": 6,
-      "name": "Koteczek",
+      "id": 10,
+      "name": "Imie kota",
       "desc": "Opis kota",
-      "age": 6,
-      "image": "6.jpeg",
-      "likedBy": []
+      "age": 10,
+      "image": "10.jpeg",
+      "likedBy": [],
+      "shelterId": 1
+    },
+    {
+      "id": 11,
+      "name": "Imie kota",
+      "desc": "Opis kota",
+      "age": 11,
+      "image": "11.jpeg",
+      "likedBy": [],
+      "shelterId": 2
+    },
+    {
+      "id": 12,
+      "name": "Imie kota",
+      "desc": "Opis kota",
+      "age": 12,
+      "image": "12.jpeg",
+      "likedBy": [],
+      "shelterId": 2
+    },
+    {
+      "id": 13,
+      "name": "Imie kota",
+      "desc": "Opis kota",
+      "age": 13,
+      "image": "13.jpeg",
+      "likedBy": [],
+      "shelterId": 2
+    },
+    {
+      "id": 14,
+      "name": "Imie kota",
+      "desc": "Opis kota",
+      "age": 14,
+      "image": "14.jpeg",
+      "likedBy": [],
+      "shelterId": 2
+    },
+    {
+      "id": 15,
+      "name": "Imie kota",
+      "desc": "Opis kota",
+      "age": 15,
+      "image": "15.jpeg",
+      "likedBy": [],
+      "shelterId": 3
+    },
+    {
+      "id": 16,
+      "name": "Imie kota",
+      "desc": "Opis kota",
+      "age": 16,
+      "image": "16.jpeg",
+      "likedBy": [],
+      "shelterId": 3
+    },
+    {
+      "id": 17,
+      "name": "Imie kota",
+      "desc": "Opis kota",
+      "age": 17,
+      "image": "17.jpeg",
+      "likedBy": [],
+      "shelterId": 3
+    },
+    {
+      "id": 18,
+      "name": "Imie kota",
+      "desc": "Opis kota",
+      "age": 18,
+      "image": "18.jpeg",
+      "likedBy": [],
+      "shelterId": 3
     }
   ]
