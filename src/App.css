@@ -220,10 +220,11 @@ header .fl:last-child {
 /* Main Page */
 .main-page-image {
 	width: auto;
-	height: auto;
+	height: 100vw;
 	display: block;
 	object-fit: cover;
-	margin: auto;
+    margin: auto;
+    max-height: 1000px;
 }
 
 
