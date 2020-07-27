@@ -6,7 +6,7 @@ import "./App.css";
 import Map from "./components/map/Map";
 import AddShelter from "./components/addshelter/AddShelter.jsx";
 import Shelters from "./components/shelters/Shelters.jsx";
-import mockData from "./components/map/database";
+import mockData from "./components/map/databaseShelters";
 import LikeSystem from "./components/likesystem/LikeSystem.jsx";
 import databaseAnimals from "./components/likesystem/databaseAnimals.json";
 import databaseUsers from "./components/likesystem/databaseUsers.json";
@@ -18,13 +18,13 @@ function App() {
   const [shelters, setShelters] = useState([]);
   const [users, setUsers] = useState(databaseUsers);
   const [animals, setAnimals] = useState(databaseAnimals);
-  const [user, setUser] = useState(databaseUsers[0]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     setShelters(mockData);
     setAnimals(databaseAnimals);
     setUsers(databaseUsers);
-    setUser(databaseUsers[0]);
+    setUser(users[0]);
   }, []);
 
   useEffect(() => {}, [shelters]);
@@ -40,6 +40,7 @@ function App() {
           <LikeSystem
             path="/find"
             user={user}
+            setUser={setUser}
             animals={animals}
             setAnimals={setAnimals}
           />

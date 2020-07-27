@@ -5,15 +5,15 @@ import "./App.css";
 const Header = () => {
   return (
     <header>
-            <div className="fl">
+      <div className="fl">
         <Link to="/">
           <button type="button">
             <img src="/images/misc/logo.png" alt="Logo" />
           </button>
         </Link>
       </div>
-      
-            <div className="fl">
+
+      <div className="fl">
         <Link to="/find">
           <button type="button">
             <img src="/images/misc/find.png" alt="Logo" />
@@ -28,10 +28,6 @@ const Header = () => {
           </button>
         </Link>
       </div>
-
-
-
-
 
       <div className="fl">
         <Link to="/map">

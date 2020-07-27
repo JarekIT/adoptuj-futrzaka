@@ -40,8 +40,7 @@ function Map({ shelters }) {
   };
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyCzUL-NWj_xB5iav1i-ujZ_ureAtAlt450',
-    // googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
@@ -72,7 +71,7 @@ function Map({ shelters }) {
         <Search panTo={panTo} />
         <Locate panTo={panTo} />
       </div>
-      
+
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={10}
@@ -105,7 +104,7 @@ function Map({ shelters }) {
           </InfoWindow>
         ) : null}
       </GoogleMap>
-      <hr /> 
+      <hr />
       <Shelters shelters={shelters} />
     </div>
   );
@@ -116,22 +115,22 @@ export default Map;
 function Locate({ panTo }) {
   return (
     <div className="bar">
-    <button
-      className="locate"
-      onClick={() => {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            panTo({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            });
-          },
-          () => null
-        );
-      }}
-    >
-      <img src="/compas.svg" alt="compass - locate me" />
-    </button>
+      <button
+        className="locate"
+        onClick={() => {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              panTo({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              });
+            },
+            () => null
+          );
+        }}
+      >
+        <img src="/compas.svg" alt="compass - locate me" />
+      </button>
     </div>
   );
 }
@@ -151,42 +150,42 @@ function Search({ panTo }) {
   });
   return (
     <div className="bar">
-    <div className="search">
-      <Combobox
-        onSelect={async (address) => {
-          setValue(address, false);
-          clearSuggestions();
+      <div className="search">
+        <Combobox
+          onSelect={async (address) => {
+            setValue(address, false);
+            clearSuggestions();
 
-          try {
-            const results = await getGeocode({ address });
-            console.log(results);
-            const { lat, lng } = await getLatLng(results[0]);
-            console.log(lat, lng);
-            panTo({ lat, lng });
-          } catch {
-            console.log("error");
-          }
-          console.log(address);
-        }}
-      >
-        <ComboboxInput
-          value={value}
-          onChange={(e) => {
-            setValue(e.target.value);
+            try {
+              const results = await getGeocode({ address });
+              console.log(results);
+              const { lat, lng } = await getLatLng(results[0]);
+              console.log(lat, lng);
+              panTo({ lat, lng });
+            } catch {
+              console.log("error");
+            }
+            console.log(address);
           }}
-          disabled={!ready}
-          placeholder="Znajdź schronisko"
-        />
-        <ComboboxPopover>
-          <ComboboxList>
-            {status === "OK" &&
-              data.map(({ id, description }) => (
-                <ComboboxOption key={id} value={description} />
-              ))}
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
-    </div>
+        >
+          <ComboboxInput
+            value={value}
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+            disabled={!ready}
+            placeholder="Znajdź schronisko"
+          />
+          <ComboboxPopover>
+            <ComboboxList>
+              {status === "OK" &&
+                data.map(({ id, description }) => (
+                  <ComboboxOption key={id} value={description} />
+                ))}
+            </ComboboxList>
+          </ComboboxPopover>
+        </Combobox>
+      </div>
     </div>
   );
 }
