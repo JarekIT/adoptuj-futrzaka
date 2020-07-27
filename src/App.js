@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
+import Header from "./Header";
 
 import "./App.css";
 import Map from "./components/map/Map";
@@ -11,6 +12,7 @@ import databaseAnimals from "./components/likesystem/databaseAnimals.json";
 import databaseUsers from "./components/likesystem/databaseUsers.json";
 import ShowLikedAnimals from "./components/likesystem/ShowLikedAnimals.jsx";
 import BurgerMenu from "./components/burgermenu/BurgerMenu";
+import Main from "./components/mainpage/Main";
 
 function App() {
   const [shelters, setShelters] = useState([]);
@@ -31,8 +33,10 @@ function App() {
     <React.StrictMode>
       <div id="created-by-react">
         <BurgerMenu />
+        <Header />
 
         <Router>
+          <Main path="/" />
           <LikeSystem
             path="/start"
             user={user}
