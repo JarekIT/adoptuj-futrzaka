@@ -17,3 +17,39 @@ export const haveIGotAnimalToWatch = (animals, user) => {
 
   return haveNotIGotEmptyAnimals() && haveIGotEmptyViewedList();
 };
+
+export function getFilteredAnimal(animals, user, filterOptions) {
+  if (!haveIGotAnimalToWatch(animals, user)) {
+    return false;
+  }
+
+  let i = 0;
+
+  function checkType() {
+    return (
+      (animals[i].type === "cat" && filterOptions.viewCats === true) ||
+      (animals[i].type === "dog" && filterOptions.viewDogs === true)
+    );
+  }
+
+  function checkGender() {
+    return (
+      (animals[i].gender === "samiec" && filterOptions.viewMales === true) ||
+      (animals[i].gender === "samica" && filterOptions.viewFemales === true)
+    );
+  }
+
+  while (i < animals.length && !(checkType() && checkGender())) {
+    console.log("Looking for gender");
+    console.log(i + ": " + checkGender());
+    i++;
+  }
+  console.log("Found gender");
+  console.log(i + ": true");
+
+  if (i >= animals.length) {
+    return false;
+  }
+
+  return animals[i];
+}
