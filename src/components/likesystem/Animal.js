@@ -2,7 +2,7 @@ import React from "react";
 import Actions from "./Actions";
 
 const Animal = ({ animal, modifySuperficialChoices }) => {
-  const { name, desc, age, image } = animal;
+  const { name, desc, age, image, gender } = animal;
 
   return (
     <div className="animal">
@@ -12,7 +12,7 @@ const Animal = ({ animal, modifySuperficialChoices }) => {
 
       <div className="animal-description">
         <p className="animal-name-age">
-          {name}, <span>{age}</span>
+          {name}, <span>{age}</span>, <span>{gender}</span>
         </p>
         <p className="animal-info">{desc}</p>
       </div>

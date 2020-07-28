@@ -6,6 +6,8 @@
       "age": 0,
       "image": "0.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samiec",
       "shelterId": 1
     },
     {
@@ -15,6 +17,8 @@
       "age": 1,
       "image": "1.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 1
     },
     {
@@ -24,6 +28,8 @@
       "age": 2,
       "image": "2.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samiec",
       "shelterId": 1
     },
     {
@@ -33,6 +39,8 @@
       "age": 3,
       "image": "3.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 1
     },
     {
@@ -42,6 +50,8 @@
       "age": 4,
       "image": "4.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 1
     },
     {
@@ -51,6 +61,8 @@
       "age": 5,
       "image": "5.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samiec",
       "shelterId": 1
     },
     {
@@ -60,6 +72,8 @@
       "age": 6,
       "image": "6.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samiec",
       "shelterId": 1
     },
     {
@@ -69,6 +83,8 @@
       "age": 7,
       "image": "7.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 4
     },
     {
@@ -78,6 +94,8 @@
       "age": 8,
       "image": "8.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 4
     },
     {
@@ -87,6 +105,8 @@
       "age": 9,
       "image": "9.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 4
     },
     {
@@ -96,6 +116,8 @@
       "age": 10,
       "image": "10.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samiec",
       "shelterId": 4
     },
     {
@@ -105,6 +127,8 @@
       "age": 11,
       "image": "11.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samiec",
       "shelterId": 2
     },
     {
@@ -114,6 +138,8 @@
       "age": 12,
       "image": "12.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 2
     },
     {
@@ -123,6 +149,8 @@
       "age": 13,
       "image": "13.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 2
     },
     {
@@ -132,6 +160,8 @@
       "age": 14,
       "image": "14.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samiec",
       "shelterId": 2
     },
     {
@@ -141,6 +171,8 @@
       "age": 15,
       "image": "15.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 3
     },
     {
@@ -150,6 +182,8 @@
       "age": 16,
       "image": "16.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 3
     },
     {
@@ -159,6 +193,8 @@
       "age": 17,
       "image": "17.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samiec",
       "shelterId": 3
     },
     {
@@ -168,6 +204,8 @@
       "age": 18,
       "image": "18.jpeg",
       "likedBy": [],
+      "type": "cat",
+      "gender": "samica",
       "shelterId": 3
     }
   ]
