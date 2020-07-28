@@ -13,12 +13,22 @@ import databaseUsers from "./components/likesystem/databaseUsers.json";
 import ShowLikedAnimals from "./components/likesystem/ShowLikedAnimals.jsx";
 import BurgerMenu from "./components/burgermenu/BurgerMenu";
 import Main from "./components/mainpage/Main";
+import Options from "./components/options/FilterOptions";
 
 function App() {
   const [shelters, setShelters] = useState([]);
   const [users, setUsers] = useState(databaseUsers);
   const [animals, setAnimals] = useState(databaseAnimals);
   const [user, setUser] = useState(users[0]);
+  const [filterOptions, setFilterOptions] = useState({
+    viewCats: true,
+    viewDogs: true,
+    viewMales: true,
+    viewFemales: true,
+    mapRange: 100000,
+    lat: 54.51889,
+    lng: 18.53054,
+  });
 
   useEffect(() => {
     setShelters(mockData);
@@ -28,6 +38,8 @@ function App() {
   }, []);
 
   useEffect(() => {}, [shelters]);
+
+  useEffect(() => {}, [setFilterOptions]);
 
   return (
     <React.StrictMode>
@@ -44,6 +56,7 @@ function App() {
             animals={animals}
             setAnimals={setAnimals}
             shelters={shelters}
+            filterOptions={filterOptions}
           />
           <ShowLikedAnimals
             path="/found"
@@ -51,13 +64,18 @@ function App() {
             animals={animals}
             shelters={shelters}
           />
-          <Map path="/map" shelters={shelters} />
+          <Map path="/map" shelters={shelters} filterOptions={filterOptions} />
           <AddShelter
             path="/add"
             shelters={shelters}
             setShelters={setShelters}
           />
           <Shelters shelters={shelters} path="/list" />
+          <Options
+            filterOptions={filterOptions}
+            setFilterOptions={setFilterOptions}
+            path="/options"
+          />
         </Router>
       </div>
     </React.StrictMode>
