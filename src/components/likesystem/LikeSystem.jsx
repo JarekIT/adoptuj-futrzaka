@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import ShowLikedAnimals from "./ShowLikedAnimals.jsx";
 import Animal from "./Animal";
-import { haveIGotAnimalToWatch, getFilteredAnimal } from "./filters/filter";
+import { getFilteredAnimal } from "./filters/filter";
+import FilterOptions from "../options/FilterOptions.jsx";
 
 function LikeSystem({
   animals,
@@ -10,10 +11,13 @@ function LikeSystem({
   setUser,
   shelters,
   filterOptions,
+  setFilterOptions,
 }) {
   useEffect(() => {
     shuffleArray(animals);
   }, []);
+
+  useEffect(() => {}, [filterOptions, setFilterOptions]);
 
   const removedAnimalFromDataSrc = (animalSource, animalId) =>
     animalSource.filter((animal) => animal.id !== animalId);
@@ -75,6 +79,10 @@ function LikeSystem({
 
   return (
     <div>
+      <FilterOptions
+        filterOptions={filterOptions}
+        setFilterOptions={setFilterOptions}
+      />
       {nextAnimal ? (
         <Animal
           key={nextAnimal.id}

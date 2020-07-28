@@ -1,37 +1,40 @@
 import React from "react";
 
 const FilterOptions = ({ filterOptions, setFilterOptions }) => {
-  const switchViewCats = () => {
+  const switchOption = (opt) => {
     const newFilterOptions = filterOptions;
-    newFilterOptions.viewCats = !filterOptions.viewCats;
-    setFilterOptions(newFilterOptions);
-  };
 
-  const switchViewMales = () => {
-    const newFilterOptions = filterOptions;
-    newFilterOptions.viewMales = !filterOptions.viewMales;
-    setFilterOptions(newFilterOptions);
-  };
+    switch (opt) {
+      case "CATS":
+        newFilterOptions.viewCats = !filterOptions.viewCats;
+        break;
+      case "MALES":
+        newFilterOptions.viewMales = !filterOptions.viewMales;
+        break;
+      case "FEMALES":
+        newFilterOptions.viewFemales = !filterOptions.viewFemales;
+        break;
+      default:
+        break;
+    }
 
-  const switchViewFemales = () => {
-    const newFilterOptions = filterOptions;
-    newFilterOptions.viewFemales = !filterOptions.viewFemales;
     setFilterOptions(newFilterOptions);
+
+    console.log("Nowe options");
+    console.log(filterOptions);
   };
 
   return (
     <div>
-      <button
-        onClick={() => switchViewCats()}
-      >{`Koty = ${filterOptions.viewCats}`}</button>
       <br />
-      <button
-        onClick={() => switchViewMales()}
-      >{`Samce = ${filterOptions.viewMales}`}</button>
+      <button onClick={() => switchOption("CATS")}>Pokaz Koty</button>
+      <span> =&gt; {filterOptions.viewCats ? "tak" : "nie"}</span>
       <br />
-      <button
-        onClick={() => switchViewFemales()}
-      >{`Samice = ${filterOptions.viewFemales}`}</button>
+      <button onClick={() => switchOption("MALES")}>Pokaz Samce</button>
+      <span> =&gt; {filterOptions.viewMales ? "tak" : "nie"}</span>
+      <br />
+      <button onClick={() => switchOption("FEMALES")}>Pokaz Samice</button>
+      <span> =&gt; {filterOptions.viewFemales ? "tak" : "nie"}</span>
     </div>
   );
 };
