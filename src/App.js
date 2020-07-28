@@ -13,7 +13,7 @@ import databaseUsers from "./components/likesystem/databaseUsers.json";
 import ShowLikedAnimals from "./components/likesystem/ShowLikedAnimals.jsx";
 import BurgerMenu from "./components/burgermenu/BurgerMenu";
 import Main from "./components/mainpage/Main";
-import Options from "./components/options/FilterOptions";
+import FilterOptions from "./components/options/FilterOptions";
 
 function App() {
   const [shelters, setShelters] = useState([]);
@@ -39,8 +39,6 @@ function App() {
 
   useEffect(() => {}, [shelters]);
 
-  useEffect(() => {}, [setFilterOptions]);
-
   return (
     <React.StrictMode>
       <BurgerMenu />
@@ -57,6 +55,7 @@ function App() {
             setAnimals={setAnimals}
             shelters={shelters}
             filterOptions={filterOptions}
+            setFilterOptions={setFilterOptions}
           />
           <ShowLikedAnimals
             path="/found"
@@ -71,7 +70,7 @@ function App() {
             setShelters={setShelters}
           />
           <Shelters shelters={shelters} path="/list" />
-          <Options
+          <FilterOptions
             filterOptions={filterOptions}
             setFilterOptions={setFilterOptions}
             path="/options"
