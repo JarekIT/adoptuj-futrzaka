@@ -2,26 +2,6 @@ import React from "react";
 import firebase from "./firebase";
 
 const LoadDogs = ({ animals, setAnimals, user, setUser }) => {
-  function indexOfRecentEntry(arr) {
-    if (arr.length === 0) {
-      return -1;
-    }
-
-    var max = arr[0].date.seconds;
-    var maxIndex = 0;
-
-    for (var i = 1; i < arr.length; i++) {
-      if (arr[i].date.seconds > max) {
-        maxIndex = i;
-        max = arr[i].date.seconds;
-      }
-    }
-    console.log(
-      `Znaleziono najnowszy wpis numer ${maxIndex} z ${arr.length} wpisów`
-    );
-    return maxIndex;
-  }
-
   const handleSaveAnimalsOnClick = (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -71,15 +51,15 @@ const LoadDogs = ({ animals, setAnimals, user, setUser }) => {
     firebase
       .firestore()
       .collection("User")
+      .orderBy("date")
+      .limitToLast(1)
       .get()
       .then((usersFromDb) => {
-        const loadedUsers = usersFromDb.docs.map((userFromDb) =>
+        const loadedLastUser = usersFromDb.docs.map((userFromDb) =>
           userFromDb.data()
-        );
-        console.log(loadedUsers);
-        const loadedUser = loadedUsers[indexOfRecentEntry(loadedUsers)].user;
-        console.log(loadedUser);
-        setUser(loadedUser);
+        )[0].user;
+        console.log(loadedLastUser);
+        setUser(loadedLastUser);
       });
   };
 
