@@ -3,8 +3,9 @@ import Actions from "./Actions";
 import { getDistanceBetweenPoints } from "./calculateDistance";
 
 const Animal = ({ animal, modifySuperficialChoices, user, shelters }) => {
-  const { name, desc, age, image, gender } = animal;
-  const [distance, setDistance] = useState(0);
+  const { name, age, image, gender } = animal;
+  const [distance, setDistance] = useState("(Wpisz swoją lokalizację)");
+  const [shelter, setShelter] = useState({});
 
   useEffect(() => {
     setShelterByAnimalId();
@@ -14,6 +15,7 @@ const Animal = ({ animal, modifySuperficialChoices, user, shelters }) => {
     shelters.forEach((oneShelter) => {
       if (oneShelter.id === animal.shelterId) {
         const newDistance = getDistanceBetweenPoints(user, oneShelter);
+        setShelter(oneShelter);
         setDistance(newDistance);
       }
     });
@@ -27,10 +29,11 @@ const Animal = ({ animal, modifySuperficialChoices, user, shelters }) => {
 
       <div className="animal-description">
         <p className="animal-name-age">
-          {name}, <span>{age}</span>, <span>{gender}</span>,{" "}
-          <span>{distance}</span> km od Ciebie
+          {name}, <span>{age}</span>, <span>{gender}</span>
         </p>
-        <p className="animal-info">{desc}</p>
+        <p className="animal-info">
+          {distance}, {shelter.city}{" "}
+        </p>
       </div>
 
       <Actions

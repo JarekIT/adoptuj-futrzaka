@@ -1,4 +1,8 @@
 export function getDistanceBetweenPoints(user, shelter) {
+  if (user.location.lat == null) {
+    return "(Wpisz swoją lokalizację)";
+  }
+
   function degreesToRadians(degrees) {
     return (degrees * Math.PI) / 180;
   }
@@ -20,8 +24,7 @@ export function getDistanceBetweenPoints(user, shelter) {
       Math.sin(dLong / 2);
 
   let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  const newDistance = ((R * c) / 1000).toFixed(0);
+  const newDistance = ((R * c) / 1000).toFixed(0) + " km";
 
-  console.log(newDistance);
   return newDistance;
 }
