@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import LikedAnimalShelterMap from "./LikedAnimalShelterMap";
+import { getDistanceBetweenPoints } from "./calculateDistance";
 
 const ShowAnimalDetails = ({ animalId, user, shelters, animals }) => {
   const [animal, setAnimal] = useState({});
   const [shelter, setShelter] = useState({});
+  const [distance, setDistance] = useState(null);
 
   useEffect(() => {
     setAnimalByAnimalId();
@@ -12,6 +14,11 @@ const ShowAnimalDetails = ({ animalId, user, shelters, animals }) => {
   useEffect(() => {
     setShelterByAnimalId();
   }, [animal]);
+
+  useEffect(() => {
+    const newDistance = getDistanceBetweenPoints(user, shelter);
+    setDistance(newDistance);
+  }, [shelter]);
 
   const setAnimalByAnimalId = () => {
     animals.forEach((oneAnimal) => {
@@ -50,6 +57,7 @@ const ShowAnimalDetails = ({ animalId, user, shelters, animals }) => {
       <p>{`Imie: ${animal.name}`}</p>
       <p>{`Wiek: ${animal.age}`}</p>
       <p>{`Płeć: ${animal.gender}`}</p>
+      <p>{`Dystans: ${distance} km`}</p>
       <p>{`Opis: ${animal.desc}`}</p>
 
       <LikedAnimalShelterMap shelter={shelter} />

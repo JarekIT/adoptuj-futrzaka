@@ -88,6 +88,8 @@ function LikeSystem({
           key={nextAnimal.id}
           animal={nextAnimal}
           modifySuperficialChoices={modifySuperficialChoices}
+          user={user}
+          shelters={shelters}
         />
       ) : (
         <ShowLikedAnimals user={user} animals={animals} shelters={shelters} />
