@@ -15,6 +15,7 @@ import ShowLikedAnimals from "./components/likesystem/ShowLikedAnimals.jsx";
 import BurgerMenu from "./components/burgermenu/BurgerMenu";
 import Main from "./components/mainpage/Main";
 import FilterOptions from "./components/options/FilterOptions";
+import ShowAnimalDetails from "./components/likesystem/ShowAnimalDetails";
 
 function App() {
   const [shelters, setShelters] = useState([]);
@@ -82,6 +83,12 @@ function App() {
             filterOptions={filterOptions}
             setFilterOptions={setFilterOptions}
             path="/options"
+          />
+          <ShowAnimalDetails
+            path="/details/:animalId"
+            shelters={shelters}
+            animals={animals}
+            user={user}
           />
         </Router>
       </div>

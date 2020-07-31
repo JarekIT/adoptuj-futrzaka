@@ -2,7 +2,7 @@ import React from "react";
 
 const FilterOptions = ({ filterOptions, setFilterOptions }) => {
   const switchOption = (opt) => {
-    const newFilterOptions = {...filterOptions};
+    const newFilterOptions = { ...filterOptions };
 
     switch (opt) {
       case "CATS":
