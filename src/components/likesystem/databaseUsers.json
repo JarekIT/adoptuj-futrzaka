@@ -1,10 +1,14 @@
-[
-    {
-      "id": 0,
-      "name": "Emily",
-      "likedAnimals": [],
-      "lovedAnimals": [],
-      "nextAnimals": [],
-      "viewedAnimals": []
-    }
-  ]
+[{
+  "id": 0,
+  "name": "Emily",
+  "likedAnimals": [],
+  "lovedAnimals": [],
+  "nextAnimals": [],
+  "viewedAnimals": [],
+  "location": {
+    "lat": null,
+    "lng": null,
+    "city": null,
+    "address": null
+  }
+}]

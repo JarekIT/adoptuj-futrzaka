@@ -28,8 +28,6 @@ function App() {
     viewMales: true,
     viewFemales: true,
     mapRange: 100000,
-    lat: 54.51889,
-    lng: 18.53054,
   });
 
   useEffect(() => {
@@ -55,7 +53,7 @@ function App() {
         />
 
         <Router>
-          <Main path="/" />
+          <Main path="/" user={user} setUser={setUser} />
           <LikeSystem
             path="/find"
             user={user}
@@ -72,7 +70,7 @@ function App() {
             animals={animals}
             shelters={shelters}
           />
-          <Map path="/map" shelters={shelters} filterOptions={filterOptions} />
+          <Map path="/map" shelters={shelters} user={user} />
           <AddShelter
             path="/add"
             shelters={shelters}

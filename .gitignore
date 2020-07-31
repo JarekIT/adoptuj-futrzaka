@@ -32,3 +32,6 @@ yarn-error.log*
 
 #vscode
 .vscode/
+
+#hideGoogleAPIKey
+public/index.html

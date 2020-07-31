@@ -22,7 +22,7 @@ import Shelters from "../shelters/Shelters";
 
 require("dotenv").config();
 
-function Map({ shelters, filterOptions }) {
+function Map({ shelters, user }) {
   const libraries = ["places"];
   const mapContainerStyle = {
     width: "100vw",
@@ -31,8 +31,8 @@ function Map({ shelters, filterOptions }) {
     margin: "auto",
   };
   const center = {
-    lat: filterOptions.lat,
-    lng: filterOptions.lng,
+    lat: user.location.lat,
+    lng: user.location.lng,
   };
   const options = {
     disableDefaultUI: true,
