@@ -79,18 +79,21 @@ function LikeSystem({
 
   return (
     <div>
-      <FilterOptions
-        filterOptions={filterOptions}
-        setFilterOptions={setFilterOptions}
-      />
       {nextAnimal ? (
-        <Animal
-          key={nextAnimal.id}
-          animal={nextAnimal}
-          modifySuperficialChoices={modifySuperficialChoices}
-          user={user}
-          shelters={shelters}
-        />
+        <>
+          <Animal
+            key={nextAnimal.id}
+            animal={nextAnimal}
+            modifySuperficialChoices={modifySuperficialChoices}
+            user={user}
+            shelters={shelters}
+          />
+          <hr />
+          <FilterOptions
+            filterOptions={filterOptions}
+            setFilterOptions={setFilterOptions}
+          />
+        </>
       ) : (
         <ShowLikedAnimals user={user} animals={animals} shelters={shelters} />
       )}

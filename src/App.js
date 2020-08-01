@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import Header from "./Header";
-import FirebaseOperations from "./components/database/FirebaseOperations";
+// import FirebaseOperations from "./components/database/FirebaseOperations";
 
 import "./App.css";
 import Map from "./components/map/Map";
@@ -47,12 +47,12 @@ function App() {
       <div className="app">
         <Header />
 
-        <FirebaseOperations
+        {/* <FirebaseOperations
           animals={animals}
           setAnimals={setAnimals}
           user={user}
           setUser={setUser}
-        />
+        /> */}
 
         <Router>
           <Main path="/" user={user} setUser={setUser} />

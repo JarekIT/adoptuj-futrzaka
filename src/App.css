@@ -87,12 +87,24 @@ header .fl:last-child {
 	font-size: 20px;
 }
 
-.animal img {
-	width: auto;
-	height: 700px;
-	display: block;
-	object-fit: cover;
-	margin: auto;
+@media screen and (max-width: 540px) {
+	.animal img {
+		width: 100vw;
+		max-height: 350px;
+		display: block;
+		object-fit: cover;
+		margin: auto;
+	}
+}
+
+@media screen and (min-width: 540px) {
+    .animal img {
+		width: auto;
+		height: 700px;
+		display: block;
+		object-fit: cover;
+		margin: auto;
+    }
 }
 
 #actions {
@@ -151,11 +163,22 @@ header .fl:last-child {
 	overflow: hidden;
 }
 
-#liked-animals .liked-animal {
-	display: inline-block;
-	width: 16%;
-	margin-top: 10px;
+@media screen and (max-width: 540px) {
+	#liked-animals .liked-animal {
+		display: inline-block;
+		width: 40%;
+		margin-top: 10px;
+	}
 }
+
+@media screen and (min-width: 540px) {
+	#liked-animals .liked-animal {
+		display: inline-block;
+		width: 16%;
+		margin-top: 10px;
+	}
+}
+
 
 #liked-animals .liked-animal-image {
 	border-radius: 5px;
@@ -168,6 +191,12 @@ header .fl:last-child {
 	object-position: 50% 50%;
 }
 
+/* Animal Details */
+.liked-animal img {
+	width: 100vw;
+	max-width: 700px;
+	height: auto;
+}
 /* CSS */
 .pulse {
   margin: auto;
