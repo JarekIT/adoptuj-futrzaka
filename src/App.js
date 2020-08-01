@@ -16,6 +16,8 @@ import BurgerMenu from "./components/burgermenu/BurgerMenu";
 import Main from "./components/mainpage/Main";
 import FilterOptions from "./components/options/FilterOptions";
 import ShowAnimalDetails from "./components/likesystem/ShowAnimalDetails";
+import GeneratedRandomAnimal from "./components/addanimal/GeneratedRandomAnimal";
+import AddAnimal from "./components/addanimal/AddAnimal";
 
 function App() {
   const [shelters, setShelters] = useState([]);
@@ -88,6 +90,8 @@ function App() {
             animals={animals}
             user={user}
           />
+          <GeneratedRandomAnimal path="/generateanimal" />
+          <AddAnimal path="/addanimal" />
         </Router>
       </div>
     </React.StrictMode>

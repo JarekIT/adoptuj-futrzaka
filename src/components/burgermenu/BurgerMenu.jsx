@@ -24,6 +24,12 @@ const BurgerMenu = () => {
       <Link to="/add">
         <h4>Dodaj schronisko</h4>
       </Link>
+      <Link to="/addanimal">
+        <h4>Dodaj zwierzaka</h4>
+      </Link>
+      <Link to="/generateanimal">
+        <h4>Wygeneruj losowego zwierzaka</h4>
+      </Link>
     </Menu>
   );
 };

@@ -268,3 +268,11 @@ header .fl:first-child {
 header .fl:last-child {
 	text-align: right;
 }
+
+/* AddAnimal */
+.input-animal {
+	width: auto;
+	height: auto;
+	max-width: 250px;
+	max-height: 250px;
+}
