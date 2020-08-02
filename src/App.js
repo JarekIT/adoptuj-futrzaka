@@ -18,6 +18,7 @@ import FilterOptions from "./components/options/FilterOptions";
 import ShowAnimalDetails from "./components/likesystem/ShowAnimalDetails";
 import GeneratedRandomAnimal from "./components/addanimal/GeneratedRandomAnimal";
 import AddAnimal from "./components/addanimal/AddAnimal";
+import Facebook from "./components/login/Login";
 
 function App() {
   const [shelters, setShelters] = useState([]);
@@ -45,7 +46,7 @@ function App() {
     <React.StrictMode>
       <BurgerMenu />
       <div className="app">
-        <Header />
+        <Header user={user} />
 
         {/* <FirebaseOperations
           animals={animals}
@@ -92,6 +93,7 @@ function App() {
           />
           <GeneratedRandomAnimal path="/generateanimal" />
           <AddAnimal path="/addanimal" />
+          <Facebook path="/login" user={user} setUser={setUser} />
         </Router>
       </div>
     </React.StrictMode>

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 import "./App.css";
 
-const Header = () => {
+const Header = ({ user }) => {
   return (
     <header>
       <div className="fl">
@@ -38,9 +38,13 @@ const Header = () => {
       </div>
 
       <div className="fl">
-        <Link to="/options">
+        <Link to="/login">
           <button type="button">
-            <img src="/images/misc/options.png" alt="Options" />
+            {user.picture ? (
+              <img src={user.picture} alt={user.name} />
+            ) : (
+              <img src="/images/misc/user.png" alt="Login" />
+            )}
           </button>
         </Link>
       </div>

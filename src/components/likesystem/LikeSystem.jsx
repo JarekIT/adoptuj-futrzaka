@@ -3,6 +3,7 @@ import ShowLikedAnimals from "./ShowLikedAnimals.jsx";
 import Animal from "./Animal";
 import { getFilteredAnimal } from "./filters/filter";
 import FilterOptions from "../options/FilterOptions.jsx";
+import { updateUser } from "../database/FirebaseOperationsUser";
 
 function LikeSystem({
   animals,
@@ -23,7 +24,7 @@ function LikeSystem({
     animalSource.filter((animal) => animal.id !== animalId);
 
   const modifySuperficialChoices = (animal, action) => {
-    const newUser = user;
+    const newUser = { ...user };
     const animalId = animal.id;
 
     switch (action) {
@@ -66,6 +67,9 @@ function LikeSystem({
     console.log(animals);
     console.log("User  details:");
     console.log(user);
+
+    setUser(newUser);
+    if (user.id !== null) updateUser(newUser);
   };
 
   const shuffleArray = (array) => {

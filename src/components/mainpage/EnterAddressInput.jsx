@@ -4,6 +4,7 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 import "@reach/combobox/styles.css";
+import { updateUser } from "../database/FirebaseOperationsUser";
 
 export default function EnterAddressInput({ user, setUser }) {
   const [address, setAddress] = React.useState("");
@@ -19,6 +20,8 @@ export default function EnterAddressInput({ user, setUser }) {
     newUserDetails.location.city = results[0].formatted_address;
     newUserDetails.location.address = results[0].address_components;
     setUser(newUserDetails);
+
+    if (user.id !== null) updateUser(newUserDetails);
   };
 
   return (

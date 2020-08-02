@@ -1,10 +1,20 @@
 import React from "react";
 import EnterAddressInput from "./EnterAddressInput";
 import { Link } from "@reach/router";
+import Login from "../login/Login";
 
 const Main = ({ user, setUser }) => {
   return (
     <div className="app">
+      {user.name === null ? (
+        <>
+          <h3>Zaloguj się</h3>
+          <Login user={user} setUser={setUser} />
+        </>
+      ) : (
+        <h2>Witaj {user.name}</h2>
+      )}
+
       {user.location.city === null ? (
         <h3>Wpisz swój adres</h3>
       ) : (

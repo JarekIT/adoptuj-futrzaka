@@ -30,6 +30,9 @@ const BurgerMenu = () => {
       <Link to="/generateanimal">
         <h4>Wygeneruj losowego zwierzaka</h4>
       </Link>
+      <Link to="/login">
+        <h4>Zaloguj sie</h4>
+      </Link>
     </Menu>
   );
 };
