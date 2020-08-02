@@ -2,7 +2,7 @@ import firebase from "./firebase";
 
 const database = firebase.database();
 
-const anonymousLogin = ({ setUser }) => {
+const anonymousLogin = (setUser) => {
   const newUser = {
     id: null,
     name: "anonimie",
@@ -33,15 +33,23 @@ const prepareExistingUser = ({ loggedUser, setUser }) => {
   if (loggedUser.lovedAnimals === undefined) loggedUser.lovedAnimals = [];
   if (loggedUser.nextAnimals === undefined) loggedUser.nextAnimals = [];
   if (loggedUser.viewedAnimals === undefined) loggedUser.viewedAnimals = [];
+  if (loggedUser.location === undefined) {
+    loggedUser.location = {
+      lat: null,
+      lng: null,
+      city: null,
+      address: null,
+    };
+  }
   setUser(loggedUser);
 };
 
-const createNewUser = async ({ response, setUser }) => {
+const createNewUser = async ({ fireUser, setUser }) => {
   const newUser = {
-    id: response.userID,
-    name: response.name,
-    email: response.email,
-    picture: response.picture.data.url,
+    id: fireUser.uid,
+    name: fireUser.displayName,
+    email: fireUser.email,
+    picture: fireUser.photoURL,
     likedAnimals: [],
     lovedAnimals: [],
     nextAnimals: [],
@@ -60,14 +68,14 @@ const createNewUser = async ({ response, setUser }) => {
   });
 };
 
-const loadUser = async ({ response, setUser }) => {
+const loadUser = async (fireUser, setUser) => {
   await database
-    .ref(`users/${response.userID}`)
+    .ref(`users/${fireUser.uid}`)
     .once("value")
     .then(function (snapshot) {
       var loggedUser = snapshot.val() ? snapshot.val().user : "New User";
       loggedUser === "New User"
-        ? createNewUser({ response, setUser })
+        ? createNewUser({ fireUser, setUser })
         : prepareExistingUser({ loggedUser, setUser });
     });
 };
