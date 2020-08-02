@@ -22,11 +22,10 @@ const Login = ({ user, setUser }) => {
   };
 
   useState(() => {
-    firebase.auth().onAuthStateChanged(async (user) => {
-      setLoggedIn(!!user);
-      console.log("zmienil sie stan", user);
-      if (!user === null) {
-        await loadUser(firebase.auth().currentUser, setUser);
+    firebase.auth().onAuthStateChanged((userrr) => {
+      setLoggedIn(!!userrr);
+      if (firebase.auth().currentUser) {
+        loadUser(firebase.auth().currentUser, setUser);
       }
     });
   }, []);
@@ -46,19 +45,21 @@ const Login = ({ user, setUser }) => {
     <div>
       {isLoggedIn ? (
         <span>
-          <h4>Witajjj {firebase.auth().currentUser.displayName}</h4>
+          <h4>Witaj {firebase.auth().currentUser.displayName}</h4>
         </span>
       ) : (
-        <StyledFirebaseAuth
-          uiConfig={uiConfig}
-          firebaseAuth={firebase.auth()}
-        />
+        <>
+          <StyledFirebaseAuth
+            uiConfig={uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+          <button onClick={anonymous}>Wejdź anonimowo</button>
+        </>
       )}
-
-      <button onClick={anonymous}>Wejdź anonimowo</button>
       <br />
-      <br />
-      <button onClick={logoutFromFirebase}>Wyloguj się</button>
+      {isLoggedIn ? (
+        <button onClick={logoutFromFirebase}>Wyloguj się</button>
+      ) : null}
 
       <hr />
     </div>
