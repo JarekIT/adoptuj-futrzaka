@@ -21,10 +21,9 @@ import AddAnimal from "./components/addanimal/AddAnimal";
 import Facebook from "./components/login/Login";
 
 function App() {
-  const [shelters, setShelters] = useState([]);
-  const [users, setUsers] = useState(databaseUsers);
+  const [shelters, setShelters] = useState(mockData);
   const [animals, setAnimals] = useState(databaseAnimals);
-  const [user, setUser] = useState(users[0]);
+  const [user, setUser] = useState(databaseUsers[0]);
   const [filterOptions, setFilterOptions] = useState({
     viewCats: true,
     viewDogs: true,
@@ -32,13 +31,6 @@ function App() {
     viewFemales: true,
     mapRange: 100000,
   });
-
-  useEffect(() => {
-    setShelters(mockData);
-    setAnimals(databaseAnimals);
-    setUsers(databaseUsers);
-    setUser(users[0]);
-  }, []);
 
   useEffect(() => {}, [shelters]);
 
