@@ -24,7 +24,7 @@ const Animal = ({ animal, modifySuperficialChoices, user, shelters }) => {
   return (
     <div className="animal">
       <div className="animal-photo">
-        <img src={`/images/animals/${image}`} alt={name} />
+        <img src={image} alt={name} />
       </div>
 
       <div className="animal-description">

@@ -23,33 +23,38 @@ export function getFilteredAnimal(animals, user, filterOptions) {
     return false;
   }
 
-  let i = 0;
-
-  function checkType() {
-    return (
-      (animals[i].type === "cat" && filterOptions.viewCats === true) ||
-      (animals[i].type === "dog" && filterOptions.viewDogs === true)
-    );
-  }
-
-  function checkGender() {
-    return (
-      (animals[i].gender === "samiec" && filterOptions.viewMales === true) ||
-      (animals[i].gender === "samica" && filterOptions.viewFemales === true)
-    );
-  }
-
-  while (i < animals.length && !(checkType() && checkGender())) {
-    console.log("Looking for gender");
-    console.log(i + ": " + checkGender());
-    i++;
-  }
-  console.log("Found gender");
-  console.log(i + ": true");
-
-  if (i >= animals.length) {
+  if (animals.length === 0) {
     return false;
   }
 
-  return animals[i];
+  return animals[0];
 }
+
+export const filterAllAnimals = ({ allAnimals, filterOptions, setAnimals }) => {
+  console.log("Filtruje nowe ustawienia ;)");
+  let newAnimals = [];
+
+  console.log(allAnimals);
+  allAnimals.map((animal) => {
+    function filterType() {
+      return (filterOptions.viewCats && animal.type === "cat") ||
+        (filterOptions.viewDogs && animal.type === "dog")
+        ? true
+        : false;
+    }
+
+    function filterGender() {
+      return (filterOptions.viewFemales && animal.gender === "samica") ||
+        (filterOptions.viewMales && animal.gender === "samiec")
+        ? true
+        : false;
+    }
+
+    if (filterType() && filterGender()) {
+      newAnimals.push(animal);
+    }
+  });
+
+  setAnimals(newAnimals);
+  console.log(newAnimals);
+};

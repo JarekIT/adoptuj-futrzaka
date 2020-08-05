@@ -18,10 +18,15 @@ import FilterOptions from "./components/options/FilterOptions";
 import ShowAnimalDetails from "./components/likesystem/ShowAnimalDetails";
 import GeneratedRandomAnimal from "./components/addanimal/GeneratedRandomAnimal";
 import AddAnimal from "./components/addanimal/AddAnimal";
-import Facebook from "./components/login/Login";
+import Login from "./components/login/Login";
+import LoadAnimals, {
+  loadAllAnimals,
+} from "./components/database/FirebaseOperationsAnimals";
+import { filterAllAnimals } from "./components/likesystem/filters/filter";
 
 function App() {
   const [shelters, setShelters] = useState(mockData);
+  const [allAnimals, setAllAnimals] = useState(databaseAnimals);
   const [animals, setAnimals] = useState(databaseAnimals);
   const [user, setUser] = useState(databaseUsers[0]);
   const [filterOptions, setFilterOptions] = useState({
@@ -32,7 +37,14 @@ function App() {
     mapRange: 100000,
   });
 
-  useEffect(() => {}, [shelters]);
+  useEffect(() => {
+    loadAllAnimals({ setAllAnimals, setAnimals });
+  }, []);
+
+  useEffect(() => {
+    console.log("nowe filtry !!!!");
+    filterAllAnimals({ allAnimals, filterOptions, setAnimals });
+  }, [filterOptions]);
 
   return (
     <React.StrictMode>
@@ -85,7 +97,7 @@ function App() {
           />
           <GeneratedRandomAnimal path="/generateanimal" />
           <AddAnimal path="/addanimal" />
-          <Facebook path="/login" user={user} setUser={setUser} />
+          <Login path="/login" user={user} setUser={setUser} />
         </Router>
       </div>
     </React.StrictMode>

@@ -16,7 +16,7 @@ function LikeSystem({
 }) {
   useEffect(() => {
     shuffleArray(animals);
-  }, []);
+  }, [animals]);
 
   useEffect(() => {}, [filterOptions, setFilterOptions]);
 

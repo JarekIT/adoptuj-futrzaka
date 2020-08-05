@@ -50,10 +50,7 @@ const ShowAnimalDetails = ({ animalId, user, shelters, animals }) => {
 
   return (
     <div className="liked-animal">
-      <img
-        src={`/images/animals/${animal.image}`}
-        alt={`You liked ${animal.name}`}
-      />
+      <img src={animal.image} alt={`You liked ${animal.name}`} />
       <p>{`Imie: ${animal.name}`}</p>
       <p>{`Wiek: ${animal.age}`}</p>
       <p>{`Płeć: ${animal.gender}`}</p>
