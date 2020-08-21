@@ -9,7 +9,6 @@ const anonymousLogin = (setUser) => {
     email: null,
     picture: null,
     likedAnimals: [],
-    lovedAnimals: [],
     nextAnimals: [],
     viewedAnimals: [],
     location: {
@@ -30,7 +29,6 @@ const updateUser = async (newUser) => {
 
 const prepareExistingUser = ({ loggedUser, setUser }) => {
   if (loggedUser.likedAnimals === undefined) loggedUser.likedAnimals = [];
-  if (loggedUser.lovedAnimals === undefined) loggedUser.lovedAnimals = [];
   if (loggedUser.nextAnimals === undefined) loggedUser.nextAnimals = [];
   if (loggedUser.viewedAnimals === undefined) loggedUser.viewedAnimals = [];
   if (loggedUser.location === undefined) {
@@ -51,7 +49,6 @@ const createNewUser = async ({ fireUser, setUser }) => {
     email: fireUser.email,
     picture: fireUser.photoURL,
     likedAnimals: [],
-    lovedAnimals: [],
     nextAnimals: [],
     viewedAnimals: [],
     location: {

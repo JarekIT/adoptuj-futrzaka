@@ -32,13 +32,6 @@ function LikeSystem({ animals, setAnimals, user, setUser, shelters }) {
           setAnimals(removedAnimalFromDataSrc(animals, animalId));
         }
         break;
-      case "ADD_TO_LOVED_USER":
-        if (!user.lovedAnimals.includes(animal)) {
-          newUser.lovedAnimals.push(animal);
-          newUser.viewedAnimals.push(animalId);
-          setAnimals(removedAnimalFromDataSrc(animals, animalId));
-        }
-        break;
       case "REWIND":
         if (user.nextAnimals.length > 0) {
           const newAnimals = [...animals];

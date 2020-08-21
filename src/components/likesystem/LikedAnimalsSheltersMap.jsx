@@ -34,13 +34,6 @@ const LikedAnimalsShelterMap = ({ user, shelters }) => {
       return null;
     });
 
-    user.lovedAnimals.map((animal) => {
-      if (!nonRepeatSheltersId.includes(animal.shelterId)) {
-        nonRepeatSheltersId.push(animal.shelterId);
-      }
-      return null;
-    });
-
     console.log(shelters);
     shelters.map((shelter) => {
       if (nonRepeatSheltersId.includes(shelter.id)) {

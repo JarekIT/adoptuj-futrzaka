@@ -15,16 +15,6 @@ const ShowLikedAnimals = ({ animals, user, shelters }) => {
 
           <div id="liked-animals">
             <p>
-              {user.lovedAnimals.length > 0
-                ? "Zwierzaki, które pokochałeś:"
-                : ""}
-            </p>
-
-            {user.lovedAnimals.map((animal) => (
-              <LikedAnimal key={animal.id} animal={animal} />
-            ))}
-
-            <p>
               {user.likedAnimals.length > 0
                 ? "Zwierzaki, które polubiles:"
                 : ""}
@@ -36,7 +26,7 @@ const ShowLikedAnimals = ({ animals, user, shelters }) => {
           </div>
         </div>
       </div>
-      {user.likedAnimals.length > 0 || user.lovedAnimals.length > 0 ? (
+      {user.likedAnimals.length > 0 ? (
         <LikedAnimalsShelterMap user={user} shelters={shelters} />
       ) : null}
     </div>

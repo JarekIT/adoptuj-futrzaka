@@ -32,12 +32,6 @@ const ShowAnimalDetails = ({ animalId, user, shelters, animals }) => {
         setAnimal(oneAnimal);
       }
     });
-
-    user.lovedAnimals.forEach((oneAnimal) => {
-      if (oneAnimal.id === Number(animalId)) {
-        setAnimal(oneAnimal);
-      }
-    });
   };
 
   const setShelterByAnimalId = () => {
