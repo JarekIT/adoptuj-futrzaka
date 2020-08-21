@@ -1,40 +1,40 @@
 import React from "react";
 
-const FilterOptions = ({ filterOptions, setFilterOptions }) => {
+const FilterOptions = ({ user, setUser }) => {
   const switchOption = (opt) => {
-    const newFilterOptions = { ...filterOptions };
+    const newFilterOptionsInUser = { ...user };
 
     switch (opt) {
       case "CATS":
-        newFilterOptions.viewCats = !filterOptions.viewCats;
+        newFilterOptionsInUser.viewCats = !user.filters.viewCats;
         break;
       case "MALES":
-        newFilterOptions.viewMales = !filterOptions.viewMales;
+        newFilterOptionsInUser.viewMales = !user.filters.viewMales;
         break;
       case "FEMALES":
-        newFilterOptions.viewFemales = !filterOptions.viewFemales;
+        newFilterOptionsInUser.viewFemales = !user.filters.viewFemales;
         break;
       default:
         break;
     }
 
-    setFilterOptions(newFilterOptions);
+    setUser(newFilterOptionsInUser);
 
     console.log("Nowe options");
-    console.log(filterOptions);
+    console.log(user.filters);
   };
 
   return (
     <div>
       <br />
       <button onClick={() => switchOption("CATS")}>Pokaz Koty</button>
-      <span> =&gt; {filterOptions.viewCats ? "tak" : "nie"}</span>
+      <span> =&gt; {user.filters.viewCats ? "tak" : "nie"}</span>
       <br />
       <button onClick={() => switchOption("MALES")}>Pokaz Samce</button>
-      <span> =&gt; {filterOptions.viewMales ? "tak" : "nie"}</span>
+      <span> =&gt; {user.filters.viewMales ? "tak" : "nie"}</span>
       <br />
       <button onClick={() => switchOption("FEMALES")}>Pokaz Samice</button>
-      <span> =&gt; {filterOptions.viewFemales ? "tak" : "nie"}</span>
+      <span> =&gt; {user.filters.viewFemales ? "tak" : "nie"}</span>
       <br />
     </div>
   );

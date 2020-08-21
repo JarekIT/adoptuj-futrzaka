@@ -5,20 +5,10 @@ import { getFilteredAnimal } from "./filters/filter";
 import FilterOptions from "../options/FilterOptions.jsx";
 import { updateUser } from "../database/FirebaseOperationsUser";
 
-function LikeSystem({
-  animals,
-  setAnimals,
-  user,
-  setUser,
-  shelters,
-  filterOptions,
-  setFilterOptions,
-}) {
+function LikeSystem({ animals, setAnimals, user, setUser, shelters }) {
   useEffect(() => {
     shuffleArray(animals);
   }, [animals]);
-
-  useEffect(() => {}, [filterOptions, setFilterOptions]);
 
   const removedAnimalFromDataSrc = (animalSource, animalId) =>
     animalSource.filter((animal) => animal.id !== animalId);
@@ -79,7 +69,7 @@ function LikeSystem({
     }
   };
 
-  const nextAnimal = getFilteredAnimal(animals, user, filterOptions);
+  const nextAnimal = getFilteredAnimal(animals, user, setUser);
 
   return (
     <div>
@@ -93,10 +83,7 @@ function LikeSystem({
             shelters={shelters}
           />
           <hr />
-          <FilterOptions
-            filterOptions={filterOptions}
-            setFilterOptions={setFilterOptions}
-          />
+          <FilterOptions user={user} setUser={setUser} />
         </>
       ) : (
         <ShowLikedAnimals user={user} animals={animals} shelters={shelters} />

@@ -19,9 +19,7 @@ import ShowAnimalDetails from "./components/likesystem/ShowAnimalDetails";
 import GeneratedRandomAnimal from "./components/addanimal/GeneratedRandomAnimal";
 import AddAnimal from "./components/addanimal/AddAnimal";
 import Login from "./components/login/Login";
-import LoadAnimals, {
-  loadAllAnimals,
-} from "./components/database/FirebaseOperationsAnimals";
+import { loadAllAnimals } from "./components/database/FirebaseOperationsAnimals";
 import { filterAllAnimals } from "./components/likesystem/filters/filter";
 
 function App() {
@@ -29,13 +27,6 @@ function App() {
   const [allAnimals, setAllAnimals] = useState(databaseAnimals);
   const [animals, setAnimals] = useState(databaseAnimals);
   const [user, setUser] = useState(databaseUsers[0]);
-  const [filterOptions, setFilterOptions] = useState({
-    viewCats: true,
-    viewDogs: true,
-    viewMales: true,
-    viewFemales: true,
-    mapRange: 100000,
-  });
 
   useEffect(() => {
     loadAllAnimals({ setAllAnimals, setAnimals });
@@ -43,8 +34,8 @@ function App() {
 
   useEffect(() => {
     console.log("nowe filtry !!!!");
-    filterAllAnimals({ allAnimals, filterOptions, setAnimals });
-  }, [filterOptions]);
+    filterAllAnimals({ allAnimals, user, setAnimals });
+  }, [user]);
 
   return (
     <React.StrictMode>
@@ -68,8 +59,6 @@ function App() {
             animals={animals}
             setAnimals={setAnimals}
             shelters={shelters}
-            filterOptions={filterOptions}
-            setFilterOptions={setFilterOptions}
           />
           <ShowLikedAnimals
             path="/found"
@@ -84,11 +73,7 @@ function App() {
             setShelters={setShelters}
           />
           <Shelters shelters={shelters} path="/list" />
-          <FilterOptions
-            filterOptions={filterOptions}
-            setFilterOptions={setFilterOptions}
-            path="/options"
-          />
+          <FilterOptions user={user} setUser={setUser} path="/options" />
           <ShowAnimalDetails
             path="/details/:animalId"
             shelters={shelters}
