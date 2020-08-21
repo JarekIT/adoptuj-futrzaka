@@ -35,7 +35,7 @@ function App() {
   useEffect(() => {
     console.log("nowe filtry !!!!");
     console.log(user);
-    filterAllAnimals({ allAnimals, user, setAnimals });
+    filterAllAnimals({ allAnimals, user, setAnimals, shelters });
   }, [user]);
 
   return (

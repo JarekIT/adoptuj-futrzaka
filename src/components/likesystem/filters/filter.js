@@ -1,3 +1,5 @@
+import isPointWithinRadius from "geolib/es/getDistance";
+
 export const haveIGotAnimalToWatch = (animals, user) => {
   const haveNotIGotEmptyAnimals = () => {
     console.log(`Animals left ${animals.length} --->`);
@@ -41,12 +43,40 @@ export function getFilteredAnimal(animals, user) {
   return animals[i];
 }
 
-export const filterAllAnimals = ({ allAnimals, user, setAnimals }) => {
+export const filterAllAnimals = ({
+  allAnimals,
+  user,
+  setAnimals,
+  shelters,
+}) => {
   console.log("Filtruje nowe ustawienia ;)");
   let newAnimals = [];
 
+  let mapShelters = {};
+  shelters.forEach((shelter) => {
+    mapShelters[shelter.id] = shelter;
+  });
+  console.log(mapShelters);
+
+  console.log("....... wszystkie zwierzeta do przefiltrowania");
   console.log(allAnimals);
   allAnimals.map((animal) => {
+    function filterDistance() {
+      if (user.location.lat === null) return true;
+
+      const point = {
+        latitude: mapShelters[animal.shelterId].lat,
+        longitude: mapShelters[animal.shelterId].lng,
+      };
+      const centerPoint = {
+        latitude: user.location.lat,
+        longitude: user.location.lng,
+      };
+      const distanceToShelter = isPointWithinRadius(point, centerPoint, 1000);
+      console.log(distanceToShelter);
+      return distanceToShelter <= user.filters.mapRange;
+    }
+
     function filterType() {
       return (user.filters.viewCats && animal.type === "cat") ||
         (user.filters.viewDogs && animal.type === "dog")
@@ -61,11 +91,12 @@ export const filterAllAnimals = ({ allAnimals, user, setAnimals }) => {
         : false;
     }
 
-    if (filterType() && filterGender()) {
+    if (filterDistance() && filterType() && filterGender()) {
       newAnimals.push(animal);
     }
   });
 
+  console.log("....... nowo przefiltrowane zwierzeta");
   setAnimals(newAnimals);
   console.log(newAnimals);
 };

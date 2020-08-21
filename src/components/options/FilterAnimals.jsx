@@ -6,13 +6,16 @@ const FilterOptions = ({ user, setUser }) => {
 
     switch (opt) {
       case "CATS":
-        newFilterOptionsInUser.filters.viewCats = !newFilterOptionsInUser.filters.viewCats;
+        newFilterOptionsInUser.filters.viewCats = !newFilterOptionsInUser
+          .filters.viewCats;
         break;
       case "MALES":
-        newFilterOptionsInUser.filters.viewMales = !newFilterOptionsInUser.filters.viewMales;
+        newFilterOptionsInUser.filters.viewMales = !newFilterOptionsInUser
+          .filters.viewMales;
         break;
       case "FEMALES":
-        newFilterOptionsInUser.filters.viewFemales = !newFilterOptionsInUser.filters.viewFemales;
+        newFilterOptionsInUser.filters.viewFemales = !newFilterOptionsInUser
+          .filters.viewFemales;
         break;
       default:
         break;
