@@ -24,6 +24,13 @@ const FilterOptions = ({ user, setUser }) => {
     console.log(user.filters);
   };
 
+  const switchRange = (newRange) => {
+    const newRangeInUser = { ...user };
+    newRangeInUser.filters.mapRange = newRange;
+    setUser(newRangeInUser);
+    console.log(`Nowy zasieg -> ${user.filters.mapRange / 1000}`);
+  };
+
   return (
     <div>
       <br />
@@ -35,7 +42,13 @@ const FilterOptions = ({ user, setUser }) => {
       <br />
       <button onClick={() => switchOption("FEMALES")}>Pokaz Samice</button>
       <span> =&gt; {user.filters.viewFemales ? "tak" : "nie"}</span>
+      <hr />
+      <span>zasieg =&gt; {user.filters.mapRange / 1000} km</span>
       <br />
+      <button onClick={() => switchRange(10000)}>10 km</button>
+      <button onClick={() => switchRange(25000)}>25 km</button>
+      <button onClick={() => switchRange(50000)}>50 km</button>
+      <button onClick={() => switchRange(100000)}>100 km</button>
     </div>
   );
 };
