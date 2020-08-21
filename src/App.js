@@ -14,7 +14,7 @@ import databaseUsers from "./components/likesystem/databaseUsers.json";
 import ShowLikedAnimals from "./components/likesystem/ShowLikedAnimals.jsx";
 import BurgerMenu from "./components/burgermenu/BurgerMenu";
 import Main from "./components/mainpage/Main";
-import FilterOptions from "./components/options/FilterOptions";
+import FilterAnimals from "./components/options/FilterAnimals";
 import ShowAnimalDetails from "./components/likesystem/ShowAnimalDetails";
 import GeneratedRandomAnimal from "./components/addanimal/GeneratedRandomAnimal";
 import AddAnimal from "./components/addanimal/AddAnimal";
@@ -34,6 +34,7 @@ function App() {
 
   useEffect(() => {
     console.log("nowe filtry !!!!");
+    console.log(user);
     filterAllAnimals({ allAnimals, user, setAnimals });
   }, [user]);
 
@@ -73,7 +74,7 @@ function App() {
             setShelters={setShelters}
           />
           <Shelters shelters={shelters} path="/list" />
-          <FilterOptions user={user} setUser={setUser} path="/options" />
+          <FilterAnimals user={user} setUser={setUser} path="/options" />
           <ShowAnimalDetails
             path="/details/:animalId"
             shelters={shelters}

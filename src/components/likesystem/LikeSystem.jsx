@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ShowLikedAnimals from "./ShowLikedAnimals.jsx";
 import Animal from "./Animal";
 import { getFilteredAnimal } from "./filters/filter";
-import FilterOptions from "../options/FilterOptions.jsx";
+import FilterAnimals from "../options/FilterAnimals.jsx";
 import { updateUser } from "../database/FirebaseOperationsUser";
 
 function LikeSystem({ animals, setAnimals, user, setUser, shelters }) {
@@ -76,7 +76,7 @@ function LikeSystem({ animals, setAnimals, user, setUser, shelters }) {
             shelters={shelters}
           />
           <hr />
-          <FilterOptions user={user} setUser={setUser} />
+          <FilterAnimals user={user} setUser={setUser} />
         </>
       ) : (
         <ShowLikedAnimals user={user} animals={animals} shelters={shelters} />

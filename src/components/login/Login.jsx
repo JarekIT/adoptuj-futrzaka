@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { loadUser, anonymousLogin } from "../database/FirebaseOperationsUser";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "../database/firebase";
-import FilterOptions from "../options/FilterOptions";
+import FilterAnimals from "../options/FilterAnimals";
 
 const Login = ({ user, setUser }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -63,7 +63,7 @@ const Login = ({ user, setUser }) => {
       ) : null}
 
       <hr />
-      <FilterOptions user={user} setUser={setUser} />
+      <FilterAnimals user={user} setUser={setUser} />
     </div>
   );
 };
