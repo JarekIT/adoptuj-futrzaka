@@ -17,6 +17,13 @@ const anonymousLogin = (setUser) => {
       city: null,
       address: null,
     },
+    filters: {
+      viewCats: true,
+      viewDogs: true,
+      viewMales: true,
+      viewFemales: true,
+      mapRange: 100000,
+    }
   };
   setUser(newUser);
 };
