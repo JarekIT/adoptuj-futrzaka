@@ -23,7 +23,7 @@ const anonymousLogin = (setUser) => {
       viewMales: true,
       viewFemales: true,
       mapRange: 100000,
-    }
+    },
   };
   setUser(newUser);
 };
@@ -45,7 +45,16 @@ const prepareExistingUser = ({ loggedUser, setUser }) => {
       city: null,
       address: null,
     };
-  }
+  };
+  if (loggedUser.filters === undefined) { 
+    loggedUser.filters = {
+      viewCats: true,
+      viewDogs: true,
+      viewMales: true,
+      viewFemales: true,
+      mapRange: 100000,
+    };
+  };
   setUser(loggedUser);
 };
 
@@ -63,6 +72,13 @@ const createNewUser = async ({ fireUser, setUser }) => {
       lng: null,
       city: null,
       address: null,
+    },
+    filters: {
+      viewCats: true,
+      viewDogs: true,
+      viewMales: true,
+      viewFemales: true,
+      mapRange: 100000,
     },
   };
   setUser(newUser);
