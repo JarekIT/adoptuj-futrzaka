@@ -36,19 +36,8 @@ const Main = ({ user, setUser }) => {
 
       <h3>zacznij szukać</h3>
       <Link to="/find">
-        <button type="button">
-          <img src="/images/misc/find.png" alt="Logo" />
-        </button>
+        <img src="/images/misc/find.png" alt="Logo" />
       </Link>
-
-      <hr />
-      <div>
-        <img
-          className="main-page-image"
-          src="/images/misc/main.jpg"
-          alt="Main Page Logo"
-        />
-      </div>
     </div>
   );
 };

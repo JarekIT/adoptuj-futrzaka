@@ -7,8 +7,6 @@ const ShowLikedAnimals = ({ animals, user, shelters }) => {
     <div className="app">
       <div className="animal">
         <div id="show-liked">
-          <img src="/images/misc/showLiked.png" alt="Adopt Me" />
-
           <p>
             {animals.length === 0 ? "Nie ma więcej zwierzaków w okolicy" : ""}
           </p>
