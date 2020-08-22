@@ -2,6 +2,7 @@ import React from "react";
 import EnterAddressInput from "./EnterAddressInput";
 import { Link } from "@reach/router";
 import Login from "../login/Login";
+import FilterAnimals from "../options/FilterAnimals";
 
 const Main = ({ user, setUser }) => {
   return (
@@ -29,6 +30,9 @@ const Main = ({ user, setUser }) => {
         setUser={setUser}
         text="Wpisz swój adres:"
       />
+
+      <h3>ustaw filtry</h3>
+      <FilterAnimals user={user} setUser={setUser} />
 
       <h3>zacznij szukać</h3>
       <Link to="/find">

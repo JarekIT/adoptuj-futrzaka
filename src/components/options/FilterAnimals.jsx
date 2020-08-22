@@ -45,7 +45,8 @@ const FilterOptions = ({ user, setUser }) => {
       <br />
       <button onClick={() => switchOption("FEMALES")}>Pokaz Samice</button>
       <span> =&gt; {user.filters.viewFemales ? "tak" : "nie"}</span>
-      <hr />
+      <br />
+      <br />
       <span>zasieg =&gt; {user.filters.mapRange / 1000} km</span>
       <br />
       <button onClick={() => switchRange(10000)}>10 km</button>

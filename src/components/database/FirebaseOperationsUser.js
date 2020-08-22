@@ -45,8 +45,8 @@ const prepareExistingUser = ({ loggedUser, setUser }) => {
       city: null,
       address: null,
     };
-  };
-  if (loggedUser.filters === undefined) { 
+  }
+  if (loggedUser.filters === undefined) {
     loggedUser.filters = {
       viewCats: true,
       viewDogs: true,
@@ -54,7 +54,7 @@ const prepareExistingUser = ({ loggedUser, setUser }) => {
       viewFemales: true,
       mapRange: 100000,
     };
-  };
+  }
   setUser(loggedUser);
 };
 

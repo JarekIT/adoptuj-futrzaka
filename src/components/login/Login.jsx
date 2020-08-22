@@ -61,9 +61,6 @@ const Login = ({ user, setUser }) => {
       {isLoggedIn ? (
         <button onClick={logoutFromFirebase}>Wyloguj się</button>
       ) : null}
-
-      <hr />
-      <FilterAnimals user={user} setUser={setUser} />
     </div>
   );
 };

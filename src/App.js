@@ -18,7 +18,6 @@ import FilterAnimals from "./components/options/FilterAnimals";
 import ShowAnimalDetails from "./components/likesystem/ShowAnimalDetails";
 import GeneratedRandomAnimal from "./components/addanimal/GeneratedRandomAnimal";
 import AddAnimal from "./components/addanimal/AddAnimal";
-import Login from "./components/login/Login";
 import { loadAllAnimals } from "./components/database/FirebaseOperationsAnimals";
 import { filterAllAnimals } from "./components/likesystem/filters/filter";
 
@@ -83,7 +82,6 @@ function App() {
           />
           <GeneratedRandomAnimal path="/generateanimal" />
           <AddAnimal path="/addanimal" />
-          <Login path="/login" user={user} setUser={setUser} />
         </Router>
       </div>
     </React.StrictMode>

@@ -6,14 +6,6 @@ const Header = ({ user }) => {
   return (
     <header>
       <div className="fl">
-        <Link to="/">
-          <button type="button">
-            <img src="/images/misc/logo.png" alt="Logo" />
-          </button>
-        </Link>
-      </div>
-
-      <div className="fl">
         <Link to="/find">
           <button type="button">
             <img src="/images/misc/find.png" alt="Logo" />
@@ -38,7 +30,7 @@ const Header = ({ user }) => {
       </div>
 
       <div className="fl">
-        <Link to="/login">
+        <Link to="/">
           <button type="button">
             {user.picture ? (
               <img src={user.picture} alt={user.name} />
