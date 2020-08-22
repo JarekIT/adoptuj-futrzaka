@@ -36,7 +36,6 @@ const FilterOptions = ({ user, setUser }) => {
 
   return (
     <div>
-      <br />
       <button onClick={() => switchOption("CATS")}>Pokaz Koty</button>
       <span> =&gt; {user.filters.viewCats ? "tak" : "nie"}</span>
       <br />
