@@ -25,12 +25,6 @@ header {
 	background-color: white;
 	overflow: hidden;
 	display: flex;
-}
-
-header {
-	background-color: white;
-	overflow: hidden;
-	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 10px 5px;
@@ -68,10 +62,10 @@ header .fl:last-child {
 
 .animal .animal-description {
 	text-align: left;
-	padding: 20px;
+	padding: 10px 20px 10px 20px;
 	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
 	border-radius: 1px;
-	background-color: white;
+	background: rgba(256,256,256, 0.4);
 }
 
 .animal .animal-name-age {
@@ -90,7 +84,7 @@ header .fl:last-child {
 @media screen and (max-width: 540px) {
 	.animal img {
 		width: 100vw;
-		max-height: 350px;
+		/* max-height: 350px; */
 		display: block;
 		object-fit: cover;
 		margin: auto;
@@ -105,6 +99,21 @@ header .fl:last-child {
 		object-fit: cover;
 		margin: auto;
     }
+}
+
+/* for mobile */
+@media only screen and (orientation: portrait) {
+	#actions {
+		position:absolute;
+		bottom:0;
+		width:100%;
+	} 
+
+	.animal .animal-description {
+		position:absolute;
+		bottom:80px;
+		width:100%;
+	}
 }
 
 #actions {
@@ -248,30 +257,30 @@ header .fl:last-child {
 
 /* Main Page */
 .main-page-image {
-	width: auto;
-	height: 100vw;
-	display: block;
-	object-fit: cover;
-    margin: auto;
-    max-height: 1000px;
+	/* width: auto; */
+	/* height: 100vw; */
+	/* display: block; */
+	/* object-fit: cover; */
+    /* margin: auto; */
+    /* max-height: 1000px; */
 }
 
 
 /* Header */
 header {
-	background-color: white;
-	overflow: hidden;
-	display: flex;
+	/* background-color: white; */
+	/* overflow: hidden; */
+	/* display: flex; */
 }
 
 header {
-	background-color: white;
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 10px 5px;
-	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
+	/* background-color: white; */
+	/* overflow: hidden; */
+	/* display: flex; */
+	/* align-items: center; */
+	/* justify-content: center; */
+	/* padding: 10px 5px; */
+	/* box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1); */
 }
 
 header button {

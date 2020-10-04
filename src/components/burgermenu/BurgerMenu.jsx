@@ -2,10 +2,13 @@ import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import { Link } from "@reach/router";
 import "./burger-menu.css";
+import FilterAnimals from "../options/FilterAnimals";
 
-const BurgerMenu = () => {
+const BurgerMenu = ({ user, setUser }) => {
   return (
     <Menu>
+      <FilterAnimals user={user} setUser={setUser} />
+
       <Link to="/">
         <h4>Strona glowna</h4>
       </Link>

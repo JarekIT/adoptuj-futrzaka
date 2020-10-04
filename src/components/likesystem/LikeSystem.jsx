@@ -4,6 +4,7 @@ import Animal from "./Animal";
 import { getFilteredAnimal } from "./filters/filter";
 import FilterAnimals from "../options/FilterAnimals.jsx";
 import { updateUser } from "../database/FirebaseOperationsUser";
+import BurgerMenu from "../burgermenu/BurgerMenu.jsx";
 
 function LikeSystem({ animals, setAnimals, user, setUser, shelters }) {
   useEffect(() => {
@@ -75,8 +76,8 @@ function LikeSystem({ animals, setAnimals, user, setUser, shelters }) {
             user={user}
             shelters={shelters}
           />
-          <hr />
-          <FilterAnimals user={user} setUser={setUser} />
+          {/* <hr /> */}
+          {/* <FilterAnimals user={user} setUser={setUser} /> */}
         </>
       ) : (
         <ShowLikedAnimals user={user} animals={animals} shelters={shelters} />

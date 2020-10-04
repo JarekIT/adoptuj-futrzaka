@@ -39,7 +39,7 @@ function App() {
 
   return (
     <React.StrictMode>
-      <BurgerMenu />
+      <BurgerMenu user={user} setUser={setUser} />
       <div className="app">
         <Header user={user} />
 
