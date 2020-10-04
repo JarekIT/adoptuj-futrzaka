@@ -20,9 +20,7 @@ class ErrorBoundary extends React.Component {
     return (
       <React.Suspense fallback={LoadingIndicator}>
         {this.state.hasError ? (
-          <div>
-            Coś poszło nie tak!
-          </div>
+          <div>Coś poszło nie tak!</div>
         ) : (
           <React.Fragment>{this.props.children}</React.Fragment>
         )}

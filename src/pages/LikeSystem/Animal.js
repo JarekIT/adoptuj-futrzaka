@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+
 import Actions from "./Actions";
 import { getDistanceBetweenPoints } from "./calculateDistance";
 
-const Animal = ({ animal, modifySuperficialChoices, user, shelters }) => {
+import SheltersContext from "data/context/shelters.context";
+import UserContext from "data/context/user.context";
+
+const Animal = ({ animal, modifySuperficialChoices }) => {
+  const { shelters } = useContext(SheltersContext.store);
+  const { user } = useContext(UserContext.store);
+
   const { name, age, image, gender } = animal;
   const [distance, setDistance] = useState("(Wpisz swoją lokalizację)");
   const [shelter, setShelter] = useState({});

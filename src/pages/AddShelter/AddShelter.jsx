@@ -1,7 +1,11 @@
-import React, { useState } from "react";
-import { InputComponent } from "./InputComponent";
+import React, { useState, useContext } from "react";
+import { InputComponent } from "./InputComponent/InputComponent";
 
-const AddShelter = ({ shelters, setShelters }) => {
+import SheltersContext from "data/context/shelters.context";
+
+const AddShelter = () => {
+  const { shelters, setShelters } = useContext(SheltersContext.store);
+
   const [name, setName] = useState("");
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");

@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
 import "@reach/combobox/styles.css";
-import { updateUser } from "../database/FirebaseOperationsUser";
+import { updateUser } from "../../../components/database/FirebaseOperationsUser";
 
-export default function EnterAddressInput({ user, setUser }) {
+import UserContext from "data/context/user.context";
+
+export default function EnterAddressInput() {
+  const { user, setUser } = useContext(UserContext.store);
   const [address, setAddress] = React.useState("");
 
   const handleSelect = async (value) => {

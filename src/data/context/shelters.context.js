@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-import mockData from "../../components/map/databaseShelters";
+import mockData from "../mocks/databaseShelters";
 
 const initialValue = {};
 

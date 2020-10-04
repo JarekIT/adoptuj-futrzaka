@@ -1,11 +1,21 @@
-import React, { useEffect, useState } from "react";
-import LikedAnimalShelterMap from "./LikedAnimalShelterMap";
-import { getDistanceBetweenPoints } from "./calculateDistance";
+import React, { useEffect, useState, useContext } from "react";
+import LikedAnimalShelterMap from "./LikedAnimalShelterMap/LikedAnimalShelterMap";
+import { getDistanceBetweenPoints } from "../LikeSystem/calculateDistance";
 
-const ShowAnimalDetails = ({ animalId, user, shelters, animals }) => {
+import SheltersContext from "data/context/shelters.context";
+import AnimalsContext from "data/context/animals.context";
+import UserContext from "data/context/user.context";
+
+const ShowAnimalDetails = ({ animalId }) => {
   const [animal, setAnimal] = useState({});
   const [shelter, setShelter] = useState({});
   const [distance, setDistance] = useState("(Wpisz swoją lokalizację)");
+
+  const { shelters } = useContext(SheltersContext.store);
+  const { animals } = useContext(AnimalsContext.store);
+  const { user } = useContext(UserContext.store);
+
+  console.log(animalId);
 
   useEffect(() => {
     setAnimalByAnimalId();

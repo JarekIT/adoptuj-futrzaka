@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { loadUser, anonymousLogin } from "../database/FirebaseOperationsUser";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "../database/firebase";
-import FilterAnimals from "../options/FilterAnimals";
 
-const Login = ({ user, setUser }) => {
+import UserContext from "data/context/user.context";
+
+const Login = () => {
+  const { setUser } = useContext(UserContext.store);
+
   const [isLoggedIn, setLoggedIn] = useState(false);
 
   const uiConfig = {

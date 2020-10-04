@@ -1,16 +1,20 @@
-import React from "react";
-import EnterAddressInput from "./EnterAddressInput";
+import React, { useContext } from "react";
+import EnterAddressInput from "./EnterAddressInput/EnterAddressInput";
 import { Link } from "@reach/router";
-import Login from "../login/Login";
-import FilterAnimals from "../options/FilterAnimals";
+import Login from "../../components/login/Login";
+import FilterAnimals from "../../components/options/FilterAnimals";
 
-const Main = ({ user, setUser }) => {
+import UserContext from "data/context/user.context";
+
+const Main = () => {
+  const { user } = useContext(UserContext.store);
+
   return (
     <div className="app">
       {user.name === null ? (
         <>
           <h3>Zaloguj się</h3>
-          <Login user={user} setUser={setUser} />
+          <Login />
         </>
       ) : (
         <h2>Witaj {user.name}</h2>
@@ -25,14 +29,10 @@ const Main = ({ user, setUser }) => {
         </>
       )}
 
-      <EnterAddressInput
-        user={user}
-        setUser={setUser}
-        text="Wpisz swój adres:"
-      />
+      <EnterAddressInput text="Wpisz swój adres:" />
 
       <h3>ustaw filtry</h3>
-      <FilterAnimals user={user} setUser={setUser} />
+      <FilterAnimals />
 
       <h3>zacznij szukać</h3>
       <Link to="/find">

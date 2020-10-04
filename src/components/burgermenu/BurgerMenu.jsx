@@ -4,10 +4,10 @@ import { Link } from "@reach/router";
 import "./burger-menu.css";
 import FilterAnimals from "../options/FilterAnimals";
 
-const BurgerMenu = ({ user, setUser }) => {
+const BurgerMenu = () => {
   return (
     <Menu>
-      <FilterAnimals user={user} setUser={setUser} />
+      <FilterAnimals />
 
       <Link to="/">
         <h4>Strona glowna</h4>

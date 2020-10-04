@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import firebase from "../database/firebase";
+import firebase from "../../../components/database/firebase";
 
 const AddRandomGeneratedAnimal = () => {
   const [url, setUrl] = useState("");

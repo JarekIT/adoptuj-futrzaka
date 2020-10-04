@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import firebase, { storage } from "../database/firebase";
-import { InputComponent } from "../addshelter/InputComponent";
+import firebase, { storage } from "../../components/database/firebase";
+import { InputComponent } from "../AddShelter/InputComponent/InputComponent";
 
 const AddAnimal = () => {
   const [name, setName] = useState("");

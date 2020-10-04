@@ -1,12 +1,32 @@
-import React, { useEffect } from "react";
-import ShowLikedAnimals from "./ShowLikedAnimals.jsx";
+import React, { useEffect, useContext } from "react";
+import ShowLikedAnimals from "../ShowLikedAnimals/ShowLikedAnimals.jsx";
 import Animal from "./Animal";
 import { getFilteredAnimal } from "./filters/filter";
-import FilterAnimals from "../options/FilterAnimals.jsx";
-import { updateUser } from "../database/FirebaseOperationsUser";
-import BurgerMenu from "../burgermenu/BurgerMenu.jsx";
+import { updateUser } from "../../components/database/FirebaseOperationsUser";
+import { loadAllAnimals } from "../../components/database/FirebaseOperationsAnimals";
+import { filterAllAnimals } from "./filters/filter";
 
-function LikeSystem({ animals, setAnimals, user, setUser, shelters }) {
+import SheltersContext from "data/context/shelters.context";
+import AnimalsContext from "data/context/animals.context";
+import UserContext from "data/context/user.context";
+
+function LikeSystem() {
+  const { shelters } = useContext(SheltersContext.store);
+  const { animals, setAnimals, allAnimals, setAllAnimals } = useContext(
+    AnimalsContext.store
+  );
+  const { user, setUser } = useContext(UserContext.store);
+
+  useEffect(() => {
+    loadAllAnimals({ setAllAnimals, setAnimals });
+  }, []);
+
+  useEffect(() => {
+    console.log("nowe filtry !!!!");
+    console.log(user);
+    filterAllAnimals({ allAnimals, user, setAnimals, shelters });
+  }, [user]);
+
   useEffect(() => {
     shuffleArray(animals);
   }, [animals]);
@@ -73,14 +93,10 @@ function LikeSystem({ animals, setAnimals, user, setUser, shelters }) {
             key={nextAnimal.id}
             animal={nextAnimal}
             modifySuperficialChoices={modifySuperficialChoices}
-            user={user}
-            shelters={shelters}
           />
-          {/* <hr /> */}
-          {/* <FilterAnimals user={user} setUser={setUser} /> */}
         </>
       ) : (
-        <ShowLikedAnimals user={user} animals={animals} shelters={shelters} />
+        <ShowLikedAnimals />
       )}
     </div>
   );

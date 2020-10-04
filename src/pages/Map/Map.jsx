@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   GoogleMap,
   useLoadScript,
@@ -18,11 +18,17 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import "./map.css";
-import Shelters from "../shelters/Shelters";
+import Shelters from "../Shelters/Shelters";
+
+import SheltersContext from "data/context/shelters.context";
+import UserContext from "data/context/user.context";
 
 require("dotenv").config();
 
-function Map({ shelters, user }) {
+function Map() {
+  const { shelters } = useContext(SheltersContext.store);
+  const { user } = useContext(UserContext.store);
+
   const libraries = ["places"];
   const mapContainerStyle = {
     width: "100vw",

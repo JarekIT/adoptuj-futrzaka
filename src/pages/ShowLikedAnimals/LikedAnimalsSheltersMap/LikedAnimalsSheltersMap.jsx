@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   GoogleMap,
   useLoadScript,
@@ -8,9 +8,15 @@ import {
 
 import "@reach/combobox/styles.css";
 
+import SheltersContext from "data/context/shelters.context";
+import UserContext from "data/context/user.context";
+
 require("dotenv").config();
 
-const LikedAnimalsShelterMap = ({ user, shelters }) => {
+const LikedAnimalsShelterMap = () => {
+  const { shelters } = useContext(SheltersContext.store);
+  const { user } = useContext(UserContext.store);
+
   const [sheltersLatLng, setSheltersLatLng] = useState([]);
   const [center, setCenter] = useState({ lat: 0, lng: 0 });
   const [selected, setSelected] = useState(null);

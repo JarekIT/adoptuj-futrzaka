@@ -1,8 +1,15 @@
-import React from "react";
-import LikedAnimal from "./LikedAnimal";
-import LikedAnimalsShelterMap from "./LikedAnimalsSheltersMap";
+import React, { useContext } from "react";
 
-const ShowLikedAnimals = ({ animals, user, shelters }) => {
+import LikedAnimal from "./LikedAnimal/LikedAnimal";
+import LikedAnimalsShelterMap from "./LikedAnimalsSheltersMap/LikedAnimalsSheltersMap";
+
+import AnimalsContext from "data/context/animals.context";
+import UserContext from "data/context/user.context";
+
+const LikedAnimals = () => {
+  const { animals } = useContext(AnimalsContext.store);
+  const { user } = useContext(UserContext.store);
+
   return (
     <div className="app">
       <div className="animal">
@@ -24,11 +31,9 @@ const ShowLikedAnimals = ({ animals, user, shelters }) => {
           </div>
         </div>
       </div>
-      {user.likedAnimals.length > 0 ? (
-        <LikedAnimalsShelterMap user={user} shelters={shelters} />
-      ) : null}
+      {user.likedAnimals.length > 0 ? <LikedAnimalsShelterMap /> : null}
     </div>
   );
 };
 
-export default ShowLikedAnimals;
+export default LikedAnimals;

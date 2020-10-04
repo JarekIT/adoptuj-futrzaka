@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
-const FilterOptions = ({ user, setUser }) => {
+import UserContext from "data/context/user.context";
+
+const FilterOptions = () => {
+  const { user, setUser } = useContext(UserContext.store);
+
   const switchOption = (opt) => {
     const newFilterOptionsInUser = { ...user };
 

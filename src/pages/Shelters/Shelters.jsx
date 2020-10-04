@@ -1,6 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 
-function Shelters({ shelters }) {
+import SheltersContext from "data/context/shelters.context";
+
+function Shelters() {
+  const { shelters } = useContext(SheltersContext.store);
+
   useEffect(() => {}, [shelters]);
 
   return (

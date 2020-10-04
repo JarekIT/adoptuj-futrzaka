@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "@reach/router";
 import "./App.css";
 
-const Header = ({ user }) => {
+import UserContext from "./data/context/user.context";
+
+const Header = () => {
+  const { user } = useContext(UserContext.store);
+
   return (
     <header>
       <div className="fl">

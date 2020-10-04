@@ -1,17 +1,4 @@
-import React from "react";
 import firebase from "./firebase";
-
-const LoadAnimals = ({ setAnimals, setAllAnimals }) => {
-  return (
-    <div>
-      <br />
-      <button onClick={() => loadAllAnimals({ setAllAnimals })}>
-        (test) Wczytaj Wszystkie Zwierzeta
-      </button>
-      <br />
-    </div>
-  );
-};
 
 const loadAllAnimals = async ({ setAllAnimals, setAnimals }) => {
   console.log("wczytuje koty z firebase ;)");
@@ -30,4 +17,4 @@ const loadAllAnimals = async ({ setAllAnimals, setAnimals }) => {
     });
 };
 
-export { LoadAnimals as default, loadAllAnimals };
+export { loadAllAnimals };
