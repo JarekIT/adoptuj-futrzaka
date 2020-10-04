@@ -6,9 +6,9 @@ import { updateUser } from "../../components/database/FirebaseOperationsUser";
 import { loadAllAnimals } from "../../components/database/FirebaseOperationsAnimals";
 import { filterAllAnimals } from "./filters/filter";
 
-import SheltersContext from "data/context/shelters.context";
-import AnimalsContext from "data/context/animals.context";
-import UserContext from "data/context/user.context";
+import SheltersContext from "../../data/context/shelters.context";
+import AnimalsContext from "../../data/context/animals.context";
+import UserContext from "../../data/context/user.context";
 
 function LikeSystem() {
   const { shelters } = useContext(SheltersContext.store);

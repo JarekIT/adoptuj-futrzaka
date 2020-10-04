@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import UserContext from "data/context/user.context";
+import UserContext from "../../data/context/user.context";
 
 const FilterOptions = () => {
   const { user, setUser } = useContext(UserContext.store);

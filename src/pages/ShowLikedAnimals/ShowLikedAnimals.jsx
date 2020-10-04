@@ -3,8 +3,8 @@ import React, { useContext } from "react";
 import LikedAnimal from "./LikedAnimal/LikedAnimal";
 import LikedAnimalsShelterMap from "./LikedAnimalsSheltersMap/LikedAnimalsSheltersMap";
 
-import AnimalsContext from "data/context/animals.context";
-import UserContext from "data/context/user.context";
+import AnimalsContext from "../../data/context/animals.context";
+import UserContext from "../../data/context/user.context";
 
 const LikedAnimals = () => {
   const { animals } = useContext(AnimalsContext.store);

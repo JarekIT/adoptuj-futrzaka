@@ -20,8 +20,8 @@ import "@reach/combobox/styles.css";
 import "./map.css";
 import Shelters from "../Shelters/Shelters";
 
-import SheltersContext from "data/context/shelters.context";
-import UserContext from "data/context/user.context";
+import SheltersContext from "../../data/context/shelters.context";
+import UserContext from "../../data/context/user.context";
 
 require("dotenv").config();
 

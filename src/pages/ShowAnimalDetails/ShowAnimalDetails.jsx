@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from "react";
 import LikedAnimalShelterMap from "./LikedAnimalShelterMap/LikedAnimalShelterMap";
 import { getDistanceBetweenPoints } from "../LikeSystem/calculateDistance";
 
-import SheltersContext from "data/context/shelters.context";
-import AnimalsContext from "data/context/animals.context";
-import UserContext from "data/context/user.context";
+import SheltersContext from "../../data/context/shelters.context";
+import AnimalsContext from "../../data/context/animals.context";
+import UserContext from "../../data/context/user.context";
 
 const ShowAnimalDetails = ({ animalId }) => {
   const [animal, setAnimal] = useState({});

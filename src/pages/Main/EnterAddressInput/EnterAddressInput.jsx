@@ -6,7 +6,7 @@ import PlacesAutocomplete, {
 import "@reach/combobox/styles.css";
 import { updateUser } from "../../../components/database/FirebaseOperationsUser";
 
-import UserContext from "data/context/user.context";
+import UserContext from "../../../data/context/user.context";
 
 export default React.memo(function EnterAddressInput() {
   const { user, setUser } = useContext(UserContext.store);

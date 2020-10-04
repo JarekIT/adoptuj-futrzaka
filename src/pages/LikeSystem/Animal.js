@@ -3,8 +3,8 @@ import React, { useState, useEffect, useContext } from "react";
 import Actions from "./Actions";
 import { getDistanceBetweenPoints } from "./calculateDistance";
 
-import SheltersContext from "data/context/shelters.context";
-import UserContext from "data/context/user.context";
+import SheltersContext from "../../data/context/shelters.context";
+import UserContext from "../../data/context/user.context";
 
 const Animal = ({ animal, modifySuperficialChoices }) => {
   const { shelters } = useContext(SheltersContext.store);

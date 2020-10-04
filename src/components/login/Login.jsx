@@ -3,7 +3,7 @@ import { loadUser, anonymousLogin } from "../database/FirebaseOperationsUser";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "../database/firebase";
 
-import UserContext from "data/context/user.context";
+import UserContext from "../../data/context/user.context";
 
 const Login = () => {
   const { setUser } = useContext(UserContext.store);

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { InputComponent } from "./InputComponent/InputComponent";
 
-import SheltersContext from "data/context/shelters.context";
+import SheltersContext from "../../data/context/shelters.context";
 
 const AddShelter = () => {
   const { shelters, setShelters } = useContext(SheltersContext.store);

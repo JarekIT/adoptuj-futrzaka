@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-import databaseUsers from "data/mocks/databaseUsers.json";
+import databaseUsers from "../../data/mocks/databaseUsers.json";
 
 const initialValue = {};
 

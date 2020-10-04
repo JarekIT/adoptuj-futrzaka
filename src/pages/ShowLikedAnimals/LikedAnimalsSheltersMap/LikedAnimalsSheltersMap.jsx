@@ -8,8 +8,8 @@ import {
 
 import "@reach/combobox/styles.css";
 
-import SheltersContext from "data/context/shelters.context";
-import UserContext from "data/context/user.context";
+import SheltersContext from "../../../data/context/shelters.context";
+import UserContext from "../../../data/context/user.context";
 
 require("dotenv").config();
 

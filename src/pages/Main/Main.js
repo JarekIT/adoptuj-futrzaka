@@ -4,7 +4,7 @@ import { Link } from "@reach/router";
 import Login from "../../components/login/Login";
 import FilterAnimals from "../../components/options/FilterAnimals";
 
-import UserContext from "data/context/user.context";
+import UserContext from "../../data/context/user.context";
 
 const Main = () => {
   const { user } = useContext(UserContext.store);
