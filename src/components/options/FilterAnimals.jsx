@@ -60,4 +60,4 @@ const FilterOptions = () => {
   );
 };
 
-export default FilterOptions;
+export default React.memo(FilterOptions);

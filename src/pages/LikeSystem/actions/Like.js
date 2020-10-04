@@ -11,4 +11,4 @@ const Like = ({ animal, modifySuperficialChoices }) => {
   );
 };
 
-export default Like;
+export default React.memo(Like);

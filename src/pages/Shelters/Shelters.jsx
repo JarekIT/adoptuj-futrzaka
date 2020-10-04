@@ -21,4 +21,4 @@ function Shelters() {
   );
 }
 
-export default Shelters;
+export default React.memo(Shelters);

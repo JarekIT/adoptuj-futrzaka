@@ -51,4 +51,4 @@ const Animal = ({ animal, modifySuperficialChoices }) => {
   );
 };
 
-export default Animal;
+export default React.memo(Animal);

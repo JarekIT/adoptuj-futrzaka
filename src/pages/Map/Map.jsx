@@ -116,7 +116,7 @@ function Map() {
   );
 }
 
-export default Map;
+export default React.memo(Map);
 
 function Locate({ panTo }) {
   return (

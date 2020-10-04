@@ -102,4 +102,4 @@ function LikeSystem() {
   );
 }
 
-export default LikeSystem;
+export default React.memo(LikeSystem);

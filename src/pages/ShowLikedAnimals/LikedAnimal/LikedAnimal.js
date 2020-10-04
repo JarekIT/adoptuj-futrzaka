@@ -11,4 +11,4 @@ const LikedAnimal = ({ animal }) => (
   </div>
 );
 
-export default LikedAnimal;
+export default React.memo(LikedAnimal);

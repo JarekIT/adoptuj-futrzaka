@@ -140,4 +140,4 @@ const LikedAnimalsShelterMap = () => {
   );
 };
 
-export default LikedAnimalsShelterMap;
+export default React.memo(LikedAnimalsShelterMap);

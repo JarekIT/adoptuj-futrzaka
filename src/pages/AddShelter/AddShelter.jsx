@@ -60,4 +60,4 @@ const AddShelter = () => {
   );
 };
 
-export default AddShelter;
+export default React.memo(AddShelter);

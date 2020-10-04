@@ -11,4 +11,4 @@ const Rewind = ({ animal, modifySuperficialChoices }) => {
   );
 };
 
-export default Rewind;
+export default React.memo(Rewind);

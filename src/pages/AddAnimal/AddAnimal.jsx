@@ -163,4 +163,4 @@ const AddAnimal = () => {
   );
 };
 
-export default AddAnimal;
+export default React.memo(AddAnimal);

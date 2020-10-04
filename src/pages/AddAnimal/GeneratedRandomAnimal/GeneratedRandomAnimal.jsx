@@ -65,4 +65,4 @@ const AddRandomGeneratedAnimal = () => {
   );
 };
 
-export default AddRandomGeneratedAnimal;
+export default React.memo(AddRandomGeneratedAnimal);

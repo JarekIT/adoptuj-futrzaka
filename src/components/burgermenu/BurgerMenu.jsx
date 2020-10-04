@@ -40,4 +40,4 @@ const BurgerMenu = () => {
   );
 };
 
-export default BurgerMenu;
+export default React.memo(BurgerMenu);

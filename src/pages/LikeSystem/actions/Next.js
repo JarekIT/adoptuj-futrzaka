@@ -11,4 +11,4 @@ const Next = ({ animal, modifySuperficialChoices }) => {
   );
 };
 
-export default Next;
+export default React.memo(Next);

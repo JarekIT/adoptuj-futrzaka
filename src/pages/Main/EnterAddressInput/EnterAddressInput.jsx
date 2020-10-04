@@ -8,7 +8,7 @@ import { updateUser } from "../../../components/database/FirebaseOperationsUser"
 
 import UserContext from "data/context/user.context";
 
-export default function EnterAddressInput() {
+export default React.memo(function EnterAddressInput() {
   const { user, setUser } = useContext(UserContext.store);
   const [address, setAddress] = React.useState("");
 
@@ -58,4 +58,4 @@ export default function EnterAddressInput() {
       </PlacesAutocomplete>
     </div>
   );
-}
+});

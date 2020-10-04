@@ -36,4 +36,4 @@ const LikedAnimals = () => {
   );
 };
 
-export default LikedAnimals;
+export default React.memo(LikedAnimals);

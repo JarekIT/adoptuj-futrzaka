@@ -15,4 +15,4 @@ const Actions = ({ animal, modifySuperficialChoices }) => (
   </div>
 );
 
-export default Actions;
+export default React.memo(Actions);

@@ -66,4 +66,4 @@ const ShowAnimalDetails = ({ animalId }) => {
   );
 };
 
-export default ShowAnimalDetails;
+export default React.memo(ShowAnimalDetails);
