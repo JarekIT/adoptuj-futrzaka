@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment, useRef, useCallback } from "react";
 import {
   GoogleMap,
   useLoadScript,
@@ -8,12 +8,20 @@ import {
 
 import "@reach/combobox/styles.css";
 
+import { ShelterDAO } from "../../../interfaces/Shelter";
+
 require("dotenv").config();
 
-const LikedAnimalShelterMap = ({ shelter }) => {
-  const [selected, setSelected] = useState(null);
+interface ILatLng {
+  lat: number;
+  lng: number;
+}
+const LikedAnimalShelterMap: React.FC<{ shelter: ShelterDAO }> = ({
+  shelter,
+}) => {
+  const [selected, setSelected] = useState<ShelterDAO | null>(null);
 
-  const center = {
+  const center: ILatLng = {
     lat: Number(shelter.lat),
     lng: Number(shelter.lng),
   };
@@ -32,13 +40,13 @@ const LikedAnimalShelterMap = ({ shelter }) => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
 
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading Maps";
+  if (loadError) return <Fragment>"Error loading maps"</Fragment>;
+  if (!isLoaded) return <Fragment>"Loading Maps"</Fragment>;
 
   return (
     <div>

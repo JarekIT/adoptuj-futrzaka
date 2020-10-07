@@ -5,11 +5,13 @@ import { getDistanceBetweenPoints } from "../LikeSystem/calculateDistance";
 import SheltersContext from "../../data/context/shelters.context";
 import AnimalsContext from "../../data/context/animals.context";
 import UserContext from "../../data/context/user.context";
+import { AnimalDAO } from "../../interfaces/Animal";
+import { ShelterDAO } from "../../interfaces/Shelter";
 
-const ShowAnimalDetails = ({ animalId }) => {
-  const [animal, setAnimal] = useState({});
-  const [shelter, setShelter] = useState({});
-  const [distance, setDistance] = useState("(Wpisz swoją lokalizację)");
+const ShowAnimalDetails = ({ animalId }: { animalId: string }) => {
+  const [animal, setAnimal] = useState<AnimalDAO>({} as AnimalDAO);
+  const [shelter, setShelter] = useState<ShelterDAO>({} as ShelterDAO);
+  const [distance, setDistance] = useState<string>("(Wpisz swoją lokalizację)");
 
   const { shelters } = useContext(SheltersContext.store);
   const { animals } = useContext(AnimalsContext.store);
@@ -23,21 +25,21 @@ const ShowAnimalDetails = ({ animalId }) => {
 
   useEffect(() => {
     setShelterByAnimalId();
-  }, [animal]);
+  }, [animal, animalId]);
 
   useEffect(() => {
-    const newDistance = getDistanceBetweenPoints(user, shelter);
+    const newDistance: string = getDistanceBetweenPoints(user, shelter);
     setDistance(newDistance);
   }, [shelter]);
 
   const setAnimalByAnimalId = () => {
-    animals.forEach((oneAnimal) => {
+    animals.forEach((oneAnimal: AnimalDAO) => {
       if (oneAnimal.id === Number(animalId)) {
         setAnimal(oneAnimal);
       }
     });
 
-    user.likedAnimals.forEach((oneAnimal) => {
+    user.likedAnimals.forEach((oneAnimal: AnimalDAO) => {
       if (oneAnimal.id === Number(animalId)) {
         setAnimal(oneAnimal);
       }
@@ -45,7 +47,7 @@ const ShowAnimalDetails = ({ animalId }) => {
   };
 
   const setShelterByAnimalId = () => {
-    shelters.forEach((oneShelter) => {
+    shelters.forEach((oneShelter: ShelterDAO) => {
       if (oneShelter.id === animal.shelterId) {
         setShelter(oneShelter);
       }
