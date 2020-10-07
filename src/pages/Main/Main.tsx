@@ -6,7 +6,7 @@ import FilterAnimals from "../../components/options/FilterAnimals";
 
 import UserContext from "../../data/context/user.context";
 
-const Main = () => {
+const Main: React.FC = () => {
   const { user } = useContext(UserContext.store);
 
   return (
@@ -29,7 +29,7 @@ const Main = () => {
         </>
       )}
 
-      <EnterAddressInput text="Wpisz swój adres:" />
+      <EnterAddressInput />
 
       <h3>ustaw filtry</h3>
       <FilterAnimals />
