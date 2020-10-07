@@ -1,16 +1,16 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 
 import SheltersContext from "../../data/context/shelters.context";
 
-function Shelters() {
-  const { shelters } = useContext(SheltersContext.store);
+import { ShelterDAO } from "../../interfaces/Shelter";
 
-  useEffect(() => {}, [shelters]);
+const Shelters: React.FC = () => {
+  const { shelters } = useContext(SheltersContext.store);
 
   return (
     <div>
       <h4>Lista schronisk</h4>
-      {shelters.map((shelter) => {
+      {shelters.map((shelter: ShelterDAO) => {
         return (
           <div key={shelter.name}>
             {shelter.city} : {shelter.name} (kontakt: <u>{shelter.tel}</u>)
@@ -19,6 +19,6 @@ function Shelters() {
       })}
     </div>
   );
-}
+};
 
 export default React.memo(Shelters);
