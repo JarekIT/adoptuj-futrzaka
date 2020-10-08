@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-burger-menu": "^2.6.2",
     "@types/react-places-autocomplete": "^7.2.6",
     "babel-eslint": "^10.1.0",
     "eslint-plugin-import": "^2.22.0",

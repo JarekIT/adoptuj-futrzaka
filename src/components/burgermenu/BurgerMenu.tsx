@@ -4,7 +4,7 @@ import { Link } from "@reach/router";
 import "./burger-menu.css";
 import FilterAnimals from "../options/FilterAnimals";
 
-const BurgerMenu = () => {
+const BurgerMenu: React.FC = () => {
   return (
     <Menu>
       <FilterAnimals />
