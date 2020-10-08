@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 
 import UserContext from "../../data/context/user.context";
 
-const FilterOptions = () => {
+import { UserDAO } from "../../interfaces/User";
+
+const FilterOptions: React.FC = () => {
   const { user, setUser } = useContext(UserContext.store);
 
-  const switchOption = (opt) => {
-    const newFilterOptionsInUser = { ...user };
+  const switchOption = (opt: string) => {
+    const newFilterOptionsInUser: UserDAO = { ...user };
 
     switch (opt) {
       case "CATS":
@@ -31,8 +33,8 @@ const FilterOptions = () => {
     console.log(user.filters);
   };
 
-  const switchRange = (newRange) => {
-    const newRangeInUser = { ...user };
+  const switchRange = (newRange: number) => {
+    const newRangeInUser: UserDAO = { ...user };
     newRangeInUser.filters.mapRange = newRange;
     setUser(newRangeInUser);
     console.log(`Nowy zasieg -> ${user.filters.mapRange / 1000}`);
