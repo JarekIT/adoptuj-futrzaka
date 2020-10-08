@@ -12,8 +12,8 @@ export interface UserDAO {
   id: string | null;
   likedAnimals: AnimalDAO[];
   location: {
-    lat: number | null;
-    lng: number | null;
+    lat: number;
+    lng: number;
     city: string | null;
     address: any | null;
   };

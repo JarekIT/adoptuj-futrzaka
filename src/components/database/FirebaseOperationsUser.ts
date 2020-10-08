@@ -21,8 +21,8 @@ const newNewUser = (
     nextAnimals: [],
     viewedAnimals: [],
     location: {
-      lat: null,
-      lng: null,
+      lat: 54.5188898,
+      lng: 18.5305409,
       city: null,
       address: null,
     },
@@ -56,8 +56,8 @@ export const prepareExistingUser = (
   if (loggedUser.viewedAnimals === undefined) loggedUser.viewedAnimals = [];
   if (loggedUser.location === undefined) {
     loggedUser.location = {
-      lat: null,
-      lng: null,
+      lat: 54.5188898,
+      lng: 18.5305409,
       city: null,
       address: null,
     };
