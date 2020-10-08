@@ -18,6 +18,7 @@
     "react-firebaseui": "^4.1.0",
     "react-places-autocomplete": "^7.3.0",
     "react-scripts": "3.4.1",
+    "typescript": "^4.0.3",
     "use-places-autocomplete": "^1.3.10"
   },
   "scripts": {
@@ -25,8 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier \"src/**/*.{js,html,jsx}\" --write",
-    "lint": "eslint \"src/**/*.{js,html,jsx}\"",
+    "format": "prettier \"src/**/*.{ts,tsx,js,html,jsx}\" --write",
+    "lint": "eslint \"src/**/*.{ts,tsx,js,html,jsx}\"",
     "dev": "parcel src/index.html"
   },
   "eslintConfig": {
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-places-autocomplete": "^7.2.6",
     "babel-eslint": "^10.1.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
