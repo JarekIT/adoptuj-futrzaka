@@ -1,6 +1,8 @@
 [{
   "id": null,
   "name": null,
+  "email": null,
+  "picture": null,
   "likedAnimals": [],
   "nextAnimals": [],
   "viewedAnimals": [],
