@@ -6,7 +6,9 @@ import LikedAnimalsShelterMap from "./LikedAnimalsSheltersMap/LikedAnimalsShelte
 import AnimalsContext from "../../data/context/animals.context";
 import UserContext from "../../data/context/user.context";
 
-const LikedAnimals = () => {
+import { AnimalDAO } from "../../interfaces/Animal";
+
+const LikedAnimals: React.FC = () => {
   const { animals } = useContext(AnimalsContext.store);
   const { user } = useContext(UserContext.store);
 
@@ -25,7 +27,7 @@ const LikedAnimals = () => {
                 : ""}
             </p>
 
-            {user.likedAnimals.map((animal) => (
+            {user.likedAnimals.map((animal: AnimalDAO) => (
               <LikedAnimal key={animal.id} animal={animal} />
             ))}
           </div>

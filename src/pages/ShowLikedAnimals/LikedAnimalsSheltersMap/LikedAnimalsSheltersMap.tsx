@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, Fragment } from "react";
 import {
   GoogleMap,
   useLoadScript,
@@ -11,15 +11,29 @@ import "@reach/combobox/styles.css";
 import SheltersContext from "../../../data/context/shelters.context";
 import UserContext from "../../../data/context/user.context";
 
+import { ShelterDAO } from "../../../interfaces/Shelter";
+import { AnimalDAO } from "../../../interfaces/Animal";
+
 require("dotenv").config();
 
-const LikedAnimalsShelterMap = () => {
+interface ILatLng {
+  lat: number;
+  lng: number;
+}
+
+interface IMarker extends ILatLng {
+  id: number;
+  name: string;
+  tel: string;
+}
+
+const LikedAnimalsShelterMap: React.FC = () => {
   const { shelters } = useContext(SheltersContext.store);
   const { user } = useContext(UserContext.store);
 
-  const [sheltersLatLng, setSheltersLatLng] = useState([]);
-  const [center, setCenter] = useState({ lat: 0, lng: 0 });
-  const [selected, setSelected] = useState(null);
+  const [sheltersLatLng, setSheltersLatLng] = useState<IMarker[]>([]);
+  const [center, setCenter] = useState<ILatLng>({ lat: 0, lng: 0 });
+  const [selected, setSelected] = useState<IMarker | null>(null);
 
   useEffect(() => {
     getLatLngFilteredShelters();
@@ -29,21 +43,21 @@ const LikedAnimalsShelterMap = () => {
     calculateCenterLatLng();
   }, [sheltersLatLng]);
 
-  const getLatLngFilteredShelters = () => {
-    const nonRepeatSheltersId = [];
-    const newSheltersLatLng = [...sheltersLatLng];
+  const getLatLngFilteredShelters: () => void = () => {
+    const nonRepeatSheltersId: number[] = [];
+    const newSheltersLatLng: IMarker[] = [...sheltersLatLng];
 
-    user.likedAnimals.map((animal) => {
+    user.likedAnimals.forEach((animal: AnimalDAO) => {
       if (!nonRepeatSheltersId.includes(animal.shelterId)) {
         nonRepeatSheltersId.push(animal.shelterId);
       }
-      return null;
     });
 
     console.log(shelters);
-    shelters.map((shelter) => {
+    shelters.forEach((shelter: ShelterDAO) => {
       if (nonRepeatSheltersId.includes(shelter.id)) {
-        const newMarker = {
+        const newMarker: IMarker = {
+          id: shelter.id,
           name: shelter.name,
           lat: shelter.lat,
           lng: shelter.lng,
@@ -51,25 +65,23 @@ const LikedAnimalsShelterMap = () => {
         };
         newSheltersLatLng.push(newMarker);
       }
-      return null;
     });
     setSheltersLatLng(newSheltersLatLng);
   };
 
-  const calculateCenterLatLng = () => {
-    let sumLat = 0;
-    let sumLng = 0;
+  const calculateCenterLatLng: () => void = () => {
+    let sumLat: number = 0;
+    let sumLng: number = 0;
 
-    sheltersLatLng.map((shelter) => {
+    sheltersLatLng.forEach((shelter: ILatLng) => {
       sumLat = Number(sumLat) + Number(shelter.lat);
       sumLng = Number(sumLng) + Number(shelter.lng);
-      return null;
     });
 
-    let newLat = Number(sumLat) / sheltersLatLng.length;
-    let newLng = Number(sumLng) / sheltersLatLng.length;
+    let newLat: number = Number(sumLat) / sheltersLatLng.length;
+    let newLng: number = Number(sumLng) / sheltersLatLng.length;
 
-    let newCenter = {
+    let newCenter: ILatLng = {
       lat: newLat,
       lng: newLng,
     };
@@ -99,8 +111,8 @@ const LikedAnimalsShelterMap = () => {
     mapRef.current = map;
   }, []);
 
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading Maps";
+  if (loadError) return <Fragment>"Error loading maps"</Fragment>;
+  if (!isLoaded) return <Fragment>"Loading Maps"</Fragment>;
 
   return (
     <div>
@@ -112,7 +124,7 @@ const LikedAnimalsShelterMap = () => {
         options={options}
         onLoad={onMapLoad}
       >
-        {sheltersLatLng.map((marker) => (
+        {sheltersLatLng.map((marker: IMarker) => (
           <Marker
             key={marker.id}
             position={{ lat: Number(marker.lat), lng: Number(marker.lng) }}
