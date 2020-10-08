@@ -1,14 +1,23 @@
 import React, { useEffect, useState, useContext } from "react";
+import { RouteComponentProps } from "@reach/router";
+
 import LikedAnimalShelterMap from "./LikedAnimalShelterMap/LikedAnimalShelterMap";
 import { getDistanceBetweenPoints } from "../LikeSystem/calculateDistance";
 
 import SheltersContext from "../../data/context/shelters.context";
 import AnimalsContext from "../../data/context/animals.context";
 import UserContext from "../../data/context/user.context";
+
 import { AnimalDAO } from "../../interfaces/Animal";
 import { ShelterDAO } from "../../interfaces/Shelter";
 
-const ShowAnimalDetails = ({ animalId }: { animalId: string }) => {
+interface ShowAnimalDetailsProps {
+  animalId: string;
+}
+
+const ShowAnimalDetails = ({
+  animalId,
+}: RouteComponentProps<ShowAnimalDetailsProps>) => {
   const [animal, setAnimal] = useState<AnimalDAO>({} as AnimalDAO);
   const [shelter, setShelter] = useState<ShelterDAO>({} as ShelterDAO);
   const [distance, setDistance] = useState<string>("(Wpisz swoją lokalizację)");
