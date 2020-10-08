@@ -1,7 +1,14 @@
 import isPointWithinRadius from "geolib/es/getDistance";
 
-export const haveIGotAnimalToWatch = (animals, user) => {
-  const haveNotIGotEmptyAnimals = () => {
+import { AnimalDAO } from "../../../interfaces/Animal";
+import { ShelterDAO } from "../../../interfaces/Shelter";
+import { UserDAO } from "../../../interfaces/User";
+
+export const haveIGotAnimalToWatch = (
+  animals: AnimalDAO[],
+  user: UserDAO
+): boolean => {
+  const haveNotIGotEmptyAnimals: () => AnimalDAO = () => {
     console.log(`Animals left ${animals.length} --->`);
     console.log(animals);
     console.log("Next Animal --->");
@@ -10,7 +17,7 @@ export const haveIGotAnimalToWatch = (animals, user) => {
   };
 
   const haveIGotEmptyViewedList = () => {
-    const haveNotISeenThatAnimal = () => {
+    const haveNotISeenThatAnimal: () => boolean = () => {
       return !user.viewedAnimals.includes(animals[0].id) ? true : false;
     };
 
@@ -20,13 +27,16 @@ export const haveIGotAnimalToWatch = (animals, user) => {
   return haveNotIGotEmptyAnimals() && haveIGotEmptyViewedList();
 };
 
-export function getFilteredAnimal(animals, user) {
+export function getFilteredAnimal(
+  animals: AnimalDAO[],
+  user: UserDAO
+): false | AnimalDAO {
   if (!haveIGotAnimalToWatch(animals, user)) {
     return false;
   }
 
-  let i = 0;
-  const haveNotISeenThatAnimal = (i) => {
+  let i: number = 0;
+  const haveNotISeenThatAnimal: (i: number) => boolean = (i: number) => {
     return user.viewedAnimals.includes(animals[i].id) ? true : false;
   };
 
@@ -43,28 +53,42 @@ export function getFilteredAnimal(animals, user) {
   return animals[i];
 }
 
-export const filterAllAnimals = ({
+type MapSheltersType = Record<number, ShelterDAO>;
+
+interface FilterAllAnimalsProps {
+  allAnimals: AnimalDAO[];
+  user: UserDAO;
+  setAnimals: React.Dispatch<React.SetStateAction<AnimalDAO[]>>;
+  shelters: ShelterDAO[];
+}
+
+export const filterAllAnimals: ({
+  allAnimals,
+  user,
+  setAnimals,
+  shelters,
+}: FilterAllAnimalsProps) => void = ({
   allAnimals,
   user,
   setAnimals,
   shelters,
 }) => {
   console.log("Filtruje nowe ustawienia ;)");
-  let newAnimals = [];
+  let newAnimals: AnimalDAO[] = [];
 
-  let mapShelters = {};
-  shelters.forEach((shelter) => {
+  let mapShelters: MapSheltersType = {};
+  shelters.forEach((shelter: ShelterDAO) => {
     mapShelters[shelter.id] = shelter;
   });
   console.log(mapShelters);
 
   console.log("....... wszystkie zwierzeta do przefiltrowania");
   console.log(allAnimals);
-  allAnimals.map((animal) => {
-    function filterDistance() {
+  allAnimals.forEach((animal: AnimalDAO) => {
+    function filterDistance(): boolean {
       if (user.location.lat === null) return true;
 
-      const point = {
+      const point: { latitude: number; longitude: number } = {
         latitude: mapShelters[animal.shelterId].lat,
         longitude: mapShelters[animal.shelterId].lng,
       };
@@ -72,19 +96,23 @@ export const filterAllAnimals = ({
         latitude: user.location.lat,
         longitude: user.location.lng,
       };
-      const distanceToShelter = isPointWithinRadius(point, centerPoint, 1000);
+      const distanceToShelter: number = isPointWithinRadius(
+        point,
+        centerPoint,
+        1000
+      );
       console.log(distanceToShelter);
       return distanceToShelter <= user.filters.mapRange;
     }
 
-    function filterType() {
+    function filterType(): boolean {
       return (user.filters.viewCats && animal.type === "cat") ||
         (user.filters.viewDogs && animal.type === "dog")
         ? true
         : false;
     }
 
-    function filterGender() {
+    function filterGender(): boolean {
       return (user.filters.viewFemales && animal.gender === "samica") ||
         (user.filters.viewMales && animal.gender === "samiec")
         ? true

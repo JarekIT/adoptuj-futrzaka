@@ -1,6 +1,8 @@
 import React from "react";
 
-const Like = ({ animal, modifySuperficialChoices }) => {
+import { ActionProps } from "../Actions";
+
+const Like: React.FC<ActionProps> = ({ animal, modifySuperficialChoices }) => {
   return (
     <button
       type="button"

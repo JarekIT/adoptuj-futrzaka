@@ -1,6 +1,6 @@
-import React, { useEffect, useContext } from "react";
-import ShowLikedAnimals from "../ShowLikedAnimals/ShowLikedAnimals.jsx";
-import Animal from "./Animal";
+import React, { useEffect, useContext, Fragment } from "react";
+import ShowLikedAnimals from "../ShowLikedAnimals/ShowLikedAnimals";
+import Animal from "./Animal/Animal";
 import { getFilteredAnimal } from "./filters/filter";
 import { updateUser } from "../../components/database/FirebaseOperationsUser";
 import { loadAllAnimals } from "../../components/database/FirebaseOperationsAnimals";
@@ -10,15 +10,17 @@ import SheltersContext from "../../data/context/shelters.context";
 import AnimalsContext from "../../data/context/animals.context";
 import UserContext from "../../data/context/user.context";
 
+import { AnimalDAO } from "../../interfaces/Animal";
+import { UserDAO } from "../../interfaces/User.js";
+
 function LikeSystem() {
   const { shelters } = useContext(SheltersContext.store);
-  const { animals, setAnimals, allAnimals, setAllAnimals } = useContext(
-    AnimalsContext.store
-  );
+  const { animals, setAnimals } = useContext(AnimalsContext.store);
+  const { allAnimals, setAllAnimals } = useContext(AnimalsContext.store);
   const { user, setUser } = useContext(UserContext.store);
 
   useEffect(() => {
-    loadAllAnimals({ setAllAnimals, setAnimals });
+    loadAllAnimals(setAllAnimals, setAnimals);
   }, []);
 
   useEffect(() => {
@@ -31,12 +33,15 @@ function LikeSystem() {
     shuffleArray(animals);
   }, [animals]);
 
-  const removedAnimalFromDataSrc = (animalSource, animalId) =>
-    animalSource.filter((animal) => animal.id !== animalId);
+  const removedAnimalFromDataSrc = (
+    animalSource: AnimalDAO[],
+    animalId: number
+  ): AnimalDAO[] =>
+    animalSource.filter((animal: AnimalDAO) => animal.id !== animalId);
 
-  const modifySuperficialChoices = (animal, action) => {
-    const newUser = { ...user };
-    const animalId = animal.id;
+  const modifySuperficialChoices = (animal: AnimalDAO, action: string) => {
+    const newUser: UserDAO = { ...user };
+    const animalId: number = animal.id;
 
     switch (action) {
       case "ADD_TO_LIKED_USER":
@@ -55,8 +60,9 @@ function LikeSystem() {
         break;
       case "REWIND":
         if (user.nextAnimals.length > 0) {
-          const newAnimals = [...animals];
-          const lastAnimal = user.nextAnimals[user.nextAnimals.length - 1];
+          const newAnimals: AnimalDAO[] = [...animals];
+          const lastAnimal: AnimalDAO =
+            user.nextAnimals[user.nextAnimals.length - 1];
           newUser.nextAnimals.pop();
           newUser.viewedAnimals.pop();
           newAnimals.unshift(lastAnimal);
@@ -76,25 +82,25 @@ function LikeSystem() {
     if (user.id !== null) updateUser(newUser);
   };
 
-  const shuffleArray = (array) => {
+  const shuffleArray = (array: AnimalDAO[]): void => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
   };
 
-  const nextAnimal = getFilteredAnimal(animals, user, setUser);
+  const nextAnimal: AnimalDAO | boolean = getFilteredAnimal(animals, user);
 
   return (
     <div>
       {nextAnimal ? (
-        <>
+        <Fragment>
           <Animal
             key={nextAnimal.id}
             animal={nextAnimal}
             modifySuperficialChoices={modifySuperficialChoices}
           />
-        </>
+        </Fragment>
       ) : (
         <ShowLikedAnimals />
       )}

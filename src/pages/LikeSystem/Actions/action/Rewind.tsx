@@ -1,6 +1,11 @@
 import React from "react";
 
-const Rewind = ({ animal, modifySuperficialChoices }) => {
+import { ActionProps } from "../Actions";
+
+const Rewind: React.FC<ActionProps> = ({
+  animal,
+  modifySuperficialChoices,
+}) => {
   return (
     <button
       type="button"

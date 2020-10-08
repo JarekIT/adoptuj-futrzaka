@@ -1,25 +1,33 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import Actions from "./Actions";
-import { getDistanceBetweenPoints } from "./calculateDistance";
+import Actions from "../Actions/Actions";
+import { getDistanceBetweenPoints } from "../calculateDistance";
 
-import SheltersContext from "../../data/context/shelters.context";
-import UserContext from "../../data/context/user.context";
+import SheltersContext from "../../../data/context/shelters.context";
+import UserContext from "../../../data/context/user.context";
 
-const Animal = ({ animal, modifySuperficialChoices }) => {
+import { AnimalDAO } from "../../../interfaces/Animal";
+import { ShelterDAO } from "../../../interfaces/Shelter";
+
+interface AnimalProps {
+  animal: AnimalDAO;
+  modifySuperficialChoices: (animal: AnimalDAO, action: string) => void;
+}
+
+const Animal = ({ animal, modifySuperficialChoices }: AnimalProps) => {
   const { shelters } = useContext(SheltersContext.store);
   const { user } = useContext(UserContext.store);
 
-  const { name, age, image, gender } = animal;
-  const [distance, setDistance] = useState("(Wpisz swoją lokalizację)");
-  const [shelter, setShelter] = useState({});
+  const { name, age, image, gender }: AnimalDAO = animal;
+  const [distance, setDistance] = useState<string>("(Wpisz swoją lokalizację)");
+  const [shelter, setShelter] = useState<ShelterDAO>({} as ShelterDAO);
 
   useEffect(() => {
     setShelterByAnimalId();
   }, []);
 
   const setShelterByAnimalId = () => {
-    shelters.forEach((oneShelter) => {
+    shelters.forEach((oneShelter: ShelterDAO) => {
       if (oneShelter.id === animal.shelterId) {
         const newDistance = getDistanceBetweenPoints(user, oneShelter);
         setShelter(oneShelter);
