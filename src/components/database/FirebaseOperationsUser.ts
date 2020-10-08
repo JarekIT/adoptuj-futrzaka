@@ -1,13 +1,22 @@
 import firebase from "./firebase";
 
-const database = firebase.database();
+import { UserDAO } from "../../interfaces/User";
 
-const anonymousLogin = (setUser) => {
-  const newUser = {
-    id: null,
-    name: "anonimie",
-    email: null,
-    picture: null,
+type setUserType = React.Dispatch<React.SetStateAction<UserDAO>>;
+
+const database: firebase.database.Database = firebase.database();
+
+const newNewUser = (
+  id: string | null,
+  name: string | null,
+  email: string | null,
+  picture: string | null
+): UserDAO => {
+  return {
+    id: id,
+    name: name,
+    email: email,
+    picture: picture,
     likedAnimals: [],
     nextAnimals: [],
     viewedAnimals: [],
@@ -25,16 +34,23 @@ const anonymousLogin = (setUser) => {
       mapRange: 100000,
     },
   };
+};
+
+export const anonymousLogin = (setUser: setUserType): void => {
+  const newUser: UserDAO = newNewUser(null, "anonimie", null, null);
   setUser(newUser);
 };
 
-const updateUser = async (newUser) => {
+export const updateUser = async (newUser: UserDAO): Promise<void> => {
   await database.ref(`users/${newUser.id}`).set({
     user: newUser,
   });
 };
 
-const prepareExistingUser = ({ loggedUser, setUser }) => {
+export const prepareExistingUser = (
+  loggedUser: UserDAO,
+  setUser: setUserType
+): void => {
   if (loggedUser.likedAnimals === undefined) loggedUser.likedAnimals = [];
   if (loggedUser.nextAnimals === undefined) loggedUser.nextAnimals = [];
   if (loggedUser.viewedAnimals === undefined) loggedUser.viewedAnimals = [];
@@ -58,29 +74,16 @@ const prepareExistingUser = ({ loggedUser, setUser }) => {
   setUser(loggedUser);
 };
 
-const createNewUser = async ({ fireUser, setUser }) => {
-  const newUser = {
-    id: fireUser.uid,
-    name: fireUser.displayName,
-    email: fireUser.email,
-    picture: fireUser.photoURL,
-    likedAnimals: [],
-    nextAnimals: [],
-    viewedAnimals: [],
-    location: {
-      lat: null,
-      lng: null,
-      city: null,
-      address: null,
-    },
-    filters: {
-      viewCats: true,
-      viewDogs: true,
-      viewMales: true,
-      viewFemales: true,
-      mapRange: 100000,
-    },
-  };
+export const createNewUser = async (
+  fireUser: firebase.User,
+  setUser: setUserType
+): Promise<void> => {
+  const newUser: UserDAO = newNewUser(
+    fireUser.uid,
+    fireUser.displayName,
+    fireUser.email,
+    fireUser.photoURL
+  );
   setUser(newUser);
 
   await database.ref(`users/${newUser.id}`).set({
@@ -88,22 +91,17 @@ const createNewUser = async ({ fireUser, setUser }) => {
   });
 };
 
-const loadUser = async (fireUser, setUser) => {
+export const loadUser = async (
+  fireUser: firebase.User,
+  setUser: setUserType
+): Promise<void> => {
   await database
     .ref(`users/${fireUser.uid}`)
     .once("value")
-    .then(function (snapshot) {
+    .then(function (snapshot: firebase.database.DataSnapshot) {
       var loggedUser = snapshot.val() ? snapshot.val().user : "New User";
       loggedUser === "New User"
-        ? createNewUser({ fireUser, setUser })
-        : prepareExistingUser({ loggedUser, setUser });
+        ? createNewUser(fireUser, setUser)
+        : prepareExistingUser(loggedUser, setUser);
     });
-};
-
-export {
-  anonymousLogin,
-  updateUser,
-  prepareExistingUser,
-  createNewUser,
-  loadUser,
 };
