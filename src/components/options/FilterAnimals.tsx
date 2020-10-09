@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 
-import UserContext from "../../data/context/user.context";
+import { Store } from "../../data/store/Store";
 
 import { UserDAO } from "../../interfaces/User";
 
 const FilterOptions: React.FC = () => {
-  const { user, setUser } = useContext(UserContext.store);
+  const { state, dispatch } = useContext(Store);
+  const { user } = state;
 
   const switchOption = (opt: string) => {
     const newFilterOptionsInUser: UserDAO = { ...user };
@@ -27,7 +28,10 @@ const FilterOptions: React.FC = () => {
         break;
     }
 
-    setUser(newFilterOptionsInUser);
+    dispatch({
+      action: "MODIFY_USER",
+      payload: newFilterOptionsInUser,
+    });
 
     console.log("Nowe options");
     console.log(user.filters);
@@ -36,7 +40,10 @@ const FilterOptions: React.FC = () => {
   const switchRange = (newRange: number) => {
     const newRangeInUser: UserDAO = { ...user };
     newRangeInUser.filters.mapRange = newRange;
-    setUser(newRangeInUser);
+    dispatch({
+      action: "MODIFY_USER",
+      payload: newRangeInUser,
+    });
     console.log(`Nowy zasieg -> ${user.filters.mapRange / 1000}`);
   };
 

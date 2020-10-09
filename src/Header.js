@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { Link } from "@reach/router";
 import "./App.css";
 
-import UserContext from "./data/context/user.context";
+import { Store } from "./data/store/Store";
 
 const Header = () => {
-  const { user } = useContext(UserContext.store);
+  const { state } = useContext(Store);
+  const { user } = state;
 
   return (
     <header>
