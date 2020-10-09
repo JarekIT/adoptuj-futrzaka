@@ -15,3 +15,8 @@ export interface IAction {
   type: string;
   payload: any;
 }
+
+export interface IStore {
+    state: IState;
+    dispatch: React.Dispatch<IAction>;
+}

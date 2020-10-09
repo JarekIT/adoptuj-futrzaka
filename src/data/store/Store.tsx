@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IState, IAction } from "../../interfaces/Store";
+import { IState, IAction, IStore } from "../../interfaces/Store";
 
 import databaseAnimals from "../mocks/databaseAnimals.json";
 import mockData from "../mocks/databaseShelters";
@@ -13,7 +13,7 @@ export const initialState: IState = {
   user: databaseUsers[0],
 };
 
-export const Store = React.createContext<IState | any>(initialState);
+export const Store = React.createContext<IStore>({} as IStore);
 
 console.log(Store);
 
