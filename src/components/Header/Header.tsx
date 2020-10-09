@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "@reach/router";
-import "./App.css";
+import "../../App.css";
 
-import { Store } from "./data/store/Store";
+import { Store } from "../../data/store/Store";
 
 const Header = () => {
   const { state } = useContext(Store);
