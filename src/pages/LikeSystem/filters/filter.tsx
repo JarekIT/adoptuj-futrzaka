@@ -62,17 +62,17 @@ interface FilterAllAnimalsProps {
   shelters: ShelterDAO[];
 }
 
-export const filterAllAnimals: ({
+interface ILatLng {
+  latitude: number;
+  longitude: number;
+}
+
+export const filterAllAnimals = ({
   allAnimals,
   user,
   setAnimals,
   shelters,
-}: FilterAllAnimalsProps) => void = ({
-  allAnimals,
-  user,
-  setAnimals,
-  shelters,
-}) => {
+}: FilterAllAnimalsProps): void => {
   console.log("Filtruje nowe ustawienia ;)");
   let newAnimals: AnimalDAO[] = [];
 
@@ -88,11 +88,11 @@ export const filterAllAnimals: ({
     function filterDistance(): boolean {
       if (user.location.lat === null) return true;
 
-      const point: { latitude: number; longitude: number } = {
+      const point: ILatLng = {
         latitude: mapShelters[animal.shelterId].lat,
         longitude: mapShelters[animal.shelterId].lng,
       };
-      const centerPoint = {
+      const centerPoint: ILatLng = {
         latitude: user.location.lat,
         longitude: user.location.lng,
       };
