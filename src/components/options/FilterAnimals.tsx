@@ -29,7 +29,7 @@ const FilterOptions: React.FC = () => {
     }
 
     dispatch({
-      action: "MODIFY_USER",
+      type: "MODIFY_USER",
       payload: newFilterOptionsInUser,
     });
 
@@ -41,7 +41,7 @@ const FilterOptions: React.FC = () => {
     const newRangeInUser: UserDAO = { ...user };
     newRangeInUser.filters.mapRange = newRange;
     dispatch({
-      action: "MODIFY_USER",
+      type: "MODIFY_USER",
       payload: newRangeInUser,
     });
     console.log(`Nowy zasieg -> ${user.filters.mapRange / 1000}`);

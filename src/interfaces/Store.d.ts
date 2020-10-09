@@ -1,6 +1,6 @@
-import { AnimalDAO } from "../../interfaces/Animal";
-import { ShelterDAO } from "../../interfaces/Shelter";
-import { UserDAO } from "../../interfaces/User";
+import { AnimalDAO } from "./Animal";
+import { ShelterDAO } from "./Shelter";
+import { UserDAO } from "./User";
 
 export type Dispatch = React.Dispatch<IAction>;
 
