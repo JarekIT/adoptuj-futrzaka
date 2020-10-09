@@ -5,7 +5,7 @@ export function getDistanceBetweenPoints(
   user: UserDAO,
   shelter: ShelterDAO
 ): string {
-  if (user.location.lat == null) {
+  if (user.location.city == null) {
     return "(Wpisz swoją lokalizację)";
   }
 
