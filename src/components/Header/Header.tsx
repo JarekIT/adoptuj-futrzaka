@@ -38,7 +38,7 @@ const Header = () => {
         <Link to="/">
           <button type="button">
             {user.picture ? (
-              <img src={user.picture} alt={user.name} />
+              <img src={user.picture} alt="Zdjecie" />
             ) : (
               <img src="/images/misc/user.png" alt="Login" />
             )}
