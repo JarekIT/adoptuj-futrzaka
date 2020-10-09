@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 
-import SheltersContext from "../../data/context/shelters.context";
+import { Store } from "../../data/store/Store";
 
 import { ShelterDAO } from "../../interfaces/Shelter";
 
 const Shelters: React.FC = () => {
-  const { shelters } = useContext(SheltersContext.store);
+  const { state } = useContext(Store);
+  const { shelters } = state;
 
   return (
     <div>

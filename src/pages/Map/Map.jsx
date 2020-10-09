@@ -20,14 +20,13 @@ import "@reach/combobox/styles.css";
 import "./map.css";
 import Shelters from "../Shelters/Shelters";
 
-import SheltersContext from "../../data/context/shelters.context";
-import UserContext from "../../data/context/user.context";
+import { Store } from "../../data/store/Store";
 
 require("dotenv").config();
 
 function Map() {
-  const { shelters } = useContext(SheltersContext.store);
-  const { user } = useContext(UserContext.store);
+  const { state } = useContext(Store);
+  const { shelters, user } = state;
 
   const libraries = ["places"];
   const mapContainerStyle = {

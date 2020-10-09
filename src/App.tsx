@@ -18,9 +18,7 @@ import AddShelter from "./pages/AddShelter/AddShelter";
 import AddAnimal from "./pages/AddAnimal/AddAnimal";
 import GeneratedRandomAnimal from "./pages/AddAnimal/GeneratedRandomAnimal/GeneratedRandomAnimal";
 
-import SheltersContext from "./data/context/shelters.context";
-import AnimalsContext from "./data/context/animals.context";
-import UserContext from "./data/context/user.context";
+import { StoreProvider } from "./data/store/Store";
 
 const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
@@ -29,45 +27,35 @@ const RouterPage = (
 function App(): JSX.Element {
   return (
     <React.StrictMode>
-      <SheltersContext.SheltersProvider>
-        <AnimalsContext.AnimalsProvider>
-          <UserContext.UserProvider>
-            <React.Fragment>
-              <BurgerMenu />
-              <div className="app">
-                <Header />
+      <StoreProvider>
+        <React.Fragment>
+          <BurgerMenu />
+          <div className="app">
+            <Header />
 
-                <Router>
-                  <RouterPage pageComponent={<Main />} path="/" />
-                  <RouterPage pageComponent={<LikeSystem />} path="/find" />
-                  <RouterPage
-                    pageComponent={<ShowLikedAnimals />}
-                    path="/found"
-                  />
-                  <RouterPage pageComponent={<Map />} path="/map" />
-                  <RouterPage pageComponent={<Shelters />} path="/list" />
-                  <RouterPage
-                    pageComponent={<FilterAnimals />}
-                    path="/options"
-                  />
-                  <RouterPage
-                    pageComponent={<ShowAnimalDetails />}
-                    path="/details/:animalId"
-                  />
+            <Router>
+              <RouterPage pageComponent={<Main />} path="/" />
+              <RouterPage pageComponent={<LikeSystem />} path="/find" />
+              <RouterPage pageComponent={<ShowLikedAnimals />} path="/found" />
+              <RouterPage pageComponent={<Map />} path="/map" />
+              <RouterPage pageComponent={<Shelters />} path="/list" />
+              <RouterPage pageComponent={<FilterAnimals />} path="/options" />
+              <RouterPage
+                pageComponent={<ShowAnimalDetails />}
+                path="/details/:animalId"
+              />
 
-                  {/* for admin */}
-                  <RouterPage pageComponent={<AddShelter />} path="/add" />
-                  <RouterPage pageComponent={<AddAnimal />} path="/addanimal" />
-                  <RouterPage
-                    pageComponent={<GeneratedRandomAnimal />}
-                    path="/generateanimal"
-                  />
-                </Router>
-              </div>
-            </React.Fragment>
-          </UserContext.UserProvider>
-        </AnimalsContext.AnimalsProvider>
-      </SheltersContext.SheltersProvider>
+              {/* for admin */}
+              <RouterPage pageComponent={<AddShelter />} path="/add" />
+              <RouterPage pageComponent={<AddAnimal />} path="/addanimal" />
+              <RouterPage
+                pageComponent={<GeneratedRandomAnimal />}
+                path="/generateanimal"
+              />
+            </Router>
+          </div>
+        </React.Fragment>
+      </StoreProvider>
     </React.StrictMode>
   );
 }

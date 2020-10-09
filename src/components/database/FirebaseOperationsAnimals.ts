@@ -1,17 +1,13 @@
 import firebase from "./firebase";
 
 import { AnimalDAO } from "../../interfaces/Animal";
-
-type setAnimalsType = React.Dispatch<React.SetStateAction<AnimalDAO[]>>;
+import { Dispatch } from "../../interfaces/Store";
 
 interface IDoc {
   data: () => AnimalDAO;
 }
 
-export const loadAllAnimals = async (
-  setAllAnimals: setAnimalsType,
-  setAnimals: setAnimalsType
-): Promise<void> => {
+export const loadAllAnimals = async (dispatch: Dispatch): Promise<void> => {
   await firebase
     .firestore()
     .collection("Animal")
@@ -21,7 +17,10 @@ export const loadAllAnimals = async (
       querySnapshot.docs.forEach((doc: IDoc) => {
         newAllAnimals.push(doc.data());
       });
-      setAllAnimals(newAllAnimals);
-      setAnimals(newAllAnimals);
+
+      dispatch({
+        type: "FETCH_DATA_ANIMALS",
+        payload: newAllAnimals,
+      });
     });
 };

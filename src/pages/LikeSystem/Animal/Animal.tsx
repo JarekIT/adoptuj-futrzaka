@@ -3,8 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Actions from "../Actions/Actions";
 import { getDistanceBetweenPoints } from "../calculateDistance";
 
-import SheltersContext from "../../../data/context/shelters.context";
-import UserContext from "../../../data/context/user.context";
+import { Store } from "../../../data/store/Store";
 
 import { AnimalDAO } from "../../../interfaces/Animal";
 import { ShelterDAO } from "../../../interfaces/Shelter";
@@ -15,8 +14,8 @@ interface AnimalProps {
 }
 
 const Animal = ({ animal, modifySuperficialChoices }: AnimalProps) => {
-  const { shelters } = useContext(SheltersContext.store);
-  const { user } = useContext(UserContext.store);
+  const { state } = useContext(Store);
+  const { shelters, user } = state;
 
   const { name, age, image, gender }: AnimalDAO = animal;
   const [distance, setDistance] = useState<string>("(Wpisz swoją lokalizację)");

@@ -2,12 +2,11 @@ import isPointWithinRadius from "geolib/es/getDistance";
 
 import { AnimalDAO } from "../../../interfaces/Animal";
 import { ShelterDAO } from "../../../interfaces/Shelter";
-import { UserDAO } from "../../../interfaces/User";
+import { Dispatch, IState } from "../../../interfaces/Store";
 
-export const haveIGotAnimalToWatch = (
-  animals: AnimalDAO[],
-  user: UserDAO
-): boolean => {
+const haveIGotAnimalToWatch = (state: IState): boolean => {
+  const { animals, user } = state;
+
   const haveNotIGotEmptyAnimals: () => AnimalDAO = () => {
     console.log(`Animals left ${animals.length} --->`);
     console.log(animals);
@@ -27,11 +26,10 @@ export const haveIGotAnimalToWatch = (
   return haveNotIGotEmptyAnimals() && haveIGotEmptyViewedList();
 };
 
-export function getFilteredAnimal(
-  animals: AnimalDAO[],
-  user: UserDAO
-): false | AnimalDAO {
-  if (!haveIGotAnimalToWatch(animals, user)) {
+export function getFilteredAnimal(state: IState): false | AnimalDAO {
+  const { animals, user } = state;
+
+  if (!haveIGotAnimalToWatch(state)) {
     return false;
   }
 
@@ -55,24 +53,14 @@ export function getFilteredAnimal(
 
 type MapSheltersType = Record<number, ShelterDAO>;
 
-interface FilterAllAnimalsProps {
-  allAnimals: AnimalDAO[];
-  user: UserDAO;
-  setAnimals: React.Dispatch<React.SetStateAction<AnimalDAO[]>>;
-  shelters: ShelterDAO[];
-}
-
 interface ILatLng {
   latitude: number;
   longitude: number;
 }
 
-export const filterAllAnimals = ({
-  allAnimals,
-  user,
-  setAnimals,
-  shelters,
-}: FilterAllAnimalsProps): void => {
+export const filterAllAnimals = (state: IState, dispatch: Dispatch): void => {
+  const { shelters, allAnimals, user } = state;
+
   console.log("Filtruje nowe ustawienia ;)");
   let newAnimals: AnimalDAO[] = [];
 
@@ -125,6 +113,10 @@ export const filterAllAnimals = ({
   });
 
   console.log("....... nowo przefiltrowane zwierzeta");
-  setAnimals(newAnimals);
+
+  dispatch({
+    type: "MODIFY_ANIMALS",
+    payload: newAnimals,
+  });
   console.log(newAnimals);
 };

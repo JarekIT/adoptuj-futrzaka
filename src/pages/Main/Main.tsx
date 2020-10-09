@@ -4,10 +4,13 @@ import { Link } from "@reach/router";
 import Login from "../../components/login/Login";
 import FilterAnimals from "../../components/options/FilterAnimals";
 
-import UserContext from "../../data/context/user.context";
+import { Store } from "../../data/store/Store";
 
 const Main: React.FC = () => {
-  const { user } = useContext(UserContext.store);
+  const { state } = useContext(Store);
+  const { user } = state;
+
+  console.log(state);
 
   return (
     <div className="app">

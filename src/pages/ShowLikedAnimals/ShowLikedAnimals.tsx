@@ -3,14 +3,13 @@ import React, { useContext } from "react";
 import LikedAnimal from "./LikedAnimal/LikedAnimal";
 import LikedAnimalsShelterMap from "./LikedAnimalsSheltersMap/LikedAnimalsSheltersMap";
 
-import AnimalsContext from "../../data/context/animals.context";
-import UserContext from "../../data/context/user.context";
+import { Store } from "../../data/store/Store";
 
 import { AnimalDAO } from "../../interfaces/Animal";
 
 const LikedAnimals: React.FC = () => {
-  const { animals } = useContext(AnimalsContext.store);
-  const { user } = useContext(UserContext.store);
+  const { state } = useContext(Store);
+  const { animals, user } = state;
 
   return (
     <div className="app">

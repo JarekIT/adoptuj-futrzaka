@@ -8,8 +8,7 @@ import {
 
 import "@reach/combobox/styles.css";
 
-import SheltersContext from "../../../data/context/shelters.context";
-import UserContext from "../../../data/context/user.context";
+import { Store } from "../../../data/store/Store";
 
 import { ShelterDAO } from "../../../interfaces/Shelter";
 import { AnimalDAO } from "../../../interfaces/Animal";
@@ -28,8 +27,8 @@ interface IMarker extends ILatLng {
 }
 
 const LikedAnimalsShelterMap: React.FC = () => {
-  const { shelters } = useContext(SheltersContext.store);
-  const { user } = useContext(UserContext.store);
+  const { state } = useContext(Store);
+  const { shelters, user } = state;
 
   const [sheltersLatLng, setSheltersLatLng] = useState<IMarker[]>([]);
   const [center, setCenter] = useState<ILatLng>({

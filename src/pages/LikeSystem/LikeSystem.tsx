@@ -6,27 +6,22 @@ import { updateUser } from "../../components/database/FirebaseOperationsUser";
 import { loadAllAnimals } from "../../components/database/FirebaseOperationsAnimals";
 import { filterAllAnimals } from "./filters/filter";
 
-import SheltersContext from "../../data/context/shelters.context";
-import AnimalsContext from "../../data/context/animals.context";
-import UserContext from "../../data/context/user.context";
-
 import { AnimalDAO } from "../../interfaces/Animal";
 import { UserDAO } from "../../interfaces/User.js";
+import { Store } from "../../data/store/Store";
 
 function LikeSystem() {
-  const { shelters } = useContext(SheltersContext.store);
-  const { animals, setAnimals } = useContext(AnimalsContext.store);
-  const { allAnimals, setAllAnimals } = useContext(AnimalsContext.store);
-  const { user, setUser } = useContext(UserContext.store);
+  const { state, dispatch } = useContext(Store);
+  const { animals, user } = state;
 
   useEffect(() => {
-    loadAllAnimals(setAllAnimals, setAnimals);
+    loadAllAnimals(dispatch);
   }, []);
 
   useEffect(() => {
     console.log("nowe filtry !!!!");
     console.log(user);
-    filterAllAnimals({ allAnimals, user, setAnimals, shelters });
+    filterAllAnimals(state, dispatch);
   }, [user]);
 
   useEffect(() => {
@@ -48,14 +43,20 @@ function LikeSystem() {
         if (!user.likedAnimals.includes(animal)) {
           newUser.likedAnimals.push(animal);
           newUser.viewedAnimals.push(animalId);
-          setAnimals(removedAnimalFromDataSrc(animals, animalId));
+          dispatch({
+            type: "MODIFY_ANIMALS",
+            payload: removedAnimalFromDataSrc(animals, animalId),
+          });
         }
         break;
       case "ADD_TO_NEXT_USER":
         if (!user.nextAnimals.includes(animal)) {
           newUser.nextAnimals.push(animal);
           newUser.viewedAnimals.push(animalId);
-          setAnimals(removedAnimalFromDataSrc(animals, animalId));
+          dispatch({
+            type: "MODIFY_ANIMALS",
+            payload: removedAnimalFromDataSrc(animals, animalId),
+          });
         }
         break;
       case "REWIND":
@@ -66,7 +67,10 @@ function LikeSystem() {
           newUser.nextAnimals.pop();
           newUser.viewedAnimals.pop();
           newAnimals.unshift(lastAnimal);
-          setAnimals(newAnimals);
+          dispatch({
+            type: "MODIFY_ANIMALS",
+            payload: removedAnimalFromDataSrc(animals, animalId),
+          });
         }
         break;
       default:
@@ -78,7 +82,10 @@ function LikeSystem() {
     console.log("User  details:");
     console.log(user);
 
-    setUser(newUser);
+    dispatch({
+      type: "MODIFY_USER",
+      payload: newUser,
+    });
     if (user.id !== null) updateUser(newUser);
   };
 
@@ -89,7 +96,7 @@ function LikeSystem() {
     }
   };
 
-  const nextAnimal: AnimalDAO | boolean = getFilteredAnimal(animals, user);
+  const nextAnimal: AnimalDAO | boolean = getFilteredAnimal(state);
 
   return (
     <div>

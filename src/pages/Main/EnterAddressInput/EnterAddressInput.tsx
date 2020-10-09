@@ -7,11 +7,14 @@ import PlacesAutocomplete, {
 import "@reach/combobox/styles.css";
 import { updateUser } from "../../../components/database/FirebaseOperationsUser";
 
-import UserContext from "../../../data/context/user.context";
+import { Store } from "../../../data/store/Store";
+
 import { UserDAO } from "../../../interfaces/User";
 
 const EnterAddressInput: React.FC = () => {
-  const { user, setUser } = useContext(UserContext.store);
+  const { state, dispatch } = useContext(Store);
+  const { user } = state;
+
   const [address, setAddress] = React.useState<string>("");
 
   const handleSelect: (value: string) => Promise<void> = async (
@@ -26,7 +29,11 @@ const EnterAddressInput: React.FC = () => {
     newUserDetails.location.lng = latLng.lng;
     newUserDetails.location.city = results[0].formatted_address;
     newUserDetails.location.address = results[0].address_components;
-    setUser(newUserDetails);
+
+    dispatch({
+      type: "MODIFY_USER",
+      payload: newUserDetails,
+    });
 
     if (user.id !== null) updateUser(newUserDetails);
   };
