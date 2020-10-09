@@ -40,10 +40,11 @@ function App(): JSX.Element {
               <RouterPage pageComponent={<Map />} path="/map" />
               <RouterPage pageComponent={<Shelters />} path="/list" />
               <RouterPage pageComponent={<FilterAnimals />} path="/options" />
-              <RouterPage
+              {/* <RouterPage
                 pageComponent={<ShowAnimalDetails />}
                 path="/details/:animalId"
-              />
+              /> */}
+              <ShowAnimalDetails path="/details/:animalId" />
 
               {/* for admin */}
               <RouterPage pageComponent={<AddShelter />} path="/add" />
