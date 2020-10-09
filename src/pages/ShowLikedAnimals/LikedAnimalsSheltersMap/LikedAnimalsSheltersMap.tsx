@@ -32,7 +32,10 @@ const LikedAnimalsShelterMap: React.FC = () => {
   const { user } = useContext(UserContext.store);
 
   const [sheltersLatLng, setSheltersLatLng] = useState<IMarker[]>([]);
-  const [center, setCenter] = useState<ILatLng>({ lat: 0, lng: 0 });
+  const [center, setCenter] = useState<ILatLng>({
+    lat: 54.5188898,
+    lng: 18.5305409,
+  });
   const [selected, setSelected] = useState<IMarker | null>(null);
 
   useEffect(() => {
