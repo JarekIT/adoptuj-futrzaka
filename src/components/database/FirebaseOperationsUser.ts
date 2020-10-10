@@ -1,8 +1,7 @@
 import firebase from "./firebase";
 
 import { UserDAO } from "../../interfaces/User";
-
-type setUserType = React.Dispatch<React.SetStateAction<UserDAO>>;
+import { Dispatch } from "../../interfaces/Store";
 
 const database: firebase.database.Database = firebase.database();
 
@@ -36,9 +35,18 @@ const newNewUser = (
   };
 };
 
-export const anonymousLogin = (setUser: setUserType): void => {
+export const anonymousLogin = (dispatch: Dispatch): void => {
   const newUser: UserDAO = newNewUser(null, "anonimie", null, null);
-  setUser(newUser);
+  
+  dispatch({
+    type: "MODIFY_USER",
+    payload: newUser,
+  });
+
+  dispatch({
+    type: "MODIFY_USER",
+    payload: newUser,
+  });
 };
 
 export const updateUser = async (newUser: UserDAO): Promise<void> => {
@@ -49,7 +57,7 @@ export const updateUser = async (newUser: UserDAO): Promise<void> => {
 
 export const prepareExistingUser = (
   loggedUser: UserDAO,
-  setUser: setUserType
+  dispatch: Dispatch
 ): void => {
   if (loggedUser.likedAnimals === undefined) loggedUser.likedAnimals = [];
   if (loggedUser.nextAnimals === undefined) loggedUser.nextAnimals = [];
@@ -71,12 +79,16 @@ export const prepareExistingUser = (
       mapRange: 100000,
     };
   }
-  setUser(loggedUser);
+
+  dispatch({
+    type: "MODIFY_USER",
+    payload: loggedUser,
+  });
 };
 
 export const createNewUser = async (
   fireUser: firebase.User,
-  setUser: setUserType
+  dispatch: Dispatch
 ): Promise<void> => {
   const newUser: UserDAO = newNewUser(
     fireUser.uid,
@@ -84,7 +96,11 @@ export const createNewUser = async (
     fireUser.email,
     fireUser.photoURL
   );
-  setUser(newUser);
+
+  dispatch({
+    type: "MODIFY_USER",
+    payload: newUser,
+  });
 
   await database.ref(`users/${newUser.id}`).set({
     user: newUser,
@@ -93,7 +109,7 @@ export const createNewUser = async (
 
 export const loadUser = async (
   fireUser: firebase.User,
-  setUser: setUserType
+  dispatch: Dispatch
 ): Promise<void> => {
   await database
     .ref(`users/${fireUser.uid}`)
@@ -101,7 +117,7 @@ export const loadUser = async (
     .then(function (snapshot: firebase.database.DataSnapshot) {
       var loggedUser = snapshot.val() ? snapshot.val().user : "New User";
       loggedUser === "New User"
-        ? createNewUser(fireUser, setUser)
-        : prepareExistingUser(loggedUser, setUser);
+        ? createNewUser(fireUser, dispatch)
+        : prepareExistingUser(loggedUser, dispatch);
     });
 };
