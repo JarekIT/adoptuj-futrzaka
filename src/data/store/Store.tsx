@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useReducer } from "react";
 
 import { IState, IAction, IStore } from "../../interfaces/Store";
 
@@ -13,7 +13,12 @@ export const initialState: IState = {
   user: databaseUsers[0],
 };
 
-export const Store = React.createContext<IStore>({} as IStore);
+export const Store = createContext<IStore>({
+  state: initialState,
+  dispatch: (IAction) => {
+    throw new Error("Context Must Be initialized");
+  },
+});
 
 console.log(Store);
 
@@ -54,7 +59,7 @@ function reducer(state: IState, action: IAction): IState {
 export function StoreProvider({
   children,
 }: JSX.ElementChildrenAttribute): JSX.Element {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>

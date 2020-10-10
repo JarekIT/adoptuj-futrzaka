@@ -17,6 +17,6 @@ export interface IAction {
 }
 
 export interface IStore {
-    state: IState;
-    dispatch: React.Dispatch<IAction>;
+  state: IState;
+  dispatch: React.Dispatch<IAction>;
 }
