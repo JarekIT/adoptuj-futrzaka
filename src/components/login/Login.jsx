@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, Fragment } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "../database/Firebase/firebase";
 
@@ -6,6 +6,8 @@ import { anonymousLogin } from "../database/userOperations";
 
 import { Store } from "../../data/store/Store";
 import { DbService } from "../database/DbService";
+
+import { ButtonAnonymousLogin } from "../Button/Button.css";
 
 const Login = () => {
   const { dispatch } = useContext(Store);
@@ -54,13 +56,15 @@ const Login = () => {
           <h4>Witaj {firebase.auth().currentUser.displayName}</h4>
         </span>
       ) : (
-        <>
+        <Fragment>
           <StyledFirebaseAuth
             uiConfig={uiConfig}
             firebaseAuth={firebase.auth()}
           />
-          <button onClick={anonymous}>Wejdź anonimowo</button>
-        </>
+          <ButtonAnonymousLogin onClick={anonymous}>
+            Przetestuj bez logowania
+          </ButtonAnonymousLogin>
+        </Fragment>
       )}
       <br />
       {isLoggedIn ? (
