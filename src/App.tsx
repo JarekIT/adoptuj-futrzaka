@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 
 import "./App.css";
 
-import BurgerMenu from "./components/burgermenu/BurgerMenu";
 import FilterAnimals from "./components/options/FilterAnimals";
 
 import Main from "./pages/Main/Main";
@@ -29,7 +28,6 @@ function App(): JSX.Element {
     <React.StrictMode>
       <StoreProvider>
         <React.Fragment>
-          <BurgerMenu />
           <div className="app">
             <Header />
 

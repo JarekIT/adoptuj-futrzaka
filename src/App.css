@@ -21,40 +21,6 @@ ol, ul {
 	margin: auto;
 }
 
-header {
-	background-color: white;
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 10px 5px;
-	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
-}
-
-header button {
-	background-color: transparent;
-	border: 0;
-	width: 75px;
-	cursor: pointer;
-}
-
-header button img {
-	width: 100%;
-}
-
-header .fl {
-	float: left;
-	width: 33%;
-}
-
-header .fl:first-child {
-	text-align: left;
-}
-
-header .fl:last-child {
-	text-align: right;
-}
-
 .animal .animal-photo {
 	overflow: hidden;
 	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
@@ -263,48 +229,6 @@ header .fl:last-child {
 	/* object-fit: cover; */
     /* margin: auto; */
     /* max-height: 1000px; */
-}
-
-
-/* Header */
-header {
-	/* background-color: white; */
-	/* overflow: hidden; */
-	/* display: flex; */
-}
-
-header {
-	/* background-color: white; */
-	/* overflow: hidden; */
-	/* display: flex; */
-	/* align-items: center; */
-	/* justify-content: center; */
-	/* padding: 10px 5px; */
-	/* box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1); */
-}
-
-header button {
-	background-color: transparent;
-	border: 0;
-	width: 50px;
-	cursor: pointer;
-}
-
-header button img {
-	width: 100%;
-}
-
-header .fl {
-	float: left;
-	width: 33%;
-}
-
-header .fl:first-child {
-	text-align: left;
-}
-
-header .fl:last-child {
-	text-align: right;
 }
 
 /* AddAnimal */

@@ -124,7 +124,7 @@ function LikeSystem() {
     <Fragment>
       <img
         className="image-filter"
-        src="/images/misc/filter.png"
+        src="/images/misc/filter.svg"
         alt="Filter"
         onClick={handleChangeFiltersView}
       />

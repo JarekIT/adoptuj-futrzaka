@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "@reach/router";
-import "../../App.css";
+
+import "./header.css";
+
+import BurgerMenu from "../burgermenu/BurgerMenu";
 
 import { Store } from "../../data/store/Store";
 
@@ -44,6 +47,10 @@ const Header = () => {
             )}
           </button>
         </Link>
+      </div>
+
+      <div className="fl">
+        <BurgerMenu />
       </div>
     </header>
   );
