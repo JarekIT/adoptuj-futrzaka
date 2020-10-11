@@ -1,18 +1,30 @@
-import React, { useEffect, useContext, Fragment } from "react";
+import React, {
+  useEffect,
+  useContext,
+  Fragment,
+  useState,
+  useMemo,
+} from "react";
 import ShowLikedAnimals from "../ShowLikedAnimals/ShowLikedAnimals";
 import Animal from "./Animal/Animal";
 import { getFilteredAnimal, filterAllAnimals } from "./filters/filter";
 
 import { DbService } from "../../components/database/DbService";
+import Modal from "../../components/options/Modal/Modal";
+import FilterAnimals from "../../components/options/FilterAnimals";
 
 import { AnimalDAO } from "../../interfaces/Animal";
 import { UserDAO } from "../../interfaces/User.js";
 
 import { Store } from "../../data/store/Store";
 
+import "./image-filter.css";
+
 function LikeSystem() {
   const { state, dispatch } = useContext(Store);
   const { animals, user } = state;
+
+  const [showFilters, setShowFilters] = useState<boolean>(false);
 
   useEffect(() => {
     DbService.loadAllAnimals(dispatch);
@@ -96,10 +108,35 @@ function LikeSystem() {
     }
   };
 
-  const nextAnimal: AnimalDAO | boolean = getFilteredAnimal(state);
+  const handleChangeFiltersView: (e: React.MouseEvent<HTMLElement>) => void = (
+    e: React.MouseEvent<HTMLElement>
+  ) => {
+    e.stopPropagation();
+    setShowFilters(!showFilters);
+  };
+
+  const nextAnimal: AnimalDAO | boolean = useMemo(
+    () => getFilteredAnimal(state),
+    [state]
+  );
 
   return (
-    <div>
+    <Fragment>
+      <img
+        className="image-filter"
+        src="/images/misc/filter.png"
+        alt="Filter"
+        onClick={handleChangeFiltersView}
+      />
+
+      {showFilters ? (
+        <Modal handleChangeFiltersView={handleChangeFiltersView}>
+          <FilterAnimals />
+        </Modal>
+      ) : (
+        <Fragment />
+      )}
+
       {nextAnimal ? (
         <Fragment>
           <Animal
@@ -111,7 +148,7 @@ function LikeSystem() {
       ) : (
         <ShowLikedAnimals />
       )}
-    </div>
+    </Fragment>
   );
 }
 
