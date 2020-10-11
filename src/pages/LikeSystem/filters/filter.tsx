@@ -89,7 +89,6 @@ export const filterAllAnimals = (state: IState, dispatch: Dispatch): void => {
         centerPoint,
         1000
       );
-      console.log(distanceToShelter);
       return distanceToShelter <= user.filters.mapRange;
     }
 

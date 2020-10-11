@@ -35,7 +35,7 @@ const prepareExistingUser = (loggedUser: UserDAO, dispatch: Dispatch): void => {
       viewDogs: true,
       viewMales: true,
       viewFemales: true,
-      mapRange: 100000,
+      mapRange: 1000000,
     };
   }
 

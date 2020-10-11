@@ -23,8 +23,6 @@ const ShowAnimalDetails = ({
   const [shelter, setShelter] = useState<ShelterDAO>({} as ShelterDAO);
   const [distance, setDistance] = useState<string>("(Wpisz swoją lokalizację)");
 
-  console.log(animalId);
-
   useEffect(() => {
     setAnimalByAnimalId();
   }, []);

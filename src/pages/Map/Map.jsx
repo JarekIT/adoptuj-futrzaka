@@ -59,7 +59,7 @@ function Map() {
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(14);
-  });
+  }, []);
 
   const onMapClickShowLatLng = React.useCallback((event) => {
     let lat = event.latLng.lat();
@@ -179,7 +179,7 @@ function Search({ panTo }) {
               setValue(e.target.value);
             }}
             disabled={!ready}
-            placeholder="Znajdź schronisko"
+            placeholder="Znajdź Miejsce"
           />
           <ComboboxPopover>
             <ComboboxList>
