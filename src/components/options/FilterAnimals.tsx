@@ -1,4 +1,6 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
+
+import EnterAddressInput from "./EnterAddressInput/EnterAddressInput";
 
 import { Store } from "../../data/store/Store";
 
@@ -49,6 +51,18 @@ const FilterOptions: React.FC = () => {
 
   return (
     <div>
+      {user.location.city === null ? (
+        <h3>Wpisz swój adres</h3>
+      ) : (
+        <Fragment>
+          <h3>Będziemy szukać w okolicy:</h3>
+          <h3>{user.location.city}</h3>
+        </Fragment>
+      )}
+      <EnterAddressInput />
+
+      <hr />
+
       <button onClick={() => switchOption("CATS")}>Pokaz Koty</button>
       <span> =&gt; {user.filters.viewCats ? "tak" : "nie"}</span>
       <br />

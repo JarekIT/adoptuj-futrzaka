@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import EnterAddressInput from "./EnterAddressInput/EnterAddressInput";
-import { Link } from "@reach/router";
+import React, { Fragment, useContext } from "react";
+import { Link, Redirect } from "@reach/router";
 import Login from "../../components/login/Login";
 
 import { Store } from "../../data/store/Store";
@@ -14,24 +13,16 @@ const Main: React.FC = () => {
   return (
     <div className="app">
       {user.name === null ? (
-        <>
+        <Fragment>
           <h3>Zaloguj się</h3>
           <Login />
-        </>
+        </Fragment>
       ) : (
-        <h2>Witaj {user.name}</h2>
+        <Fragment>
+          <h2>Witaj {user.name}</h2>
+          <Redirect to="/find" />
+        </Fragment>
       )}
-
-      {user.location.city === null ? (
-        <h3>Wpisz swój adres</h3>
-      ) : (
-        <>
-          <h3>Będziemy szukać w okolicy:</h3>
-          <h3>{user.location.city}</h3>
-        </>
-      )}
-
-      <EnterAddressInput />
 
       <h3>zacznij szukać</h3>
       <Link to="/find">

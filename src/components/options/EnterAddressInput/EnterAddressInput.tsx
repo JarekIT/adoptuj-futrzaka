@@ -6,7 +6,7 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 import "@reach/combobox/styles.css";
 
-import { DbService } from "../../../components/database/DbService";
+import { DbService } from "../../database/DbService";
 
 import { Store } from "../../../data/store/Store";
 
