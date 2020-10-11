@@ -72,25 +72,27 @@ const LikedAnimalsShelterMap: React.FC = () => {
   };
 
   const calculateCenterLatLng: () => void = () => {
-    let sumLat: number = 0;
-    let sumLng: number = 0;
+    if (sheltersLatLng.length > 0) {
+      let sumLat: number = 0;
+      let sumLng: number = 0;
 
-    sheltersLatLng.forEach((shelter: ILatLng) => {
-      sumLat = Number(sumLat) + Number(shelter.lat);
-      sumLng = Number(sumLng) + Number(shelter.lng);
-    });
+      sheltersLatLng.forEach((shelter: ILatLng) => {
+        sumLat = Number(sumLat) + Number(shelter.lat);
+        sumLng = Number(sumLng) + Number(shelter.lng);
+      });
 
-    let newLat: number = Number(sumLat) / sheltersLatLng.length;
-    let newLng: number = Number(sumLng) / sheltersLatLng.length;
+      let newLat: number = Number(sumLat) / sheltersLatLng.length;
+      let newLng: number = Number(sumLng) / sheltersLatLng.length;
 
-    let newCenter: ILatLng = {
-      lat: newLat,
-      lng: newLng,
-    };
+      let newCenter: ILatLng = {
+        lat: newLat,
+        lng: newLng,
+      };
 
-    console.log("New Center");
-    console.log(newCenter);
-    setCenter(newCenter);
+      console.log("New Center");
+      console.log(newCenter);
+      setCenter(newCenter);
+    }
   };
 
   const libraries = ["places"];

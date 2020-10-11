@@ -40,7 +40,7 @@ const LikedAnimals: React.FC = () => {
 
             {Object.entries(groupedAnimalsByShelterId).map(
               ([shelterId, groupedAnimals]) => (
-                <div>
+                <div key={shelterId}>
                   <span>{groupedSheltersById[shelterId][0].name}</span>
                   <br />
                   <span>{groupedSheltersById[shelterId][0].city}</span>
