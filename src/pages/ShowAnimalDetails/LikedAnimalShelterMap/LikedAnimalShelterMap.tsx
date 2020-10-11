@@ -1,4 +1,10 @@
-import React, { useState, Fragment, useRef, useCallback } from "react";
+import React, {
+  useState,
+  Fragment,
+  useRef,
+  useCallback,
+  useEffect,
+} from "react";
 import {
   GoogleMap,
   useLoadScript,
@@ -21,9 +27,13 @@ const LikedAnimalShelterMap: React.FC<{ shelter: ShelterDAO }> = ({
 }) => {
   const [selected, setSelected] = useState<ShelterDAO | null>(null);
 
+  useEffect(() => {
+    shelter.lat ? setSelected(shelter) : setSelected(null);
+  }, [shelter]);
+
   const center: ILatLng = {
-    lat: Number(shelter.lat),
-    lng: Number(shelter.lng),
+    lat: Number(shelter.lat) ? Number(shelter.lat) : 54.5188898,
+    lng: Number(shelter.lng) ? Number(shelter.lng) : 18.5305409,
   };
   const libraries = ["places"];
   const mapContainerStyle = {
