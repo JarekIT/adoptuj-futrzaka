@@ -1,53 +1,11 @@
 import firebase from "./firebase";
 
-import { UserDAO } from "../../interfaces/User";
-import { Dispatch } from "../../interfaces/Store";
+import { newNewUser } from "../userOperations";
+
+import { UserDAO } from "../../../interfaces/User";
+import { Dispatch } from "../../../interfaces/Store";
 
 const database: firebase.database.Database = firebase.database();
-
-const newNewUser = (
-  id: string | null,
-  name: string | null,
-  email: string | null,
-  picture: string | null
-): UserDAO => {
-  return {
-    id: id,
-    name: name,
-    email: email,
-    picture: picture,
-    likedAnimals: [],
-    nextAnimals: [],
-    viewedAnimals: [],
-    location: {
-      lat: 54.5188898,
-      lng: 18.5305409,
-      city: null,
-      address: null,
-    },
-    filters: {
-      viewCats: true,
-      viewDogs: true,
-      viewMales: true,
-      viewFemales: true,
-      mapRange: 100000,
-    },
-  };
-};
-
-export const anonymousLogin = (dispatch: Dispatch): void => {
-  const newUser: UserDAO = newNewUser(null, "anonimie", null, null);
-  
-  dispatch({
-    type: "MODIFY_USER",
-    payload: newUser,
-  });
-
-  dispatch({
-    type: "MODIFY_USER",
-    payload: newUser,
-  });
-};
 
 export const updateUser = async (newUser: UserDAO): Promise<void> => {
   await database.ref(`users/${newUser.id}`).set({
@@ -55,10 +13,11 @@ export const updateUser = async (newUser: UserDAO): Promise<void> => {
   });
 };
 
-export const prepareExistingUser = (
-  loggedUser: UserDAO,
-  dispatch: Dispatch
-): void => {
+/**
+ * The database in Firebase cannot write an empty array or an empty object.
+ * After fetching data (loadUser), you need to verify that the object does not contain missing elements.
+ */
+const prepareExistingUser = (loggedUser: UserDAO, dispatch: Dispatch): void => {
   if (loggedUser.likedAnimals === undefined) loggedUser.likedAnimals = [];
   if (loggedUser.nextAnimals === undefined) loggedUser.nextAnimals = [];
   if (loggedUser.viewedAnimals === undefined) loggedUser.viewedAnimals = [];

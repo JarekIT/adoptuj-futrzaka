@@ -1,13 +1,13 @@
 import React, { useEffect, useContext, Fragment } from "react";
 import ShowLikedAnimals from "../ShowLikedAnimals/ShowLikedAnimals";
 import Animal from "./Animal/Animal";
-import { getFilteredAnimal } from "./filters/filter";
-import { updateUser } from "../../components/database/FirebaseOperationsUser";
-import { loadAllAnimals } from "../../components/database/FirebaseOperationsAnimals";
-import { filterAllAnimals } from "./filters/filter";
+import { getFilteredAnimal, filterAllAnimals } from "./filters/filter";
+
+import { DbService } from "../../components/database/DbService";
 
 import { AnimalDAO } from "../../interfaces/Animal";
 import { UserDAO } from "../../interfaces/User.js";
+
 import { Store } from "../../data/store/Store";
 
 function LikeSystem() {
@@ -15,7 +15,7 @@ function LikeSystem() {
   const { animals, user } = state;
 
   useEffect(() => {
-    loadAllAnimals(dispatch);
+    DbService.loadAllAnimals(dispatch);
   }, []);
 
   useEffect(() => {
@@ -86,7 +86,7 @@ function LikeSystem() {
       type: "MODIFY_USER",
       payload: newUser,
     });
-    if (user.id !== null) updateUser(newUser);
+    if (user.id !== null) DbService.updateUser(newUser);
   };
 
   const shuffleArray = (array: AnimalDAO[]): void => {

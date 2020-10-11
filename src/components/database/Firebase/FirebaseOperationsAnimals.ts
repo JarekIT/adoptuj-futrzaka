@@ -1,7 +1,7 @@
 import firebase from "./firebase";
 
-import { AnimalDAO } from "../../interfaces/Animal";
-import { Dispatch } from "../../interfaces/Store";
+import { AnimalDAO } from "../../../interfaces/Animal";
+import { Dispatch } from "../../../interfaces/Store";
 
 interface IDoc {
   data: () => AnimalDAO;

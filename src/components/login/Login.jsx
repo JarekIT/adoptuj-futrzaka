@@ -1,12 +1,11 @@
 import React, { useState, useContext } from "react";
-import {
-  loadUser,
-  anonymousLogin,
-} from "../database/Firebase/FirebaseOperationsUser";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "../database/Firebase/firebase";
 
+import { anonymousLogin } from "../database/userOperations";
+
 import { Store } from "../../data/store/Store";
+import { DbService } from "../database/DbService";
 
 const Login = () => {
   const { dispatch } = useContext(Store);
@@ -23,7 +22,7 @@ const Login = () => {
       signInSuccess: () => {
         console.log("Zalogowano");
         console.log(firebase.auth().currentUser);
-        loadUser(firebase.auth().currentUser, dispatch);
+        DbService.loadUser(firebase.auth().currentUser, dispatch);
       },
     },
   };
@@ -32,7 +31,7 @@ const Login = () => {
     firebase.auth().onAuthStateChanged((userrr) => {
       setLoggedIn(!!userrr);
       if (firebase.auth().currentUser) {
-        loadUser(firebase.auth().currentUser, dispatch);
+        DbService.loadUser(firebase.auth().currentUser, dispatch);
       }
     });
   }, []);

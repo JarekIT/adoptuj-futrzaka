@@ -5,7 +5,8 @@ import PlacesAutocomplete, {
   Suggestion,
 } from "react-places-autocomplete";
 import "@reach/combobox/styles.css";
-import { updateUser } from "../../../components/database/FirebaseOperationsUser";
+
+import { DbService } from "../../../components/database/DbService";
 
 import { Store } from "../../../data/store/Store";
 
@@ -35,7 +36,7 @@ const EnterAddressInput: React.FC = () => {
       payload: newUserDetails,
     });
 
-    if (user.id !== null) updateUser(newUserDetails);
+    if (user.id !== null) DbService.updateUser(newUserDetails);
   };
 
   return (

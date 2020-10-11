@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import firebase, { storage } from "../../components/database/firebase";
+import firebase, { storage } from "../../components/database/Firebase/firebase";
 import { InputComponent } from "../AddShelter/InputComponent/InputComponent";
 
 const AddAnimal = () => {
