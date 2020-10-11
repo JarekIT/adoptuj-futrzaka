@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import EnterAddressInput from "./EnterAddressInput/EnterAddressInput";
 import { Link } from "@reach/router";
 import Login from "../../components/login/Login";
-import FilterAnimals from "../../components/options/FilterAnimals";
 
 import { Store } from "../../data/store/Store";
 
@@ -33,9 +32,6 @@ const Main: React.FC = () => {
       )}
 
       <EnterAddressInput />
-
-      <h3>ustaw filtry</h3>
-      <FilterAnimals />
 
       <h3>zacznij szukać</h3>
       <Link to="/find">
