@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
-import { loadUser, anonymousLogin } from "../database/FirebaseOperationsUser";
+import {
+  loadUser,
+  anonymousLogin,
+} from "../database/Firebase/FirebaseOperationsUser";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import firebase from "../database/firebase";
+import firebase from "../database/Firebase/firebase";
 
 import { Store } from "../../data/store/Store";
 
