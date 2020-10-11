@@ -59,7 +59,7 @@ function LikeSystem() {
           });
         }
         break;
-      case "REWIND":
+      case "BACK_TO_PREVIOUS":
         if (user.nextAnimals.length > 0) {
           const newAnimals: AnimalDAO[] = [...animals];
           const lastAnimal: AnimalDAO =

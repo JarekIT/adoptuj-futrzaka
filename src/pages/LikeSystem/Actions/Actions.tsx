@@ -1,5 +1,5 @@
 import React from "react";
-import Rewind from "./action/Rewind";
+import Back from "./action/Back";
 import Next from "./action/Next";
 import Like from "./action/Like";
 
@@ -15,11 +15,7 @@ const Actions: React.FC<ActionProps> = ({
   modifySuperficialChoices,
 }) => (
   <div id="actions">
-    <Rewind
-      animal={animal}
-      modifySuperficialChoices={modifySuperficialChoices}
-    />
-
+    <Back animal={animal} modifySuperficialChoices={modifySuperficialChoices} />
     <Like animal={animal} modifySuperficialChoices={modifySuperficialChoices} />
     <Next animal={animal} modifySuperficialChoices={modifySuperficialChoices} />
   </div>

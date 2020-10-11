@@ -9,9 +9,9 @@ const Rewind: React.FC<ActionProps> = ({
   return (
     <button
       type="button"
-      onClick={() => modifySuperficialChoices(animal, "REWIND")}
+      onClick={() => modifySuperficialChoices(animal, "BACK_TO_PREVIOUS")}
     >
-      <img src="images/misc/rewind.png" alt="Rewind Animal" />
+      <img src="images/misc/back.png" alt="Back Animal" />
     </button>
   );
 };
