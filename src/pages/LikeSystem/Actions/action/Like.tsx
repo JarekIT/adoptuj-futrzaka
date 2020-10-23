@@ -10,7 +10,7 @@ const Like: React.FC<ActionProps> = ({ animal, modifySuperficialChoices }) => {
       type="button"
       onClick={() => modifySuperficialChoices(animal, "ADD_TO_LIKED_USER")}
     >
-      <Img src="images/misc/like.png" alt="Like Animal" />
+      <Img src="images/misc/love.png" alt="Like Animal" />
     </Button>
   );
 };

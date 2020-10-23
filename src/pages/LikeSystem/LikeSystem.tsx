@@ -18,7 +18,7 @@ import { UserDAO } from "../../interfaces/User.js";
 
 import { Store } from "../../data/store/Store";
 
-import { FilterImg } from "./LikeStstem.css";
+import { FilterImg } from "./LikeSystem.css";
 
 function LikeSystem() {
   const { state, dispatch } = useContext(Store);
