@@ -18,7 +18,7 @@ import { UserDAO } from "../../interfaces/User.js";
 
 import { Store } from "../../data/store/Store";
 
-import "./image-filter.css";
+import { FilterImg } from "./LikeStstem.css";
 
 function LikeSystem() {
   const { state, dispatch } = useContext(Store);
@@ -122,7 +122,7 @@ function LikeSystem() {
 
   return (
     <Fragment>
-      <img
+      <FilterImg
         className="image-filter"
         src="/images/misc/filter.svg"
         alt="Filter"
