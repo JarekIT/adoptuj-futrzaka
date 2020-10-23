@@ -3,6 +3,8 @@ import Back from "./action/Back";
 import Next from "./action/Next";
 import Like from "./action/Like";
 
+import { ActionsStyle } from "./Actions.css";
+
 import { AnimalDAO } from "../../../interfaces/Animal";
 
 export interface ActionProps {
@@ -14,11 +16,11 @@ const Actions: React.FC<ActionProps> = ({
   animal,
   modifySuperficialChoices,
 }) => (
-  <div id="actions">
+  <ActionsStyle>
     <Back animal={animal} modifySuperficialChoices={modifySuperficialChoices} />
     <Like animal={animal} modifySuperficialChoices={modifySuperficialChoices} />
     <Next animal={animal} modifySuperficialChoices={modifySuperficialChoices} />
-  </div>
+  </ActionsStyle>
 );
 
 export default React.memo(Actions);

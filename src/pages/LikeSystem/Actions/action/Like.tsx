@@ -2,14 +2,16 @@ import React from "react";
 
 import { ActionProps } from "../Actions";
 
+import { Button, Img } from "../Actions.css";
+
 const Like: React.FC<ActionProps> = ({ animal, modifySuperficialChoices }) => {
   return (
-    <button
+    <Button
       type="button"
       onClick={() => modifySuperficialChoices(animal, "ADD_TO_LIKED_USER")}
     >
-      <img src="images/misc/like.png" alt="Like Animal" />
-    </button>
+      <Img src="images/misc/like.png" alt="Like Animal" />
+    </Button>
   );
 };
 
