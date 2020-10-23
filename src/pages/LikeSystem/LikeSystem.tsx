@@ -123,7 +123,6 @@ function LikeSystem() {
   return (
     <Fragment>
       <FilterImg
-        className="image-filter"
         src="/images/misc/filter.svg"
         alt="Filter"
         onClick={handleChangeFiltersView}
@@ -133,9 +132,7 @@ function LikeSystem() {
         <Modal handleChangeFiltersView={handleChangeFiltersView}>
           <FilterAnimals />
         </Modal>
-      ) : (
-        <Fragment />
-      )}
+      ) : null}
 
       {nextAnimal ? (
         <Fragment>
