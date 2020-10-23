@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "@reach/router";
 
-import "./header.css";
+import { HeaderStyle, Button, Img } from "./Header.css";
 
 import BurgerMenu from "../burgermenu/BurgerMenu";
 
@@ -12,47 +12,37 @@ const Header = () => {
   const { user } = state;
 
   return (
-    <header>
-      <div className="fl">
-        <Link to="/find">
-          <button type="button">
-            <img src="/images/misc/find.png" alt="Logo" />
-          </button>
-        </Link>
-      </div>
+    <HeaderStyle>
+      <Link to="/find">
+        <Button>
+          <Img src="/images/misc/find.png" alt="Logo" />
+        </Button>
+      </Link>
 
-      <div className="fl">
-        <Link to="/found">
-          <button type="button">
-            <img src="/images/misc/showLiked.png" alt="Show Liked" />
-          </button>
-        </Link>
-      </div>
+      <Link to="/found">
+        <Button>
+          <Img src="/images/misc/showLiked.png" alt="Show Liked" />
+        </Button>
+      </Link>
 
-      <div className="fl">
-        <Link to="/map">
-          <button type="button">
-            <img src="/images/misc/shelter.png" alt="Logo" />
-          </button>
-        </Link>
-      </div>
+      <Link to="/map">
+        <Button>
+          <Img src="/images/misc/shelter.png" alt="Logo" />
+        </Button>
+      </Link>
 
-      <div className="fl">
-        <Link to="/">
-          <button type="button">
-            {user.picture ? (
-              <img src={user.picture} alt="Zdjecie" />
-            ) : (
-              <img src="/images/misc/user.png" alt="Login" />
-            )}
-          </button>
-        </Link>
-      </div>
+      <Link to="/">
+        <Button>
+          {user.picture ? (
+            <Img src={user.picture} alt="Zdjecie" />
+          ) : (
+            <Img src="/images/misc/user.png" alt="Login" />
+          )}
+        </Button>
+      </Link>
 
-      <div className="fl">
-        <BurgerMenu />
-      </div>
-    </header>
+      <BurgerMenu />
+    </HeaderStyle>
   );
 };
 
