@@ -1,7 +1,6 @@
 import React from "react";
-import Back from "./action/Back";
-import Next from "./action/Next";
-import Like from "./action/Like";
+
+import Action from "./Action/Action";
 
 import { ActionsStyle } from "./Actions.css";
 
@@ -17,9 +16,21 @@ const Actions: React.FC<ActionProps> = ({
   modifySuperficialChoices,
 }) => (
   <ActionsStyle>
-    <Back animal={animal} modifySuperficialChoices={modifySuperficialChoices} />
-    <Like animal={animal} modifySuperficialChoices={modifySuperficialChoices} />
-    <Next animal={animal} modifySuperficialChoices={modifySuperficialChoices} />
+    <Action
+      handleClick={() => modifySuperficialChoices(animal, "BACK_TO_PREVIOUS")}
+      src="images/misc/back.png"
+      alt="Back Animal"
+    />
+    <Action
+      handleClick={() => modifySuperficialChoices(animal, "ADD_TO_LIKED_USER")}
+      src="images/misc/love.png"
+      alt="Like Animal"
+    />
+    <Action
+      handleClick={() => modifySuperficialChoices(animal, "ADD_TO_NEXT_USER")}
+      src="images/misc/next.png"
+      alt="Next Animal"
+    />
   </ActionsStyle>
 );
 
