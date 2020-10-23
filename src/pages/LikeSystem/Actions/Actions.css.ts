@@ -35,6 +35,29 @@ export const Button: StyledComponent<"button", any, {}, never> = styled.button`
     width: 60px;
     height: 60px;
     padding: 15px;
+
+    -webkit-animation: pulse 1.5s infinite;
+    animation: pulse 1.5s infinite;
+
+    @-webkit-keyframes pulse {
+      0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(241, 201, 202, 0.4);
+      }
+      100% {
+        -webkit-box-shadow: 0 0 0 35px rgba(241, 201, 202, 0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        -moz-box-shadow: 0 0 0 0 rgba(241, 201, 202, 0.4);
+        box-shadow: 0 0 0 0 rgba(241, 201, 202, 0.4);
+      }
+      100% {
+        -moz-box-shadow: 0 0 35px 35px rgba(241, 201, 202, 0);
+        box-shadow: 0 0 35px 35px rgba(241, 201, 202, 0);
+      }
+    }
   }
 `;
 
