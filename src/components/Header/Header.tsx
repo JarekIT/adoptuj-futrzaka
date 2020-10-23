@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "@reach/router";
 
-import { HeaderStyle, Button, Img } from "./Header.css";
+import { HeaderStyle, Button, Img, Badge } from "./Header.css";
 
 import BurgerMenu from "../burgermenu/BurgerMenu";
 
@@ -10,6 +10,8 @@ import { Store } from "../../data/store/Store";
 const Header = () => {
   const { state } = useContext(Store);
   const { user } = state;
+
+  const count: number = user.likedAnimals.length;
 
   return (
     <HeaderStyle>
@@ -22,6 +24,7 @@ const Header = () => {
       <Link to="/found">
         <Button>
           <Img src="/images/misc/showLiked.png" alt="Show Liked" />
+          <Badge>{count}</Badge>
         </Button>
       </Link>
 

@@ -20,3 +20,13 @@ export const Button: StyledComponent<"button", any, {}, never> = styled.button`
 export const Img: StyledComponent<"img", any, {}, never> = styled.img`
   width: 100%;
 `;
+
+export const Badge: StyledComponent<"span", any, {}, never> = styled.span`
+  position: relative;
+  bottom: 40px;
+  left: 15px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+`;
