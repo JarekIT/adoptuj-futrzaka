@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, Fragment } from "react";
+
+import { Description, Info, NameAge, Photo, Img } from "./Animal.css";
 
 import Actions from "../Actions/Actions";
 import { getDistanceBetweenPoints } from "../calculateDistance";
@@ -36,25 +38,25 @@ const Animal = ({ animal, modifySuperficialChoices }: AnimalProps) => {
   };
 
   return (
-    <div className="animal">
-      <div className="animal-photo">
-        <img src={image} alt={name} />
-      </div>
+    <Fragment>
+      <Photo>
+        <Img src={image} alt={name} />
+      </Photo>
 
-      <div className="animal-description">
-        <p className="animal-name-age">
-          {name}, <span>{age}</span>, <span>{gender}</span>
-        </p>
-        <p className="animal-info">
+      <Description>
+        <NameAge>
+          {name} - {age} - {gender}
+        </NameAge>
+        <Info>
           {distance}, {shelter.city}{" "}
-        </p>
-      </div>
+        </Info>
+      </Description>
 
       <Actions
         animal={animal}
         modifySuperficialChoices={modifySuperficialChoices}
       />
-    </div>
+    </Fragment>
   );
 };
 
