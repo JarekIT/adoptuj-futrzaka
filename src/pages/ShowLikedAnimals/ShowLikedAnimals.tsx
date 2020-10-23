@@ -71,7 +71,7 @@ const LikedAnimals: React.FC = () => {
               <ShowLikedAnimalsView
                 groupedAnimalsToView={groupedAnimalsToView}
               />
-            ) : null }
+            ) : null}
           </div>
         </div>
       </div>
