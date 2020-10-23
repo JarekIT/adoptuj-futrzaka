@@ -4,6 +4,8 @@ import * as lodash from "lodash";
 import LikedAnimalsShelterMap from "./LikedAnimalsSheltersMap/LikedAnimalsSheltersMap";
 import ShowLikedAnimalsView from "./ShowLikedAnimalsView/ShowLikedAnimalsView";
 
+import { Div } from "./ShowLikedAnimals.css";
+
 import { Store } from "../../data/store/Store";
 
 import { AnimalDAO } from "../../interfaces/Animal";
@@ -53,30 +55,25 @@ const LikedAnimals: React.FC = () => {
   };
 
   return (
-    <div className="app">
-      <div className="animal">
-        <div id="show-liked">
-          <p>
-            {animals.length === 0 ? "Nie ma więcej zwierzaków w okolicy" : ""}
-          </p>
+    <Fragment>
+      <Div>
+        <p>
+          {animals.length === 0 ? "Nie ma więcej zwierzaków w okolicy" : ""}
+        </p>
 
-          <div id="liked-animals">
-            <p>
-              {user.likedAnimals.length > 0
-                ? "Zwierzaki, które polubiles:"
-                : "Nie ma żadnych polubionych zwierzaków"}
-            </p>
+        <p>
+          {user.likedAnimals.length > 0
+            ? "Zwierzaki, które polubiles:"
+            : "Nie ma żadnych polubionych zwierzaków"}
+        </p>
 
-            {groupedAnimalsToView.length > 0 ? (
-              <ShowLikedAnimalsView
-                groupedAnimalsToView={groupedAnimalsToView}
-              />
-            ) : null}
-          </div>
-        </div>
-      </div>
+        {groupedAnimalsToView.length > 0 ? (
+          <ShowLikedAnimalsView groupedAnimalsToView={groupedAnimalsToView} />
+        ) : null}
+      </Div>
+
       {user.likedAnimals.length > 0 ? <LikedAnimalsShelterMap /> : null}
-    </div>
+    </Fragment>
   );
 };
 

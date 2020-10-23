@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "@reach/router";
 
+import { Div, Img } from "./LikedAnimal.css";
+
 import { AnimalDAO } from "../../../interfaces/Animal";
 
 interface LikedAnimalProps {
@@ -8,13 +10,11 @@ interface LikedAnimalProps {
 }
 
 const LikedAnimal: React.FC<LikedAnimalProps> = ({ animal }) => (
-  <div className="liked-animal">
-    <div className="liked-animal-image">
-      <Link to={`/details/${animal.id}`}>
-        <img src={animal.image} alt={`You liked ${animal.name}`} />
-      </Link>
-    </div>
-  </div>
+  <Div>
+    <Link to={`/details/${animal.id}`}>
+      <Img src={animal.image} alt={`You liked ${animal.name}`} />
+    </Link>
+  </Div>
 );
 
 export default React.memo(LikedAnimal);

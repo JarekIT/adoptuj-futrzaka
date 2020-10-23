@@ -21,53 +21,6 @@ ol, ul {
 	margin: auto;
 }
 
-#show-liked {
-	padding: 10px;
-	border-radius: 1px;
-	background-color: white;
-	border-top: 1px solid #eee;
-}
-
-#show-liked img {
-	width: 20%;
-	height: 20%;
-	display: block;
-	margin: auto;
-}
-
-#liked-animals {
-	margin: auto;
-	overflow: hidden;
-}
-
-@media screen and (max-width: 540px) {
-	#liked-animals .liked-animal {
-		display: inline-block;
-		width: 40%;
-		margin-top: 10px;
-	}
-}
-
-@media screen and (min-width: 540px) {
-	#liked-animals .liked-animal {
-		display: inline-block;
-		width: 16%;
-		margin-top: 10px;
-	}
-}
-
-
-#liked-animals .liked-animal-image {
-	border-radius: 5px;
-}
-
-#liked-animals .liked-animal-image img {
-	width: 140px;
-	height: 100px;
-	object-fit: cover;
-	object-position: 50% 50%;
-}
-
 /* Animal Details */
 .liked-animal img {
 	width: 100vw;
